@@ -1,0 +1,25 @@
+{
+  "_source": "your-input",
+  "_how": "hand-written test fixture — fictional companies and example.com URLs",
+  "captured_at": "2026-10-02T00:00:00.000Z",
+  "boards": {
+    "ALPHA APPLY INC": { "status": "ok", "provider": "greenhouse", "identity_confirmed": true, "jobs": [
+      { "title": "Software Engineer II, Backend", "url": "https://alpha.example.com/jobs/1", "location": "Boston, MA" },
+      { "title": "Account Executive", "url": "https://alpha.example.com/jobs/2", "location": "Boston, MA" } ] },
+    "BRAVO NETWORK, INC": { "status": "ok", "provider": "lever", "jobs": [
+      { "title": "Engineering Manager, Backend", "url": "https://bravo.example.com/jobs/1", "location": "Cambridge, MA" },
+      { "title": "Contractor: DevOps Engineer", "url": "https://bravo.example.com/jobs/2", "location": "United States" },
+      { "title": "Backend Software Engineer", "url": "https://bravo.example.com/jobs/3", "location": "Budapest, Hungary" },
+      { "title": "Applied AI Engineer", "url": "https://bravo.example.com/jobs/4", "location": "Cambridge, MA" } ] },
+    "CHARLIE STALE INC": { "status": "ok", "provider": "ashby", "jobs": [
+      { "title": "Sales Director", "url": "https://charlie.example.com/jobs/1", "location": "Boston, MA" } ] },
+    "DELTA EMPTY INC": { "status": "ok", "provider": "greenhouse", "jobs": [] },
+    "ECHO NOBOARD INC": { "status": "not_found", "note": "no board for slug echo" },
+    "FOXTROT NORECORD INC": { "status": "ok", "provider": "greenhouse", "jobs": [
+      { "title": "Software Engineer", "url": "https://foxtrot.example.com/jobs/1", "location": "Boston, MA" } ] },
+    "HOTEL POSSIBLE INC": { "status": "ok", "provider": "greenhouse", "jobs": [
+      { "title": "Full Stack Engineer", "url": "https://hotel.example.com/jobs/1", "location": "Boston, MA" } ] },
+    "GHOST CO INC": { "status": "ok", "provider": "greenhouse", "jobs": [
+      { "title": "Software Engineer", "url": "https://ghost.example.com/jobs/1", "location": "Boston, MA" } ] }
+  }
+}

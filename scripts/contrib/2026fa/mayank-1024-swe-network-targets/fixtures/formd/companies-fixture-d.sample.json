@@ -1,0 +1,7 @@
+{
+  "metadata": { "quarter": "2025Q1_d", "total_companies": 2, "_sample": "test fixture" },
+  "companies": [
+    { "company": { "name": "Bravo Network, Inc.", "company_name_normalized": "bravonetworkinc" }, "funding": { "total_amount_sold": 9000000.0 }, "filing": { "date_filed": "15-JAN-2025" } },
+    { "company": { "name": "Unrelated Fund LP", "company_name_normalized": "unrelatedfundlp" }, "funding": { "total_amount_sold": 0.0 }, "filing": { "date_filed": "01-FEB-2025" } }
+  ]
+}

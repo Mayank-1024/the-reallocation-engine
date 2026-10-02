@@ -1,0 +1,38 @@
+{
+  "_note": "FICTIONAL persona — every value is your-input. No real person's name, contact, or immigration details. Edit this file (or pass --persona) to run your own scenario locally; keep real values in private/, never commit them.",
+  "persona_id": "fictional-ms-cs-f1-opt-boston-backend",
+  "as_of": "2026-10-02",
+  "situation": "MS Computer Science graduate (Boston-area university), F-1 post-completion OPT, backend / platform software engineer, needs an employer that will file an H-1B. STEM extension not yet filed.",
+  "visa": {
+    "type": "F-1",
+    "status": "post-completion OPT (12 months)",
+    "opt_end_date": "2027-06-30",
+    "authorization_for_scorer": "F-1 OPT — requires H-1B sponsorship"
+  },
+  "timeline": {
+    "hiring_lag_days": 75,
+    "_hiring_lag_note": "your-input assumption: first contact → signed offer for a mid-size Boston tech employer. Not a measured number.",
+    "bands": [
+      { "min_slack_days": 120, "factor": 1.0 },
+      { "min_slack_days": 60, "factor": 0.85 },
+      { "min_slack_days": 0, "factor": 0.5 },
+      { "min_slack_days": -100000, "factor": 0.0 }
+    ]
+  },
+  "geography": { "states": ["MA"] },
+  "target": {
+    "title_pattern": "software engineer|software developer|backend|back-end|platform engineer|full.?stack|site reliability|\\bsre\\b|devops",
+    "location_pattern": "\\b(MA|Massachusetts|Boston|Cambridge|Somerville|Waltham|Burlington|Malden|Woburn|Lexington)\\b|United States|\\bUSA?\\b",
+    "exclude_title_pattern": "manager|director|head of|\\bvp\\b|principal|contract|intern",
+    "_exclude_note": "added 2026-10-02 after the first live run matched 'Senior Manager, Engineering (DevOps…)' and 'Contractor: DevOps Engineer' as SWE openings",
+    "adjacent_title_pattern": "engineer|developer"
+  },
+  "sponsorship_rules": {
+    "_note": "your-input thresholds on RAW CSV counts (which may be doubled — see recipe). Proven/Likely p values copied from data/examples/ch11-roles.json; Possible p is this recipe's choice.",
+    "proven": { "min_approvals": 20, "min_rate_pct": 90, "p": 0.9 },
+    "likely": { "min_approvals": 6, "p": 0.6 },
+    "possible": { "min_approvals": 2, "p": 0.3 }
+  },
+  "funding_windows": { "recent_months": 24, "aging_months": 48 },
+  "network_rule": { "tiers": ["Proven", "Likely"], "funding_buckets": ["recent"] }
+}

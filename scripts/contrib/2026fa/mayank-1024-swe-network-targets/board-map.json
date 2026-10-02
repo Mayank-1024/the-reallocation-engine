@@ -1,0 +1,182 @@
+{
+  "_source": "your-input",
+  "_how": "slugs proposed by Claude by probing boards-api.greenhouse.io, api.lever.co, api.ashbyhq.com with the website domain stem on 2026-10-02; NOT human-confirmed (identity_confirmed=false everywhere)",
+  "companies": [
+    {
+      "company": "COHERE HEALTH INC",
+      "careers_url": "https://job-boards.greenhouse.io/coherehealth",
+      "identity_confirmed": false,
+      "note": null
+    },
+    {
+      "company": "KLAVIYO INC",
+      "careers_url": "https://job-boards.greenhouse.io/klaviyo",
+      "identity_confirmed": false,
+      "note": "an ashby board \"klaviyo\" also exists with 0 jobs; greenhouse chosen"
+    },
+    {
+      "company": "OVERJET INC",
+      "careers_url": "https://jobs.ashbyhq.com/overjet",
+      "identity_confirmed": false,
+      "note": null
+    },
+    {
+      "company": "LENDBUZZ INC",
+      "careers_url": "https://jobs.lever.co/lendbuzz",
+      "identity_confirmed": false,
+      "note": null
+    },
+    {
+      "company": "PATHAI INC",
+      "careers_url": "https://job-boards.greenhouse.io/pathai",
+      "identity_confirmed": false,
+      "note": null
+    },
+    {
+      "company": "ABACUS INSIGHTS INC",
+      "careers_url": "https://job-boards.greenhouse.io/abacusinsights",
+      "identity_confirmed": false,
+      "note": null
+    },
+    {
+      "company": "ACUITYMD INC",
+      "careers_url": "https://job-boards.greenhouse.io/acuitymd",
+      "identity_confirmed": false,
+      "note": null
+    },
+    {
+      "company": "CLOAKED INC",
+      "careers_url": "https://jobs.ashbyhq.com/cloaked",
+      "identity_confirmed": false,
+      "note": null
+    },
+    {
+      "company": "1UPHEALTH INC",
+      "careers_url": "https://job-boards.greenhouse.io/1uphealth",
+      "identity_confirmed": false,
+      "note": "greenhouse AND ashby boards both answer with 0 jobs on 2026-10-02"
+    },
+    {
+      "company": "LOOKOUT INC",
+      "careers_url": "https://job-boards.greenhouse.io/lookout",
+      "identity_confirmed": false,
+      "note": "CSV city is BOSTON; board postings seen are Canada/remote \u2014 identity unconfirmed"
+    },
+    {
+      "company": "TULIP INTERFACES INC",
+      "careers_url": "https://job-boards.greenhouse.io/tulip",
+      "identity_confirmed": false,
+      "note": null
+    },
+    {
+      "company": "FAIRMARKIT INC",
+      "careers_url": "https://job-boards.greenhouse.io/fairmarkit",
+      "identity_confirmed": false,
+      "note": null
+    },
+    {
+      "company": "ITERATIVE SCOPES INC",
+      "careers_url": "https://job-boards.greenhouse.io/iterativehealth",
+      "identity_confirmed": false,
+      "note": "slug assumes the company now trades as Iterative Health \u2014 unconfirmed"
+    },
+    {
+      "company": "REGENT CRAFT INC",
+      "careers_url": null,
+      "status": "ambiguous",
+      "identity_confirmed": false,
+      "note": "slug \"regent\" answers on BOTH greenhouse (10 jobs) and ashby (31 jobs); which board is Regent Craft is a human call"
+    },
+    {
+      "company": "DATAROBOT INC",
+      "careers_url": null,
+      "status": "not_found",
+      "identity_confirmed": false,
+      "note": "no greenhouse/lever/ashby board for slug \"datarobot\" on 2026-10-02 \u2014 may use Workday or another ATS"
+    },
+    {
+      "company": "TETRASCIENCE INC",
+      "careers_url": null,
+      "status": "not_found",
+      "identity_confirmed": false,
+      "note": "no greenhouse/lever/ashby board for slug \"tetrascience\" on 2026-10-02 \u2014 may use Workday or another ATS"
+    },
+    {
+      "company": "PEGASYSTEMS INC",
+      "careers_url": null,
+      "status": "not_found",
+      "identity_confirmed": false,
+      "note": "no greenhouse/lever/ashby board for slug \"pegasystems\" on 2026-10-02 \u2014 may use Workday or another ATS"
+    },
+    {
+      "company": "APRIORI TECHNOLOGIES INC",
+      "careers_url": null,
+      "status": "not_found",
+      "identity_confirmed": false,
+      "note": "no greenhouse/lever/ashby board for slug \"apriori\" on 2026-10-02 \u2014 may use Workday or another ATS"
+    },
+    {
+      "company": "VIDEAHEALTH INC",
+      "careers_url": null,
+      "status": "not_found",
+      "identity_confirmed": false,
+      "note": "no greenhouse/lever/ashby board for slug \"videahealth\" on 2026-10-02 \u2014 may use Workday or another ATS"
+    },
+    {
+      "company": "NEWSTORE INC",
+      "careers_url": null,
+      "status": "not_found",
+      "identity_confirmed": false,
+      "note": "no greenhouse/lever/ashby board for slug \"newstore\" on 2026-10-02 \u2014 may use Workday or another ATS"
+    },
+    {
+      "company": "FIRST HELP FINANCIAL LLC",
+      "careers_url": null,
+      "status": "not_found",
+      "identity_confirmed": false,
+      "note": "no greenhouse/lever/ashby board for slug \"firsthelpfinancial\" on 2026-10-02 \u2014 may use Workday or another ATS"
+    },
+    {
+      "company": "CELERO SYSTEMS INC",
+      "careers_url": null,
+      "status": "not_found",
+      "identity_confirmed": false,
+      "note": "no greenhouse/lever/ashby board for slug \"celerosystems\" on 2026-10-02 \u2014 may use Workday or another ATS"
+    },
+    {
+      "company": "RESURETY INC",
+      "careers_url": null,
+      "status": "not_found",
+      "identity_confirmed": false,
+      "note": "no greenhouse/lever/ashby board for slug \"resurety\" on 2026-10-02 \u2014 may use Workday or another ATS"
+    },
+    {
+      "company": "NEXTUPLE INC",
+      "careers_url": null,
+      "status": "not_found",
+      "identity_confirmed": false,
+      "note": "no greenhouse/lever/ashby board for slug \"nextuple\" on 2026-10-02 \u2014 may use Workday or another ATS"
+    },
+    {
+      "company": "DYNOCARDIA INC",
+      "careers_url": null,
+      "status": "not_found",
+      "identity_confirmed": false,
+      "note": "no greenhouse/lever/ashby board for slug \"dynocardia\" on 2026-10-02 \u2014 may use Workday or another ATS"
+    },
+    {
+      "company": "NODAR INC",
+      "careers_url": null,
+      "status": "not_found",
+      "identity_confirmed": false,
+      "note": "no greenhouse/lever/ashby board for slug \"nodar\" on 2026-10-02 \u2014 may use Workday or another ATS"
+    },
+    {
+      "company": "ZAKIPOINT HEALTH INC",
+      "careers_url": null,
+      "status": "not_found",
+      "identity_confirmed": false,
+      "note": "no greenhouse/lever/ashby board for slug \"zakipoint\" on 2026-10-02 \u2014 may use Workday or another ATS"
+    }
+  ]
+}
