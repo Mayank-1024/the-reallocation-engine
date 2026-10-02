@@ -55,6 +55,11 @@ This is the honest log of how the assignment went: what was tried, what broke, w
 - **What Claude contributed:** raised the conflict.
 - **Accepted / changed / rejected:** ____
 
+### 2026-10-02 — Privacy slip caught before push
+- **What happened:** TEST-REPORT.md quoted the pii-scan finding verbatim, including the npm author's email from the upstream lockfile. `pii-scan --diff upstream/main` then flagged the branch's own history. The address was redacted and the unpushed commit amended, and the rescan was clean. Separately, the repo-local git identity was set to the GitHub noreply address so a university email isn't in public commit metadata.
+- **What Claude contributed:** caused it, caught it with the history scan, fixed it.
+- **What I understand now / still don't:** ____
+
 ### ____ — (Mayank: add entries for your own review, the presentation dry-run, and any revision)
 - **I tried / expected:**
 - **What happened:**
