@@ -1,0 +1,4864 @@
+{
+  "recipe": "recipes/cases/2026fa/mayank-1024-swe-network-targets.md",
+  "recipe_version": "0.1.0",
+  "run_at": "2026-10-02T19:37:40.480Z",
+  "mode": "offline-snapshot",
+  "model_judgment_values": 0,
+  "inputs": {
+    "persona": {
+      "path": "scripts/contrib/2026fa/mayank-1024-swe-network-targets/persona.example.json",
+      "source": "your-input",
+      "as_of": "2026-10-02"
+    },
+    "csv": {
+      "path": "data/80-days-to-stay/80-days-csv/mapped_student_employment_targets_v3.csv",
+      "sha256": "eccdee2addf472b1639269f42eec693b083b7ce251347d5fd0b2856cfdae6270",
+      "rows": 30369,
+      "source": "record"
+    },
+    "form_d_sample": {
+      "dir": "data/sec/form-d/processed/sample",
+      "files": [
+        {
+          "file": "companies-sec-2025q2-d.sample.json",
+          "in_sample": 50,
+          "in_quarter": 13325
+        },
+        {
+          "file": "companies-sec-2025q3-d.sample.json",
+          "in_sample": 50,
+          "in_quarter": 14138
+        },
+        {
+          "file": "companies-sec-2025q4-d.sample.json",
+          "in_sample": 50,
+          "in_quarter": 14885
+        },
+        {
+          "file": "companies-sec-2026q1-d.sample.json",
+          "in_sample": 50,
+          "in_quarter": 15981
+        }
+      ],
+      "filings_in_sample": 200,
+      "source": "record"
+    },
+    "boards": {
+      "path": "scripts/contrib/2026fa/mayank-1024-swe-network-targets/snapshots/boards-2026-10-02.json",
+      "captured_at": "2026-10-02T19:27:39.687Z",
+      "entries": 27,
+      "source": "record"
+    }
+  },
+  "timeline": {
+    "days_left": 271,
+    "hiring_lag_days": 75,
+    "slack_days": 196,
+    "factor": 1,
+    "opt_end_date": "2027-06-30",
+    "source": "your-input"
+  },
+  "funnel": {
+    "csv_rows": 30369,
+    "in_states": 3319,
+    "with_h1b_record": 227,
+    "sponsored_target_title": 57,
+    "candidates": 57,
+    "board_checked_and_scored": 13,
+    "form_d_sample_matches": 0
+  },
+  "data_anomalies": [
+    {
+      "check": "H-1B approval counts odd vs even across the whole CSV",
+      "found": "0 odd of 1557",
+      "meaning": "every count is even — consistent with each petition being counted twice upstream; tiers use raw counts; confirm against USCIS before quoting a count"
+    }
+  ],
+  "actions": {
+    "NETWORK": 1,
+    "APPLY": 4,
+    "CONSIDER": 2,
+    "WATCH": 5,
+    "UNVERIFIED": 44,
+    "SKIP": 1
+  },
+  "scorer": {
+    "command": "node scripts/score/role-scorer.mjs course/2026fa/submissions/mayank-1024/runs/2026-10-02/roles.json --profile course/2026fa/submissions/mayank-1024/runs/2026-10-02/scorer-profile.json --out-dir course/2026fa/submissions/mayank-1024/runs/2026-10-02",
+    "output": "✓ scored 13 roles → Apply 4 · Consider 2 · Skip 7 (skip 54%)\n  course/2026fa/submissions/mayank-1024/runs/2026-10-02/role-scores.json  +  course/2026fa/submissions/mayank-1024/runs/2026-10-02/role-scores.md"
+  },
+  "gates_pending_human": [
+    {
+      "gate": "G3 board identity",
+      "test": "a human confirms each careers_url belongs to the CSV company (identity_confirmed=true in the board map)",
+      "pending": [
+        "1UPHEALTH INC",
+        "ABACUS INSIGHTS INC",
+        "ACUITYMD INC",
+        "CLOAKED INC",
+        "COHERE HEALTH INC",
+        "FAIRMARKIT INC",
+        "ITERATIVE SCOPES INC",
+        "KLAVIYO INC",
+        "LENDBUZZ INC",
+        "LOOKOUT INC",
+        "OVERJET INC",
+        "PATHAI INC",
+        "TULIP INTERFACES INC"
+      ]
+    },
+    {
+      "gate": "G4 posting liveness",
+      "test": "before applying, npm run ats:liveness -- <url> returns active for the specific posting",
+      "pending": [
+        "COHERE HEALTH INC",
+        "KLAVIYO INC",
+        "LENDBUZZ INC",
+        "PATHAI INC",
+        "ACUITYMD INC",
+        "TULIP INTERFACES INC"
+      ]
+    },
+    {
+      "gate": "G5 adjacent titles",
+      "test": "a human reads adjacent engineering titles on NETWORK/WATCH boards and decides whether any is really a target role",
+      "pending": [
+        "ABACUS INSIGHTS INC",
+        "ITERATIVE SCOPES INC"
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "company": "DATAROBOT INC",
+      "error": "in-csv-but-not-a-candidate (state/title/approval filter)"
+    },
+    {
+      "company": "DYNOCARDIA INC",
+      "error": "in-csv-but-not-a-candidate (state/title/approval filter)"
+    }
+  ],
+  "companies": [
+    {
+      "company": "1UPHEALTH INC",
+      "role_id": "1uphealthinc",
+      "evidence": {
+        "city": {
+          "value": "BOSTON",
+          "source": "record",
+          "from": "80-days CSV city"
+        },
+        "h1b_approvals": {
+          "value": 12,
+          "source": "record",
+          "from": "80-days CSV Total Approvals",
+          "caveat": "every count in this CSV is even — possible 2× join; see data_anomalies"
+        },
+        "h1b_denials": {
+          "value": 0,
+          "source": "record",
+          "from": "80-days CSV Total Denials"
+        },
+        "approval_rate_pct": {
+          "value": 100,
+          "source": "record",
+          "from": "80-days CSV Approval_Rate"
+        },
+        "sponsored_titles": {
+          "value": [
+            "Senior Software Engineer"
+          ],
+          "source": "record",
+          "from": "80-days CSV top_job_titles_sponsored"
+        },
+        "sponsorship_tier": {
+          "value": "Likely",
+          "p": 0.6,
+          "source": "your-input",
+          "from": "persona.sponsorship_rules applied to the record counts"
+        },
+        "latest_funding_date": {
+          "value": "2023-04-03",
+          "stage": "Series C",
+          "amount": 45000002,
+          "source": "record",
+          "from": "80-days CSV latest_funding_* (derived upstream from SEC Form D)"
+        },
+        "funding_recency": {
+          "months_since": 41,
+          "bucket": "aging",
+          "source": "your-input",
+          "from": "persona.funding_windows applied to latest_funding_date"
+        },
+        "form_d_sample": {
+          "value": "not-in-sample",
+          "source": "record",
+          "from": "4 Form D sample files (200 filings); absence in a 50-row sample is not absence of a filing"
+        },
+        "board": {
+          "status": "ok",
+          "factor": 0,
+          "job_count": 0,
+          "matching": [],
+          "title_match_wrong_location": [],
+          "adjacent_titles": [],
+          "source": "record",
+          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "captured_at": "2026-10-02T19:27:39.687Z"
+        },
+        "timeline_factor": {
+          "value": 1,
+          "source": "your-input",
+          "from": "persona OPT end date + hiring-lag assumption"
+        }
+      },
+      "scorer": {
+        "composite": 0,
+        "recommendation": "Skip",
+        "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+        "arithmetic": "(0.6·0.35) × 0 × 1 = 0.000"
+      },
+      "next": {
+        "action": "WATCH",
+        "why": "Likely sponsor, but the board lists 0 jobs of any kind — may be an abandoned ATS account; find the real careers page"
+      }
+    },
+    {
+      "company": "ABACUS INSIGHTS INC",
+      "role_id": "abacusinsightsinc",
+      "evidence": {
+        "city": {
+          "value": "BOSTON",
+          "source": "record",
+          "from": "80-days CSV city"
+        },
+        "h1b_approvals": {
+          "value": 22,
+          "source": "record",
+          "from": "80-days CSV Total Approvals",
+          "caveat": "every count in this CSV is even — possible 2× join; see data_anomalies"
+        },
+        "h1b_denials": {
+          "value": 0,
+          "source": "record",
+          "from": "80-days CSV Total Denials"
+        },
+        "approval_rate_pct": {
+          "value": 100,
+          "source": "record",
+          "from": "80-days CSV Approval_Rate"
+        },
+        "sponsored_titles": {
+          "value": [
+            "Software Engineer",
+            "Business Analyst Manager - Data Distribution Team"
+          ],
+          "source": "record",
+          "from": "80-days CSV top_job_titles_sponsored"
+        },
+        "sponsorship_tier": {
+          "value": "Proven",
+          "p": 0.9,
+          "source": "your-input",
+          "from": "persona.sponsorship_rules applied to the record counts"
+        },
+        "latest_funding_date": {
+          "value": "2024-10-01",
+          "stage": "Series A",
+          "amount": 11742458,
+          "source": "record",
+          "from": "80-days CSV latest_funding_* (derived upstream from SEC Form D)"
+        },
+        "funding_recency": {
+          "months_since": 24,
+          "bucket": "recent",
+          "source": "your-input",
+          "from": "persona.funding_windows applied to latest_funding_date"
+        },
+        "form_d_sample": {
+          "value": "not-in-sample",
+          "source": "record",
+          "from": "4 Form D sample files (200 filings); absence in a 50-row sample is not absence of a filing"
+        },
+        "board": {
+          "status": "ok",
+          "factor": 0,
+          "job_count": 12,
+          "matching": [],
+          "title_match_wrong_location": [],
+          "adjacent_titles": [
+            "Senior AI Engineer — United States",
+            "Senior AI Systems Quality Engineer — United States",
+            "Sr. Sustaining and Forward Deployed Engineer — United States"
+          ],
+          "source": "record",
+          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "captured_at": "2026-10-02T19:27:39.687Z"
+        },
+        "timeline_factor": {
+          "value": 1,
+          "source": "your-input",
+          "from": "persona OPT end date + hiring-lag assumption"
+        }
+      },
+      "scorer": {
+        "composite": 0,
+        "recommendation": "Skip",
+        "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+        "arithmetic": "(0.9·0.35) × 0 × 1 = 0.000"
+      },
+      "next": {
+        "action": "NETWORK",
+        "why": "no live matching posting, Proven sponsor, funding recent — informational interview before a role opens (3 networking hours)"
+      }
+    },
+    {
+      "company": "ACQUIA INC",
+      "role_id": "acquiainc",
+      "evidence": {
+        "city": {
+          "value": "BURLINGTON",
+          "source": "record",
+          "from": "80-days CSV city"
+        },
+        "h1b_approvals": {
+          "value": 18,
+          "source": "record",
+          "from": "80-days CSV Total Approvals",
+          "caveat": "every count in this CSV is even — possible 2× join; see data_anomalies"
+        },
+        "h1b_denials": {
+          "value": 0,
+          "source": "record",
+          "from": "80-days CSV Total Denials"
+        },
+        "approval_rate_pct": {
+          "value": 100,
+          "source": "record",
+          "from": "80-days CSV Approval_Rate"
+        },
+        "sponsored_titles": {
+          "value": [
+            "Staff Software Engineer",
+            "Senior Software Engineer",
+            "Lead Implementation Consultant"
+          ],
+          "source": "record",
+          "from": "80-days CSV top_job_titles_sponsored"
+        },
+        "sponsorship_tier": {
+          "value": "Likely",
+          "p": 0.6,
+          "source": "your-input",
+          "from": "persona.sponsorship_rules applied to the record counts"
+        },
+        "latest_funding_date": {
+          "value": "2015-09-22",
+          "stage": "Series C",
+          "amount": 54999995,
+          "source": "record",
+          "from": "80-days CSV latest_funding_* (derived upstream from SEC Form D)"
+        },
+        "funding_recency": {
+          "months_since": 132,
+          "bucket": "stale",
+          "source": "your-input",
+          "from": "persona.funding_windows applied to latest_funding_date"
+        },
+        "form_d_sample": {
+          "value": "not-in-sample",
+          "source": "record",
+          "from": "4 Form D sample files (200 filings); absence in a 50-row sample is not absence of a filing"
+        },
+        "board": {
+          "status": "unmapped",
+          "factor": null,
+          "source": null,
+          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "captured_at": "2026-10-02T19:27:39.687Z"
+        },
+        "timeline_factor": {
+          "value": 1,
+          "source": "your-input",
+          "from": "persona OPT end date + hiring-lag assumption"
+        }
+      },
+      "scorer": null,
+      "next": {
+        "action": "UNVERIFIED",
+        "why": "board unmapped — liveness unknown, not sent to the scorer"
+      }
+    },
+    {
+      "company": "ACUITYMD INC",
+      "role_id": "acuitymdinc",
+      "evidence": {
+        "city": {
+          "value": "SOMMERVILLE",
+          "source": "record",
+          "from": "80-days CSV city"
+        },
+        "h1b_approvals": {
+          "value": 16,
+          "source": "record",
+          "from": "80-days CSV Total Approvals",
+          "caveat": "every count in this CSV is even — possible 2× join; see data_anomalies"
+        },
+        "h1b_denials": {
+          "value": 0,
+          "source": "record",
+          "from": "80-days CSV Total Denials"
+        },
+        "approval_rate_pct": {
+          "value": 100,
+          "source": "record",
+          "from": "80-days CSV Approval_Rate"
+        },
+        "sponsored_titles": {
+          "value": [
+            "Software Engineer 2"
+          ],
+          "source": "record",
+          "from": "80-days CSV top_job_titles_sponsored"
+        },
+        "sponsorship_tier": {
+          "value": "Likely",
+          "p": 0.6,
+          "source": "your-input",
+          "from": "persona.sponsorship_rules applied to the record counts"
+        },
+        "latest_funding_date": {
+          "value": "2022-03-09",
+          "stage": "Series B",
+          "amount": 31000000,
+          "source": "record",
+          "from": "80-days CSV latest_funding_* (derived upstream from SEC Form D)"
+        },
+        "funding_recency": {
+          "months_since": 54,
+          "bucket": "stale",
+          "source": "your-input",
+          "from": "persona.funding_windows applied to latest_funding_date"
+        },
+        "form_d_sample": {
+          "value": "not-in-sample",
+          "source": "record",
+          "from": "4 Form D sample files (200 filings); absence in a 50-row sample is not absence of a filing"
+        },
+        "board": {
+          "status": "ok",
+          "factor": 1,
+          "job_count": 11,
+          "matching": [
+            {
+              "title": "Senior or Staff Software Engineer, Infrastructure ",
+              "url": "https://job-boards.greenhouse.io/acuitymd/jobs/5755363004",
+              "location": "Boston or Remote"
+            },
+            {
+              "title": "Senior Software Engineer, Applications",
+              "url": "https://job-boards.greenhouse.io/acuitymd/jobs/6212199004",
+              "location": "Boston or Remote"
+            }
+          ],
+          "title_match_wrong_location": [],
+          "adjacent_titles": [],
+          "source": "record",
+          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "captured_at": "2026-10-02T19:27:39.687Z"
+        },
+        "timeline_factor": {
+          "value": 1,
+          "source": "your-input",
+          "from": "persona OPT end date + hiring-lag assumption"
+        }
+      },
+      "scorer": {
+        "composite": 0.21,
+        "recommendation": "Consider",
+        "reason": "composite 0.210 in the Consider band [0.2, 0.3)",
+        "arithmetic": "(0.6·0.35) × 1 × 1 = 0.210"
+      },
+      "next": {
+        "action": "CONSIDER",
+        "why": "scorer Consider — composite 0.210 in the Consider band [0.2, 0.3)"
+      }
+    },
+    {
+      "company": "AMPION PBC",
+      "role_id": "ampionpbc",
+      "evidence": {
+        "city": {
+          "value": "BOSTON",
+          "source": "record",
+          "from": "80-days CSV city"
+        },
+        "h1b_approvals": {
+          "value": 18,
+          "source": "record",
+          "from": "80-days CSV Total Approvals",
+          "caveat": "every count in this CSV is even — possible 2× join; see data_anomalies"
+        },
+        "h1b_denials": {
+          "value": 0,
+          "source": "record",
+          "from": "80-days CSV Total Denials"
+        },
+        "approval_rate_pct": {
+          "value": 100,
+          "source": "record",
+          "from": "80-days CSV Approval_Rate"
+        },
+        "sponsored_titles": {
+          "value": [
+            "Business Operation Analyst",
+            "Software Engineer"
+          ],
+          "source": "record",
+          "from": "80-days CSV top_job_titles_sponsored"
+        },
+        "sponsorship_tier": {
+          "value": "Likely",
+          "p": 0.6,
+          "source": "your-input",
+          "from": "persona.sponsorship_rules applied to the record counts"
+        },
+        "latest_funding_date": {
+          "value": "2020-12-11",
+          "stage": "Series A",
+          "amount": 10000004,
+          "source": "record",
+          "from": "80-days CSV latest_funding_* (derived upstream from SEC Form D)"
+        },
+        "funding_recency": {
+          "months_since": 69,
+          "bucket": "stale",
+          "source": "your-input",
+          "from": "persona.funding_windows applied to latest_funding_date"
+        },
+        "form_d_sample": {
+          "value": "not-in-sample",
+          "source": "record",
+          "from": "4 Form D sample files (200 filings); absence in a 50-row sample is not absence of a filing"
+        },
+        "board": {
+          "status": "unmapped",
+          "factor": null,
+          "source": null,
+          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "captured_at": "2026-10-02T19:27:39.687Z"
+        },
+        "timeline_factor": {
+          "value": 1,
+          "source": "your-input",
+          "from": "persona OPT end date + hiring-lag assumption"
+        }
+      },
+      "scorer": null,
+      "next": {
+        "action": "UNVERIFIED",
+        "why": "board unmapped — liveness unknown, not sent to the scorer"
+      }
+    },
+    {
+      "company": "APRIORI TECHNOLOGIES INC",
+      "role_id": "aprioritechnologiesinc",
+      "evidence": {
+        "city": {
+          "value": "Concord",
+          "source": "record",
+          "from": "80-days CSV city"
+        },
+        "h1b_approvals": {
+          "value": 8,
+          "source": "record",
+          "from": "80-days CSV Total Approvals",
+          "caveat": "every count in this CSV is even — possible 2× join; see data_anomalies"
+        },
+        "h1b_denials": {
+          "value": 0,
+          "source": "record",
+          "from": "80-days CSV Total Denials"
+        },
+        "approval_rate_pct": {
+          "value": 100,
+          "source": "record",
+          "from": "80-days CSV Approval_Rate"
+        },
+        "sponsored_titles": {
+          "value": [
+            "Sr. Site Reliability Engineer"
+          ],
+          "source": "record",
+          "from": "80-days CSV top_job_titles_sponsored"
+        },
+        "sponsorship_tier": {
+          "value": "Likely",
+          "p": 0.6,
+          "source": "your-input",
+          "from": "persona.sponsorship_rules applied to the record counts"
+        },
+        "latest_funding_date": {
+          "value": "2023-09-29",
+          "stage": "Series B",
+          "amount": 65000000,
+          "source": "record",
+          "from": "80-days CSV latest_funding_* (derived upstream from SEC Form D)"
+        },
+        "funding_recency": {
+          "months_since": 36,
+          "bucket": "aging",
+          "source": "your-input",
+          "from": "persona.funding_windows applied to latest_funding_date"
+        },
+        "form_d_sample": {
+          "value": "not-in-sample",
+          "source": "record",
+          "from": "4 Form D sample files (200 filings); absence in a 50-row sample is not absence of a filing"
+        },
+        "board": {
+          "status": "not_found",
+          "factor": null,
+          "note": "no greenhouse/lever/ashby board for slug \"apriori\" on 2026-10-02 — may use Workday or another ATS",
+          "source": null,
+          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "captured_at": "2026-10-02T19:27:39.687Z"
+        },
+        "timeline_factor": {
+          "value": 1,
+          "source": "your-input",
+          "from": "persona OPT end date + hiring-lag assumption"
+        }
+      },
+      "scorer": null,
+      "next": {
+        "action": "UNVERIFIED",
+        "why": "board not_found — liveness unknown, not sent to the scorer"
+      }
+    },
+    {
+      "company": "AVA ROBOTICS INC",
+      "role_id": "avaroboticsinc",
+      "evidence": {
+        "city": {
+          "value": "CAMBRIDGE",
+          "source": "record",
+          "from": "80-days CSV city"
+        },
+        "h1b_approvals": {
+          "value": 2,
+          "source": "record",
+          "from": "80-days CSV Total Approvals",
+          "caveat": "every count in this CSV is even — possible 2× join; see data_anomalies"
+        },
+        "h1b_denials": {
+          "value": 0,
+          "source": "record",
+          "from": "80-days CSV Total Denials"
+        },
+        "approval_rate_pct": {
+          "value": 100,
+          "source": "record",
+          "from": "80-days CSV Approval_Rate"
+        },
+        "sponsored_titles": {
+          "value": [
+            "Applications Software Engineer"
+          ],
+          "source": "record",
+          "from": "80-days CSV top_job_titles_sponsored"
+        },
+        "sponsorship_tier": {
+          "value": "Possible",
+          "p": 0.3,
+          "source": "your-input",
+          "from": "persona.sponsorship_rules applied to the record counts"
+        },
+        "latest_funding_date": {
+          "value": "2019-04-08",
+          "stage": "Seed",
+          "amount": 4000000,
+          "source": "record",
+          "from": "80-days CSV latest_funding_* (derived upstream from SEC Form D)"
+        },
+        "funding_recency": {
+          "months_since": 89,
+          "bucket": "stale",
+          "source": "your-input",
+          "from": "persona.funding_windows applied to latest_funding_date"
+        },
+        "form_d_sample": {
+          "value": "not-in-sample",
+          "source": "record",
+          "from": "4 Form D sample files (200 filings); absence in a 50-row sample is not absence of a filing"
+        },
+        "board": {
+          "status": "unmapped",
+          "factor": null,
+          "source": null,
+          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "captured_at": "2026-10-02T19:27:39.687Z"
+        },
+        "timeline_factor": {
+          "value": 1,
+          "source": "your-input",
+          "from": "persona OPT end date + hiring-lag assumption"
+        }
+      },
+      "scorer": null,
+      "next": {
+        "action": "UNVERIFIED",
+        "why": "board unmapped — liveness unknown, not sent to the scorer"
+      }
+    },
+    {
+      "company": "BENEFITS SCIENCE LLC",
+      "role_id": "benefitssciencellc",
+      "evidence": {
+        "city": {
+          "value": "WALTHAM",
+          "source": "record",
+          "from": "80-days CSV city"
+        },
+        "h1b_approvals": {
+          "value": 18,
+          "source": "record",
+          "from": "80-days CSV Total Approvals",
+          "caveat": "every count in this CSV is even — possible 2× join; see data_anomalies"
+        },
+        "h1b_denials": {
+          "value": 0,
+          "source": "record",
+          "from": "80-days CSV Total Denials"
+        },
+        "approval_rate_pct": {
+          "value": 100,
+          "source": "record",
+          "from": "80-days CSV Approval_Rate"
+        },
+        "sponsored_titles": {
+          "value": [
+            "Data Engineer II (00049724)",
+            "Software Engineer",
+            "Data Analyst"
+          ],
+          "source": "record",
+          "from": "80-days CSV top_job_titles_sponsored"
+        },
+        "sponsorship_tier": {
+          "value": "Likely",
+          "p": 0.6,
+          "source": "your-input",
+          "from": "persona.sponsorship_rules applied to the record counts"
+        },
+        "latest_funding_date": {
+          "value": "2018-07-16",
+          "stage": "Seed",
+          "amount": 3000000,
+          "source": "record",
+          "from": "80-days CSV latest_funding_* (derived upstream from SEC Form D)"
+        },
+        "funding_recency": {
+          "months_since": 98,
+          "bucket": "stale",
+          "source": "your-input",
+          "from": "persona.funding_windows applied to latest_funding_date"
+        },
+        "form_d_sample": {
+          "value": "not-in-sample",
+          "source": "record",
+          "from": "4 Form D sample files (200 filings); absence in a 50-row sample is not absence of a filing"
+        },
+        "board": {
+          "status": "unmapped",
+          "factor": null,
+          "source": null,
+          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "captured_at": "2026-10-02T19:27:39.687Z"
+        },
+        "timeline_factor": {
+          "value": 1,
+          "source": "your-input",
+          "from": "persona OPT end date + hiring-lag assumption"
+        }
+      },
+      "scorer": null,
+      "next": {
+        "action": "UNVERIFIED",
+        "why": "board unmapped — liveness unknown, not sent to the scorer"
+      }
+    },
+    {
+      "company": "BITSIGHT TECHNOLOGIES INC",
+      "role_id": "bitsighttechnologiesinc",
+      "evidence": {
+        "city": {
+          "value": "CAMBRIDGE",
+          "source": "record",
+          "from": "80-days CSV city"
+        },
+        "h1b_approvals": {
+          "value": 30,
+          "source": "record",
+          "from": "80-days CSV Total Approvals",
+          "caveat": "every count in this CSV is even — possible 2× join; see data_anomalies"
+        },
+        "h1b_denials": {
+          "value": 0,
+          "source": "record",
+          "from": "80-days CSV Total Denials"
+        },
+        "approval_rate_pct": {
+          "value": 100,
+          "source": "record",
+          "from": "80-days CSV Approval_Rate"
+        },
+        "sponsored_titles": {
+          "value": [
+            "Senior Software Engineer I"
+          ],
+          "source": "record",
+          "from": "80-days CSV top_job_titles_sponsored"
+        },
+        "sponsorship_tier": {
+          "value": "Proven",
+          "p": 0.9,
+          "source": "your-input",
+          "from": "persona.sponsorship_rules applied to the record counts"
+        },
+        "latest_funding_date": {
+          "value": "2018-06-26",
+          "stage": "Series C",
+          "amount": 59999971,
+          "source": "record",
+          "from": "80-days CSV latest_funding_* (derived upstream from SEC Form D)"
+        },
+        "funding_recency": {
+          "months_since": 99,
+          "bucket": "stale",
+          "source": "your-input",
+          "from": "persona.funding_windows applied to latest_funding_date"
+        },
+        "form_d_sample": {
+          "value": "not-in-sample",
+          "source": "record",
+          "from": "4 Form D sample files (200 filings); absence in a 50-row sample is not absence of a filing"
+        },
+        "board": {
+          "status": "unmapped",
+          "factor": null,
+          "source": null,
+          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "captured_at": "2026-10-02T19:27:39.687Z"
+        },
+        "timeline_factor": {
+          "value": 1,
+          "source": "your-input",
+          "from": "persona OPT end date + hiring-lag assumption"
+        }
+      },
+      "scorer": null,
+      "next": {
+        "action": "UNVERIFIED",
+        "why": "board unmapped — liveness unknown, not sent to the scorer"
+      }
+    },
+    {
+      "company": "CAMBRIDGE MOBILE TELEMATICS INC",
+      "role_id": "cambridgemobiletelematicsinc",
+      "evidence": {
+        "city": {
+          "value": "CAMBRIDGE",
+          "source": "record",
+          "from": "80-days CSV city"
+        },
+        "h1b_approvals": {
+          "value": 72,
+          "source": "record",
+          "from": "80-days CSV Total Approvals",
+          "caveat": "every count in this CSV is even — possible 2× join; see data_anomalies"
+        },
+        "h1b_denials": {
+          "value": 0,
+          "source": "record",
+          "from": "80-days CSV Total Denials"
+        },
+        "approval_rate_pct": {
+          "value": 100,
+          "source": "record",
+          "from": "80-days CSV Approval_Rate"
+        },
+        "sponsored_titles": {
+          "value": [
+            "Director of Product Management",
+            "Principal Data Scientist I",
+            "Principal Commodity Specialist I",
+            "Senior Software Engineer - Machine Learning"
+          ],
+          "source": "record",
+          "from": "80-days CSV top_job_titles_sponsored"
+        },
+        "sponsorship_tier": {
+          "value": "Proven",
+          "p": 0.9,
+          "source": "your-input",
+          "from": "persona.sponsorship_rules applied to the record counts"
+        },
+        "latest_funding_date": {
+          "value": "2014-08-11",
+          "stage": "Seed",
+          "amount": 17500000,
+          "source": "record",
+          "from": "80-days CSV latest_funding_* (derived upstream from SEC Form D)"
+        },
+        "funding_recency": {
+          "months_since": 145,
+          "bucket": "stale",
+          "source": "your-input",
+          "from": "persona.funding_windows applied to latest_funding_date"
+        },
+        "form_d_sample": {
+          "value": "not-in-sample",
+          "source": "record",
+          "from": "4 Form D sample files (200 filings); absence in a 50-row sample is not absence of a filing"
+        },
+        "board": {
+          "status": "unmapped",
+          "factor": null,
+          "source": null,
+          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "captured_at": "2026-10-02T19:27:39.687Z"
+        },
+        "timeline_factor": {
+          "value": 1,
+          "source": "your-input",
+          "from": "persona OPT end date + hiring-lag assumption"
+        }
+      },
+      "scorer": null,
+      "next": {
+        "action": "UNVERIFIED",
+        "why": "board unmapped — liveness unknown, not sent to the scorer"
+      }
+    },
+    {
+      "company": "CELERO SYSTEMS INC",
+      "role_id": "celerosystemsinc",
+      "evidence": {
+        "city": {
+          "value": "BROOKLINE",
+          "source": "record",
+          "from": "80-days CSV city"
+        },
+        "h1b_approvals": {
+          "value": 100,
+          "source": "record",
+          "from": "80-days CSV Total Approvals",
+          "caveat": "every count in this CSV is even — possible 2× join; see data_anomalies"
+        },
+        "h1b_denials": {
+          "value": 4,
+          "source": "record",
+          "from": "80-days CSV Total Denials"
+        },
+        "approval_rate_pct": {
+          "value": 96.15384615384616,
+          "source": "record",
+          "from": "80-days CSV Approval_Rate"
+        },
+        "sponsored_titles": {
+          "value": [
+            "SOFTWARE DEVELOPER",
+            "SENIOR SOFTWARE DEVELOPER",
+            "SENIOR NETWORK SECURITY ENGINEER",
+            "QUALITY ANALYST",
+            "SOFTWARE ENGINEER/QA"
+          ],
+          "source": "record",
+          "from": "80-days CSV top_job_titles_sponsored"
+        },
+        "sponsorship_tier": {
+          "value": "Proven",
+          "p": 0.9,
+          "source": "your-input",
+          "from": "persona.sponsorship_rules applied to the record counts"
+        },
+        "latest_funding_date": {
+          "value": "2019-06-19",
+          "stage": "Seed",
+          "amount": 3500001,
+          "source": "record",
+          "from": "80-days CSV latest_funding_* (derived upstream from SEC Form D)"
+        },
+        "funding_recency": {
+          "months_since": 87,
+          "bucket": "stale",
+          "source": "your-input",
+          "from": "persona.funding_windows applied to latest_funding_date"
+        },
+        "form_d_sample": {
+          "value": "not-in-sample",
+          "source": "record",
+          "from": "4 Form D sample files (200 filings); absence in a 50-row sample is not absence of a filing"
+        },
+        "board": {
+          "status": "not_found",
+          "factor": null,
+          "note": "no greenhouse/lever/ashby board for slug \"celerosystems\" on 2026-10-02 — may use Workday or another ATS",
+          "source": null,
+          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "captured_at": "2026-10-02T19:27:39.687Z"
+        },
+        "timeline_factor": {
+          "value": 1,
+          "source": "your-input",
+          "from": "persona OPT end date + hiring-lag assumption"
+        }
+      },
+      "scorer": null,
+      "next": {
+        "action": "UNVERIFIED",
+        "why": "board not_found — liveness unknown, not sent to the scorer"
+      }
+    },
+    {
+      "company": "CENTAGE CORP",
+      "role_id": "centagecorp",
+      "evidence": {
+        "city": {
+          "value": "NATICK",
+          "source": "record",
+          "from": "80-days CSV city"
+        },
+        "h1b_approvals": {
+          "value": 2,
+          "source": "record",
+          "from": "80-days CSV Total Approvals",
+          "caveat": "every count in this CSV is even — possible 2× join; see data_anomalies"
+        },
+        "h1b_denials": {
+          "value": 0,
+          "source": "record",
+          "from": "80-days CSV Total Denials"
+        },
+        "approval_rate_pct": {
+          "value": 100,
+          "source": "record",
+          "from": "80-days CSV Approval_Rate"
+        },
+        "sponsored_titles": {
+          "value": [
+            "Sr. Software Engineer"
+          ],
+          "source": "record",
+          "from": "80-days CSV top_job_titles_sponsored"
+        },
+        "sponsorship_tier": {
+          "value": "Possible",
+          "p": 0.3,
+          "source": "your-input",
+          "from": "persona.sponsorship_rules applied to the record counts"
+        },
+        "latest_funding_date": {
+          "value": "2019-01-24",
+          "stage": "Series A",
+          "amount": 8557151,
+          "source": "record",
+          "from": "80-days CSV latest_funding_* (derived upstream from SEC Form D)"
+        },
+        "funding_recency": {
+          "months_since": 92,
+          "bucket": "stale",
+          "source": "your-input",
+          "from": "persona.funding_windows applied to latest_funding_date"
+        },
+        "form_d_sample": {
+          "value": "not-in-sample",
+          "source": "record",
+          "from": "4 Form D sample files (200 filings); absence in a 50-row sample is not absence of a filing"
+        },
+        "board": {
+          "status": "unmapped",
+          "factor": null,
+          "source": null,
+          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "captured_at": "2026-10-02T19:27:39.687Z"
+        },
+        "timeline_factor": {
+          "value": 1,
+          "source": "your-input",
+          "from": "persona OPT end date + hiring-lag assumption"
+        }
+      },
+      "scorer": null,
+      "next": {
+        "action": "UNVERIFIED",
+        "why": "board unmapped — liveness unknown, not sent to the scorer"
+      }
+    },
+    {
+      "company": "CLOAKED INC",
+      "role_id": "cloakedinc",
+      "evidence": {
+        "city": {
+          "value": "LOWELL",
+          "source": "record",
+          "from": "80-days CSV city"
+        },
+        "h1b_approvals": {
+          "value": 10,
+          "source": "record",
+          "from": "80-days CSV Total Approvals",
+          "caveat": "every count in this CSV is even — possible 2× join; see data_anomalies"
+        },
+        "h1b_denials": {
+          "value": 0,
+          "source": "record",
+          "from": "80-days CSV Total Denials"
+        },
+        "approval_rate_pct": {
+          "value": 100,
+          "source": "record",
+          "from": "80-days CSV Approval_Rate"
+        },
+        "sponsored_titles": {
+          "value": [
+            "Senior Android Engineer",
+            "Senior Platform Engineer"
+          ],
+          "source": "record",
+          "from": "80-days CSV top_job_titles_sponsored"
+        },
+        "sponsorship_tier": {
+          "value": "Likely",
+          "p": 0.6,
+          "source": "your-input",
+          "from": "persona.sponsorship_rules applied to the record counts"
+        },
+        "latest_funding_date": {
+          "value": "2022-03-11",
+          "stage": "Series B",
+          "amount": 25050000,
+          "source": "record",
+          "from": "80-days CSV latest_funding_* (derived upstream from SEC Form D)"
+        },
+        "funding_recency": {
+          "months_since": 54,
+          "bucket": "stale",
+          "source": "your-input",
+          "from": "persona.funding_windows applied to latest_funding_date"
+        },
+        "form_d_sample": {
+          "value": "not-in-sample",
+          "source": "record",
+          "from": "4 Form D sample files (200 filings); absence in a 50-row sample is not absence of a filing"
+        },
+        "board": {
+          "status": "ok",
+          "factor": 0,
+          "job_count": 15,
+          "matching": [],
+          "title_match_wrong_location": [
+            "Staff Software Engineer, Full Stack — New York, NY"
+          ],
+          "adjacent_titles": [],
+          "source": "record",
+          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "captured_at": "2026-10-02T19:27:39.687Z"
+        },
+        "timeline_factor": {
+          "value": 1,
+          "source": "your-input",
+          "from": "persona OPT end date + hiring-lag assumption"
+        }
+      },
+      "scorer": {
+        "composite": 0,
+        "recommendation": "Skip",
+        "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+        "arithmetic": "(0.6·0.35) × 0 × 1 = 0.000"
+      },
+      "next": {
+        "action": "WATCH",
+        "why": "no live matching posting, Likely sponsor, but funding stale — re-check board later; low networking priority"
+      }
+    },
+    {
+      "company": "COHERE HEALTH INC",
+      "role_id": "coherehealthinc",
+      "evidence": {
+        "city": {
+          "value": "BOSTON",
+          "source": "record",
+          "from": "80-days CSV city"
+        },
+        "h1b_approvals": {
+          "value": 104,
+          "source": "record",
+          "from": "80-days CSV Total Approvals",
+          "caveat": "every count in this CSV is even — possible 2× join; see data_anomalies"
+        },
+        "h1b_denials": {
+          "value": 2,
+          "source": "record",
+          "from": "80-days CSV Total Denials"
+        },
+        "approval_rate_pct": {
+          "value": 98.1132075471698,
+          "source": "record",
+          "from": "80-days CSV Approval_Rate"
+        },
+        "sponsored_titles": {
+          "value": [
+            "Engineering Manager",
+            "Senior Software Engineer, Platform",
+            "Senior Machine Learning DevOps Engineer",
+            "Software Engineer II",
+            "Machine Learning Engineer"
+          ],
+          "source": "record",
+          "from": "80-days CSV top_job_titles_sponsored"
+        },
+        "sponsorship_tier": {
+          "value": "Proven",
+          "p": 0.9,
+          "source": "your-input",
+          "from": "persona.sponsorship_rules applied to the record counts"
+        },
+        "latest_funding_date": {
+          "value": "2025-05-07",
+          "stage": "Series C",
+          "amount": 89999876,
+          "source": "record",
+          "from": "80-days CSV latest_funding_* (derived upstream from SEC Form D)"
+        },
+        "funding_recency": {
+          "months_since": 16,
+          "bucket": "recent",
+          "source": "your-input",
+          "from": "persona.funding_windows applied to latest_funding_date"
+        },
+        "form_d_sample": {
+          "value": "not-in-sample",
+          "source": "record",
+          "from": "4 Form D sample files (200 filings); absence in a 50-row sample is not absence of a filing"
+        },
+        "board": {
+          "status": "ok",
+          "factor": 1,
+          "job_count": 76,
+          "matching": [
+            {
+              "title": "Lead Software Engineer - Integrations ",
+              "url": "https://job-boards.greenhouse.io/coherehealth/jobs/7855803003",
+              "location": "United States"
+            },
+            {
+              "title": "Software Engineer II",
+              "url": "https://job-boards.greenhouse.io/coherehealth/jobs/7930480003",
+              "location": "United States"
+            },
+            {
+              "title": "Sr. Software Engineer, Data Platform",
+              "url": "https://job-boards.greenhouse.io/coherehealth/jobs/7978386003",
+              "location": "United States"
+            },
+            {
+              "title": "Staff Software Engineer",
+              "url": "https://job-boards.greenhouse.io/coherehealth/jobs/7870427003",
+              "location": "United States"
+            }
+          ],
+          "title_match_wrong_location": [
+            "Associate Software Engineer — Hyderabad, Telangana, India",
+            "Software Engineer — Hyderabad, Telangana, India",
+            "Software Engineer II, BI — Hyderabad, Telangana, India",
+            "Sr. Software Engineer — Hyderabad, Telangana, India",
+            "Sr. Software Engineer (Integrations) — Hyderabad, Telangana, India",
+            "Staff Platform Engineer — Hyderabad, Telangana, India",
+            "Staff Software Engineer — Hyderabad, Telangana, India",
+            "Staff Software Engineer, Integration — Hyderabad, Telangana, India"
+          ],
+          "adjacent_titles": [
+            "Sr. Forward Deployed Engineer — United States"
+          ],
+          "source": "record",
+          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "captured_at": "2026-10-02T19:27:39.687Z"
+        },
+        "timeline_factor": {
+          "value": 1,
+          "source": "your-input",
+          "from": "persona OPT end date + hiring-lag assumption"
+        }
+      },
+      "scorer": {
+        "composite": 0.315,
+        "recommendation": "Apply",
+        "reason": "composite 0.315 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+      },
+      "next": {
+        "action": "APPLY",
+        "why": "scorer Apply — tailor an application (2 research-and-apply hours)"
+      }
+    },
+    {
+      "company": "EXAMITY INC",
+      "role_id": "examityinc",
+      "evidence": {
+        "city": {
+          "value": "Natick",
+          "source": "record",
+          "from": "80-days CSV city"
+        },
+        "h1b_approvals": {
+          "value": 6,
+          "source": "record",
+          "from": "80-days CSV Total Approvals",
+          "caveat": "every count in this CSV is even — possible 2× join; see data_anomalies"
+        },
+        "h1b_denials": {
+          "value": 0,
+          "source": "record",
+          "from": "80-days CSV Total Denials"
+        },
+        "approval_rate_pct": {
+          "value": 100,
+          "source": "record",
+          "from": "80-days CSV Approval_Rate"
+        },
+        "sponsored_titles": {
+          "value": [
+            "Senior Software Engineer II"
+          ],
+          "source": "record",
+          "from": "80-days CSV top_job_titles_sponsored"
+        },
+        "sponsorship_tier": {
+          "value": "Likely",
+          "p": 0.6,
+          "source": "your-input",
+          "from": "persona.sponsorship_rules applied to the record counts"
+        },
+        "latest_funding_date": {
+          "value": "2018-04-17",
+          "stage": "Seed",
+          "amount": 3000000,
+          "source": "record",
+          "from": "80-days CSV latest_funding_* (derived upstream from SEC Form D)"
+        },
+        "funding_recency": {
+          "months_since": 101,
+          "bucket": "stale",
+          "source": "your-input",
+          "from": "persona.funding_windows applied to latest_funding_date"
+        },
+        "form_d_sample": {
+          "value": "not-in-sample",
+          "source": "record",
+          "from": "4 Form D sample files (200 filings); absence in a 50-row sample is not absence of a filing"
+        },
+        "board": {
+          "status": "unmapped",
+          "factor": null,
+          "source": null,
+          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "captured_at": "2026-10-02T19:27:39.687Z"
+        },
+        "timeline_factor": {
+          "value": 1,
+          "source": "your-input",
+          "from": "persona OPT end date + hiring-lag assumption"
+        }
+      },
+      "scorer": null,
+      "next": {
+        "action": "UNVERIFIED",
+        "why": "board unmapped — liveness unknown, not sent to the scorer"
+      }
+    },
+    {
+      "company": "EXTREME REACH INC",
+      "role_id": "extremereachinc",
+      "evidence": {
+        "city": {
+          "value": "NEEDHAM",
+          "source": "record",
+          "from": "80-days CSV city"
+        },
+        "h1b_approvals": {
+          "value": 18,
+          "source": "record",
+          "from": "80-days CSV Total Approvals",
+          "caveat": "every count in this CSV is even — possible 2× join; see data_anomalies"
+        },
+        "h1b_denials": {
+          "value": 0,
+          "source": "record",
+          "from": "80-days CSV Total Denials"
+        },
+        "approval_rate_pct": {
+          "value": 100,
+          "source": "record",
+          "from": "80-days CSV Approval_Rate"
+        },
+        "sponsored_titles": {
+          "value": [
+            "Senior Software Developer",
+            "Software Developer"
+          ],
+          "source": "record",
+          "from": "80-days CSV top_job_titles_sponsored"
+        },
+        "sponsorship_tier": {
+          "value": "Likely",
+          "p": 0.6,
+          "source": "your-input",
+          "from": "persona.sponsorship_rules applied to the record counts"
+        },
+        "latest_funding_date": {
+          "value": "2015-06-15",
+          "stage": "Series C",
+          "amount": 56532353,
+          "source": "record",
+          "from": "80-days CSV latest_funding_* (derived upstream from SEC Form D)"
+        },
+        "funding_recency": {
+          "months_since": 135,
+          "bucket": "stale",
+          "source": "your-input",
+          "from": "persona.funding_windows applied to latest_funding_date"
+        },
+        "form_d_sample": {
+          "value": "not-in-sample",
+          "source": "record",
+          "from": "4 Form D sample files (200 filings); absence in a 50-row sample is not absence of a filing"
+        },
+        "board": {
+          "status": "unmapped",
+          "factor": null,
+          "source": null,
+          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "captured_at": "2026-10-02T19:27:39.687Z"
+        },
+        "timeline_factor": {
+          "value": 1,
+          "source": "your-input",
+          "from": "persona OPT end date + hiring-lag assumption"
+        }
+      },
+      "scorer": null,
+      "next": {
+        "action": "UNVERIFIED",
+        "why": "board unmapped — liveness unknown, not sent to the scorer"
+      }
+    },
+    {
+      "company": "FAIRMARKIT INC",
+      "role_id": "fairmarkitinc",
+      "evidence": {
+        "city": {
+          "value": "Malden",
+          "source": "record",
+          "from": "80-days CSV city"
+        },
+        "h1b_approvals": {
+          "value": 2,
+          "source": "record",
+          "from": "80-days CSV Total Approvals",
+          "caveat": "every count in this CSV is even — possible 2× join; see data_anomalies"
+        },
+        "h1b_denials": {
+          "value": 0,
+          "source": "record",
+          "from": "80-days CSV Total Denials"
+        },
+        "approval_rate_pct": {
+          "value": 100,
+          "source": "record",
+          "from": "80-days CSV Approval_Rate"
+        },
+        "sponsored_titles": {
+          "value": [
+            "Senior Software Engineer"
+          ],
+          "source": "record",
+          "from": "80-days CSV top_job_titles_sponsored"
+        },
+        "sponsorship_tier": {
+          "value": "Possible",
+          "p": 0.3,
+          "source": "your-input",
+          "from": "persona.sponsorship_rules applied to the record counts"
+        },
+        "latest_funding_date": {
+          "value": "2020-11-19",
+          "stage": "Series B",
+          "amount": 29999982,
+          "source": "record",
+          "from": "80-days CSV latest_funding_* (derived upstream from SEC Form D)"
+        },
+        "funding_recency": {
+          "months_since": 70,
+          "bucket": "stale",
+          "source": "your-input",
+          "from": "persona.funding_windows applied to latest_funding_date"
+        },
+        "form_d_sample": {
+          "value": "not-in-sample",
+          "source": "record",
+          "from": "4 Form D sample files (200 filings); absence in a 50-row sample is not absence of a filing"
+        },
+        "board": {
+          "status": "ok",
+          "factor": 0,
+          "job_count": 5,
+          "matching": [],
+          "title_match_wrong_location": [],
+          "adjacent_titles": [
+            "Agentic AI Engineer (Boston, Hybrid) — Boston"
+          ],
+          "source": "record",
+          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "captured_at": "2026-10-02T19:27:39.687Z"
+        },
+        "timeline_factor": {
+          "value": 1,
+          "source": "your-input",
+          "from": "persona OPT end date + hiring-lag assumption"
+        }
+      },
+      "scorer": {
+        "composite": 0,
+        "recommendation": "Skip",
+        "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+        "arithmetic": "(0.3·0.35) × 0 × 1 = 0.000"
+      },
+      "next": {
+        "action": "SKIP",
+        "why": "scorer Skip — gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)"
+      }
+    },
+    {
+      "company": "FIRST HELP FINANCIAL LLC",
+      "role_id": "firsthelpfinancialllc",
+      "evidence": {
+        "city": {
+          "value": "NEWTON",
+          "source": "record",
+          "from": "80-days CSV city"
+        },
+        "h1b_approvals": {
+          "value": 30,
+          "source": "record",
+          "from": "80-days CSV Total Approvals",
+          "caveat": "every count in this CSV is even — possible 2× join; see data_anomalies"
+        },
+        "h1b_denials": {
+          "value": 0,
+          "source": "record",
+          "from": "80-days CSV Total Denials"
+        },
+        "approval_rate_pct": {
+          "value": 100,
+          "source": "record",
+          "from": "80-days CSV Approval_Rate"
+        },
+        "sponsored_titles": {
+          "value": [
+            "Senior Software Engineer"
+          ],
+          "source": "record",
+          "from": "80-days CSV top_job_titles_sponsored"
+        },
+        "sponsorship_tier": {
+          "value": "Proven",
+          "p": 0.9,
+          "source": "your-input",
+          "from": "persona.sponsorship_rules applied to the record counts"
+        },
+        "latest_funding_date": {
+          "value": "2021-11-03",
+          "stage": "Series C",
+          "amount": 60000000,
+          "source": "record",
+          "from": "80-days CSV latest_funding_* (derived upstream from SEC Form D)"
+        },
+        "funding_recency": {
+          "months_since": 58,
+          "bucket": "stale",
+          "source": "your-input",
+          "from": "persona.funding_windows applied to latest_funding_date"
+        },
+        "form_d_sample": {
+          "value": "not-in-sample",
+          "source": "record",
+          "from": "4 Form D sample files (200 filings); absence in a 50-row sample is not absence of a filing"
+        },
+        "board": {
+          "status": "not_found",
+          "factor": null,
+          "note": "no greenhouse/lever/ashby board for slug \"firsthelpfinancial\" on 2026-10-02 — may use Workday or another ATS",
+          "source": null,
+          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "captured_at": "2026-10-02T19:27:39.687Z"
+        },
+        "timeline_factor": {
+          "value": 1,
+          "source": "your-input",
+          "from": "persona OPT end date + hiring-lag assumption"
+        }
+      },
+      "scorer": null,
+      "next": {
+        "action": "UNVERIFIED",
+        "why": "board not_found — liveness unknown, not sent to the scorer"
+      }
+    },
+    {
+      "company": "FORMLABS INC",
+      "role_id": "formlabsinc",
+      "evidence": {
+        "city": {
+          "value": "Somerville",
+          "source": "record",
+          "from": "80-days CSV city"
+        },
+        "h1b_approvals": {
+          "value": 70,
+          "source": "record",
+          "from": "80-days CSV Total Approvals",
+          "caveat": "every count in this CSV is even — possible 2× join; see data_anomalies"
+        },
+        "h1b_denials": {
+          "value": 10,
+          "source": "record",
+          "from": "80-days CSV Total Denials"
+        },
+        "approval_rate_pct": {
+          "value": 87.5,
+          "source": "record",
+          "from": "80-days CSV Approval_Rate"
+        },
+        "sponsored_titles": {
+          "value": [
+            "Systems Integration Engineer",
+            "Optical Engineer",
+            "Customer Team Strategy and Operations Lead",
+            "Strategy and Operations Lead",
+            "Software Engineer"
+          ],
+          "source": "record",
+          "from": "80-days CSV top_job_titles_sponsored"
+        },
+        "sponsorship_tier": {
+          "value": "Likely",
+          "p": 0.6,
+          "source": "your-input",
+          "from": "persona.sponsorship_rules applied to the record counts"
+        },
+        "latest_funding_date": {
+          "value": "2018-07-16",
+          "stage": "Series A",
+          "amount": 14999948,
+          "source": "record",
+          "from": "80-days CSV latest_funding_* (derived upstream from SEC Form D)"
+        },
+        "funding_recency": {
+          "months_since": 98,
+          "bucket": "stale",
+          "source": "your-input",
+          "from": "persona.funding_windows applied to latest_funding_date"
+        },
+        "form_d_sample": {
+          "value": "not-in-sample",
+          "source": "record",
+          "from": "4 Form D sample files (200 filings); absence in a 50-row sample is not absence of a filing"
+        },
+        "board": {
+          "status": "unmapped",
+          "factor": null,
+          "source": null,
+          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "captured_at": "2026-10-02T19:27:39.687Z"
+        },
+        "timeline_factor": {
+          "value": 1,
+          "source": "your-input",
+          "from": "persona OPT end date + hiring-lag assumption"
+        }
+      },
+      "scorer": null,
+      "next": {
+        "action": "UNVERIFIED",
+        "why": "board unmapped — liveness unknown, not sent to the scorer"
+      }
+    },
+    {
+      "company": "GINKGO BIOWORKS INC",
+      "role_id": "ginkgobioworksinc",
+      "evidence": {
+        "city": {
+          "value": "BOSTON",
+          "source": "record",
+          "from": "80-days CSV city"
+        },
+        "h1b_approvals": {
+          "value": 122,
+          "source": "record",
+          "from": "80-days CSV Total Approvals",
+          "caveat": "every count in this CSV is even — possible 2× join; see data_anomalies"
+        },
+        "h1b_denials": {
+          "value": 12,
+          "source": "record",
+          "from": "80-days CSV Total Denials"
+        },
+        "approval_rate_pct": {
+          "value": 91.04477611940298,
+          "source": "record",
+          "from": "80-days CSV Approval_Rate"
+        },
+        "sponsored_titles": {
+          "value": [
+            "Organism Engineer 3",
+            "Director, Business Intelligence",
+            "Software Engineering Manager",
+            "Organism Engineer 1",
+            "Operations Engineer 1, Omics and Analytical Chemistry"
+          ],
+          "source": "record",
+          "from": "80-days CSV top_job_titles_sponsored"
+        },
+        "sponsorship_tier": {
+          "value": "Proven",
+          "p": 0.9,
+          "source": "your-input",
+          "from": "persona.sponsorship_rules applied to the record counts"
+        },
+        "latest_funding_date": {
+          "value": "2015-07-08",
+          "stage": "Series C",
+          "amount": 51631250,
+          "source": "record",
+          "from": "80-days CSV latest_funding_* (derived upstream from SEC Form D)"
+        },
+        "funding_recency": {
+          "months_since": 134,
+          "bucket": "stale",
+          "source": "your-input",
+          "from": "persona.funding_windows applied to latest_funding_date"
+        },
+        "form_d_sample": {
+          "value": "not-in-sample",
+          "source": "record",
+          "from": "4 Form D sample files (200 filings); absence in a 50-row sample is not absence of a filing"
+        },
+        "board": {
+          "status": "unmapped",
+          "factor": null,
+          "source": null,
+          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "captured_at": "2026-10-02T19:27:39.687Z"
+        },
+        "timeline_factor": {
+          "value": 1,
+          "source": "your-input",
+          "from": "persona OPT end date + hiring-lag assumption"
+        }
+      },
+      "scorer": null,
+      "next": {
+        "action": "UNVERIFIED",
+        "why": "board unmapped — liveness unknown, not sent to the scorer"
+      }
+    },
+    {
+      "company": "GREENLIGHT BIOSCIENCES INC",
+      "role_id": "greenlightbiosciencesinc",
+      "evidence": {
+        "city": {
+          "value": "Medford",
+          "source": "record",
+          "from": "80-days CSV city"
+        },
+        "h1b_approvals": {
+          "value": 16,
+          "source": "record",
+          "from": "80-days CSV Total Approvals",
+          "caveat": "every count in this CSV is even — possible 2× join; see data_anomalies"
+        },
+        "h1b_denials": {
+          "value": 0,
+          "source": "record",
+          "from": "80-days CSV Total Denials"
+        },
+        "approval_rate_pct": {
+          "value": 100,
+          "source": "record",
+          "from": "80-days CSV Approval_Rate"
+        },
+        "sponsored_titles": {
+          "value": [
+            "Software Developer"
+          ],
+          "source": "record",
+          "from": "80-days CSV top_job_titles_sponsored"
+        },
+        "sponsorship_tier": {
+          "value": "Likely",
+          "p": 0.6,
+          "source": "your-input",
+          "from": "persona.sponsorship_rules applied to the record counts"
+        },
+        "latest_funding_date": {
+          "value": "2020-06-15",
+          "stage": "Series D+",
+          "amount": 110000000,
+          "source": "record",
+          "from": "80-days CSV latest_funding_* (derived upstream from SEC Form D)"
+        },
+        "funding_recency": {
+          "months_since": 75,
+          "bucket": "stale",
+          "source": "your-input",
+          "from": "persona.funding_windows applied to latest_funding_date"
+        },
+        "form_d_sample": {
+          "value": "not-in-sample",
+          "source": "record",
+          "from": "4 Form D sample files (200 filings); absence in a 50-row sample is not absence of a filing"
+        },
+        "board": {
+          "status": "unmapped",
+          "factor": null,
+          "source": null,
+          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "captured_at": "2026-10-02T19:27:39.687Z"
+        },
+        "timeline_factor": {
+          "value": 1,
+          "source": "your-input",
+          "from": "persona OPT end date + hiring-lag assumption"
+        }
+      },
+      "scorer": null,
+      "next": {
+        "action": "UNVERIFIED",
+        "why": "board unmapped — liveness unknown, not sent to the scorer"
+      }
+    },
+    {
+      "company": "GROVE LABS INC",
+      "role_id": "grovelabsinc",
+      "evidence": {
+        "city": {
+          "value": "Somerville",
+          "source": "record",
+          "from": "80-days CSV city"
+        },
+        "h1b_approvals": {
+          "value": 4,
+          "source": "record",
+          "from": "80-days CSV Total Approvals",
+          "caveat": "every count in this CSV is even — possible 2× join; see data_anomalies"
+        },
+        "h1b_denials": {
+          "value": 0,
+          "source": "record",
+          "from": "80-days CSV Total Denials"
+        },
+        "approval_rate_pct": {
+          "value": 100,
+          "source": "record",
+          "from": "80-days CSV Approval_Rate"
+        },
+        "sponsored_titles": {
+          "value": [
+            "Full Stack Engineer"
+          ],
+          "source": "record",
+          "from": "80-days CSV top_job_titles_sponsored"
+        },
+        "sponsorship_tier": {
+          "value": "Possible",
+          "p": 0.3,
+          "source": "your-input",
+          "from": "persona.sponsorship_rules applied to the record counts"
+        },
+        "latest_funding_date": {
+          "value": "2015-08-26",
+          "stage": "Pre-Seed",
+          "amount": 1791413,
+          "source": "record",
+          "from": "80-days CSV latest_funding_* (derived upstream from SEC Form D)"
+        },
+        "funding_recency": {
+          "months_since": 133,
+          "bucket": "stale",
+          "source": "your-input",
+          "from": "persona.funding_windows applied to latest_funding_date"
+        },
+        "form_d_sample": {
+          "value": "not-in-sample",
+          "source": "record",
+          "from": "4 Form D sample files (200 filings); absence in a 50-row sample is not absence of a filing"
+        },
+        "board": {
+          "status": "unmapped",
+          "factor": null,
+          "source": null,
+          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "captured_at": "2026-10-02T19:27:39.687Z"
+        },
+        "timeline_factor": {
+          "value": 1,
+          "source": "your-input",
+          "from": "persona OPT end date + hiring-lag assumption"
+        }
+      },
+      "scorer": null,
+      "next": {
+        "action": "UNVERIFIED",
+        "why": "board unmapped — liveness unknown, not sent to the scorer"
+      }
+    },
+    {
+      "company": "HEALTHEDGE SOFTWARE INC",
+      "role_id": "healthedgesoftwareinc",
+      "evidence": {
+        "city": {
+          "value": "BURLINGTON",
+          "source": "record",
+          "from": "80-days CSV city"
+        },
+        "h1b_approvals": {
+          "value": 156,
+          "source": "record",
+          "from": "80-days CSV Total Approvals",
+          "caveat": "every count in this CSV is even — possible 2× join; see data_anomalies"
+        },
+        "h1b_denials": {
+          "value": 4,
+          "source": "record",
+          "from": "80-days CSV Total Denials"
+        },
+        "approval_rate_pct": {
+          "value": 97.5,
+          "source": "record",
+          "from": "80-days CSV Approval_Rate"
+        },
+        "sponsored_titles": {
+          "value": [
+            "Technical Services Engineer (Deep Dive Team)",
+            "Senior Software Engineer",
+            "Senior Data Integration Analyst",
+            "Software Engineer II",
+            "Sr. Service Delivery Manager"
+          ],
+          "source": "record",
+          "from": "80-days CSV top_job_titles_sponsored"
+        },
+        "sponsorship_tier": {
+          "value": "Proven",
+          "p": 0.9,
+          "source": "your-input",
+          "from": "persona.sponsorship_rules applied to the record counts"
+        },
+        "latest_funding_date": {
+          "value": "2014-09-08",
+          "stage": "Series B",
+          "amount": 29999976,
+          "source": "record",
+          "from": "80-days CSV latest_funding_* (derived upstream from SEC Form D)"
+        },
+        "funding_recency": {
+          "months_since": 144,
+          "bucket": "stale",
+          "source": "your-input",
+          "from": "persona.funding_windows applied to latest_funding_date"
+        },
+        "form_d_sample": {
+          "value": "not-in-sample",
+          "source": "record",
+          "from": "4 Form D sample files (200 filings); absence in a 50-row sample is not absence of a filing"
+        },
+        "board": {
+          "status": "unmapped",
+          "factor": null,
+          "source": null,
+          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "captured_at": "2026-10-02T19:27:39.687Z"
+        },
+        "timeline_factor": {
+          "value": 1,
+          "source": "your-input",
+          "from": "persona OPT end date + hiring-lag assumption"
+        }
+      },
+      "scorer": null,
+      "next": {
+        "action": "UNVERIFIED",
+        "why": "board unmapped — liveness unknown, not sent to the scorer"
+      }
+    },
+    {
+      "company": "ISEE INC",
+      "role_id": "iseeinc",
+      "evidence": {
+        "city": {
+          "value": "CAMBRIDGE",
+          "source": "record",
+          "from": "80-days CSV city"
+        },
+        "h1b_approvals": {
+          "value": 8,
+          "source": "record",
+          "from": "80-days CSV Total Approvals",
+          "caveat": "every count in this CSV is even — possible 2× join; see data_anomalies"
+        },
+        "h1b_denials": {
+          "value": 0,
+          "source": "record",
+          "from": "80-days CSV Total Denials"
+        },
+        "approval_rate_pct": {
+          "value": 100,
+          "source": "record",
+          "from": "80-days CSV Approval_Rate"
+        },
+        "sponsored_titles": {
+          "value": [
+            "Perception Engineer",
+            "Senior Software Engineer",
+            "Senior Sensor Engineer"
+          ],
+          "source": "record",
+          "from": "80-days CSV top_job_titles_sponsored"
+        },
+        "sponsorship_tier": {
+          "value": "Likely",
+          "p": 0.6,
+          "source": "your-input",
+          "from": "persona.sponsorship_rules applied to the record counts"
+        },
+        "latest_funding_date": {
+          "value": "2017-09-01",
+          "stage": "Seed",
+          "amount": 2736986,
+          "source": "record",
+          "from": "80-days CSV latest_funding_* (derived upstream from SEC Form D)"
+        },
+        "funding_recency": {
+          "months_since": 109,
+          "bucket": "stale",
+          "source": "your-input",
+          "from": "persona.funding_windows applied to latest_funding_date"
+        },
+        "form_d_sample": {
+          "value": "not-in-sample",
+          "source": "record",
+          "from": "4 Form D sample files (200 filings); absence in a 50-row sample is not absence of a filing"
+        },
+        "board": {
+          "status": "unmapped",
+          "factor": null,
+          "source": null,
+          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "captured_at": "2026-10-02T19:27:39.687Z"
+        },
+        "timeline_factor": {
+          "value": 1,
+          "source": "your-input",
+          "from": "persona OPT end date + hiring-lag assumption"
+        }
+      },
+      "scorer": null,
+      "next": {
+        "action": "UNVERIFIED",
+        "why": "board unmapped — liveness unknown, not sent to the scorer"
+      }
+    },
+    {
+      "company": "ITERATIVE SCOPES INC",
+      "role_id": "iterativescopesinc",
+      "evidence": {
+        "city": {
+          "value": "Cambridge",
+          "source": "record",
+          "from": "80-days CSV city"
+        },
+        "h1b_approvals": {
+          "value": 18,
+          "source": "record",
+          "from": "80-days CSV Total Approvals",
+          "caveat": "every count in this CSV is even — possible 2× join; see data_anomalies"
+        },
+        "h1b_denials": {
+          "value": 0,
+          "source": "record",
+          "from": "80-days CSV Total Denials"
+        },
+        "approval_rate_pct": {
+          "value": 100,
+          "source": "record",
+          "from": "80-days CSV Approval_Rate"
+        },
+        "sponsored_titles": {
+          "value": [
+            "Software Engineer II",
+            "Data Operations Manager",
+            "Regulatory and Quality Associate"
+          ],
+          "source": "record",
+          "from": "80-days CSV top_job_titles_sponsored"
+        },
+        "sponsorship_tier": {
+          "value": "Likely",
+          "p": 0.6,
+          "source": "your-input",
+          "from": "persona.sponsorship_rules applied to the record counts"
+        },
+        "latest_funding_date": {
+          "value": "2021-12-06",
+          "stage": "Series D+",
+          "amount": 149999978,
+          "source": "record",
+          "from": "80-days CSV latest_funding_* (derived upstream from SEC Form D)"
+        },
+        "funding_recency": {
+          "months_since": 57,
+          "bucket": "stale",
+          "source": "your-input",
+          "from": "persona.funding_windows applied to latest_funding_date"
+        },
+        "form_d_sample": {
+          "value": "not-in-sample",
+          "source": "record",
+          "from": "4 Form D sample files (200 filings); absence in a 50-row sample is not absence of a filing"
+        },
+        "board": {
+          "status": "ok",
+          "factor": 0,
+          "job_count": 61,
+          "matching": [],
+          "title_match_wrong_location": [],
+          "adjacent_titles": [
+            "Applied AI Engineer — Cambridge, Massachusetts, United States, New York, New York, United States",
+            "Staff Data Engineer — Cambridge, Massachusetts, United States, New York, New York, United States",
+            "Technical Services Engineer – Site Infrastructure & Enablement — Cambridge, Massachusetts, United States, New York, New York, United States"
+          ],
+          "source": "record",
+          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "captured_at": "2026-10-02T19:27:39.687Z"
+        },
+        "timeline_factor": {
+          "value": 1,
+          "source": "your-input",
+          "from": "persona OPT end date + hiring-lag assumption"
+        }
+      },
+      "scorer": {
+        "composite": 0,
+        "recommendation": "Skip",
+        "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+        "arithmetic": "(0.6·0.35) × 0 × 1 = 0.000"
+      },
+      "next": {
+        "action": "WATCH",
+        "why": "no live matching posting, Likely sponsor, but funding stale — re-check board later; low networking priority"
+      }
+    },
+    {
+      "company": "KLAVIYO INC",
+      "role_id": "klaviyoinc",
+      "evidence": {
+        "city": {
+          "value": "BOSTON",
+          "source": "record",
+          "from": "80-days CSV city"
+        },
+        "h1b_approvals": {
+          "value": 154,
+          "source": "record",
+          "from": "80-days CSV Total Approvals",
+          "caveat": "every count in this CSV is even — possible 2× join; see data_anomalies"
+        },
+        "h1b_denials": {
+          "value": 4,
+          "source": "record",
+          "from": "80-days CSV Total Denials"
+        },
+        "approval_rate_pct": {
+          "value": 97.46835443037976,
+          "source": "record",
+          "from": "80-days CSV Approval_Rate"
+        },
+        "sponsored_titles": {
+          "value": [
+            "Business Intelligence Engineer",
+            "Software Engineer II",
+            "Engineering Manager Data Exchange",
+            "Engineering Manager II- SMS",
+            "Senior Software Engineer"
+          ],
+          "source": "record",
+          "from": "80-days CSV top_job_titles_sponsored"
+        },
+        "sponsorship_tier": {
+          "value": "Proven",
+          "p": 0.9,
+          "source": "your-input",
+          "from": "persona.sponsorship_rules applied to the record counts"
+        },
+        "latest_funding_date": {
+          "value": "2022-07-26",
+          "stage": "Series C",
+          "amount": 99999983,
+          "source": "record",
+          "from": "80-days CSV latest_funding_* (derived upstream from SEC Form D)"
+        },
+        "funding_recency": {
+          "months_since": 50,
+          "bucket": "stale",
+          "source": "your-input",
+          "from": "persona.funding_windows applied to latest_funding_date"
+        },
+        "form_d_sample": {
+          "value": "not-in-sample",
+          "source": "record",
+          "from": "4 Form D sample files (200 filings); absence in a 50-row sample is not absence of a filing"
+        },
+        "board": {
+          "status": "ok",
+          "factor": 1,
+          "job_count": 134,
+          "matching": [
+            {
+              "title": "Full Stack Software Engineer - People Systems",
+              "url": "https://www.klaviyo.com/careers/jobs/7727703003?gh_jid=7727703003",
+              "location": "Boston, MA"
+            },
+            {
+              "title": "Lead Software Engineer, CICD",
+              "url": "https://www.klaviyo.com/careers/jobs/7990569003?gh_jid=7990569003",
+              "location": "Boston, MA"
+            },
+            {
+              "title": "Senior Lead Software Engineer - Data Platform",
+              "url": "https://www.klaviyo.com/careers/jobs/7809608003?gh_jid=7809608003",
+              "location": "Boston, MA"
+            },
+            {
+              "title": "Senior Software Engineer - Customer Agent",
+              "url": "https://www.klaviyo.com/careers/jobs/7695230003?gh_jid=7695230003",
+              "location": "Boston, MA"
+            },
+            {
+              "title": "Senior Software Engineer, Customer Agent",
+              "url": "https://www.klaviyo.com/careers/jobs/7780009003?gh_jid=7780009003",
+              "location": "Boston, MA"
+            },
+            {
+              "title": "Senior Software Engineer - Data Platform",
+              "url": "https://www.klaviyo.com/careers/jobs/7997137003?gh_jid=7997137003",
+              "location": "Boston, MA"
+            },
+            {
+              "title": "Senior Software Engineer - Developer Infrastructure",
+              "url": "https://www.klaviyo.com/careers/jobs/7711217003?gh_jid=7711217003",
+              "location": "Boston, MA"
+            },
+            {
+              "title": "Senior Software Engineer - Growth",
+              "url": "https://www.klaviyo.com/careers/jobs/7696724003?gh_jid=7696724003",
+              "location": "Boston, MA"
+            },
+            {
+              "title": "Senior Software Engineer - Infrastructure Security",
+              "url": "https://www.klaviyo.com/careers/jobs/7777369003?gh_jid=7777369003",
+              "location": "Boston, MA"
+            },
+            {
+              "title": "Senior Software Engineer, Platform Engineering",
+              "url": "https://www.klaviyo.com/careers/jobs/7783904003?gh_jid=7783904003",
+              "location": "Boston, MA"
+            },
+            {
+              "title": "Senior Software Engineer - Profiles, Lists and Segments",
+              "url": "https://www.klaviyo.com/careers/jobs/7597868003?gh_jid=7597868003",
+              "location": "Boston, MA"
+            },
+            {
+              "title": "Software Engineer II - Recommendations",
+              "url": "https://www.klaviyo.com/careers/jobs/7855798003?gh_jid=7855798003",
+              "location": "Boston, MA"
+            },
+            {
+              "title": "Software Engineer II, Test Frameworks & Tooling",
+              "url": "https://www.klaviyo.com/careers/jobs/7855793003?gh_jid=7855793003",
+              "location": "Boston, MA"
+            },
+            {
+              "title": "Sr. Software Engineer, AI Enablement",
+              "url": "https://www.klaviyo.com/careers/jobs/7688416003?gh_jid=7688416003",
+              "location": "Boston, MA"
+            }
+          ],
+          "title_match_wrong_location": [
+            "Full Stack Software Engineer - People Systems — San Francisco, CA",
+            "Senior Software Engineer, Distributed Systems - Messaging — Dublin, IE",
+            "Senior Software Engineer, Reliability — Dublin, IE",
+            "Software Engineer II, Distributed Systems- Messaging — Dublin, IE",
+            "Software Engineer II, Infrastructure Security — Dublin, IE",
+            "Software Engineer II, Reliability — Dublin, IE"
+          ],
+          "adjacent_titles": [
+            "Analytics Engineer — Boston, MA",
+            "Distinguished Engineer, Enterprise Scalability — Boston, MA",
+            "IT Systems Engineer — Boston, MA",
+            "Lead Engineer, Applied AI (Customer Agent) — Boston, MA",
+            "Lead Security Compliance Engineer — Boston, MA",
+            "Lead Security Governance & Risk Engineer — Boston, MA",
+            "Order to Cash Track Lead, Finance Engineering — Boston, MA",
+            "Senior AI Engineer - Customer Agent — Boston, MA",
+            "Senior GTM Partner Systems Engineer (Salesforce) — Boston, MA",
+            "Senior IT Systems Engineer — Boston, MA",
+            "Senior Security Engineer - Detection and Response — Boston, MA",
+            "Senior Security Engineer - Detection & Response — Boston, MA",
+            "Sr. Lead Engineer, Applied AI (Customer Agent) — Boston, MA",
+            "Sr. Lead Engineer, Applied AI (Customer Agent) — Boston, MA",
+            "Sr. Staff Engineer, Applied AI (Customer Agent) — Boston, MA",
+            "Sr. Staff Engineer, Applied AI (Customer Agent) — Boston, MA",
+            "Staff Engineer, Applied AI (Customer Agent) — Boston, MA"
+          ],
+          "source": "record",
+          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "captured_at": "2026-10-02T19:27:39.687Z"
+        },
+        "timeline_factor": {
+          "value": 1,
+          "source": "your-input",
+          "from": "persona OPT end date + hiring-lag assumption"
+        }
+      },
+      "scorer": {
+        "composite": 0.315,
+        "recommendation": "Apply",
+        "reason": "composite 0.315 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+      },
+      "next": {
+        "action": "APPLY",
+        "why": "scorer Apply — tailor an application (2 research-and-apply hours)"
+      }
+    },
+    {
+      "company": "LENDBUZZ INC",
+      "role_id": "lendbuzzinc",
+      "evidence": {
+        "city": {
+          "value": "BOSTON",
+          "source": "record",
+          "from": "80-days CSV city"
+        },
+        "h1b_approvals": {
+          "value": 60,
+          "source": "record",
+          "from": "80-days CSV Total Approvals",
+          "caveat": "every count in this CSV is even — possible 2× join; see data_anomalies"
+        },
+        "h1b_denials": {
+          "value": 0,
+          "source": "record",
+          "from": "80-days CSV Total Denials"
+        },
+        "approval_rate_pct": {
+          "value": 100,
+          "source": "record",
+          "from": "80-days CSV Approval_Rate"
+        },
+        "sponsored_titles": {
+          "value": [
+            "Full Stack Engineer",
+            "Senior Software Engineer",
+            "Machine Learning Engineer",
+            "Software Engineer"
+          ],
+          "source": "record",
+          "from": "80-days CSV top_job_titles_sponsored"
+        },
+        "sponsorship_tier": {
+          "value": "Proven",
+          "p": 0.9,
+          "source": "your-input",
+          "from": "persona.sponsorship_rules applied to the record counts"
+        },
+        "latest_funding_date": {
+          "value": "2021-05-13",
+          "stage": "Series C",
+          "amount": 54745817,
+          "source": "record",
+          "from": "80-days CSV latest_funding_* (derived upstream from SEC Form D)"
+        },
+        "funding_recency": {
+          "months_since": 64,
+          "bucket": "stale",
+          "source": "your-input",
+          "from": "persona.funding_windows applied to latest_funding_date"
+        },
+        "form_d_sample": {
+          "value": "not-in-sample",
+          "source": "record",
+          "from": "4 Form D sample files (200 filings); absence in a 50-row sample is not absence of a filing"
+        },
+        "board": {
+          "status": "ok",
+          "factor": 1,
+          "job_count": 56,
+          "matching": [
+            {
+              "title": "Full-Stack Engineer (Backend)",
+              "url": "https://jobs.lever.co/lendbuzz/a19330a3-380a-45ad-b388-c98c33ef0db3",
+              "location": "Boston, MA"
+            },
+            {
+              "title": "Software Engineer (Frontend-Focused Full Stack)",
+              "url": "https://jobs.lever.co/lendbuzz/f3c0d168-fc27-4a3e-89f4-b3efcf1db4b4",
+              "location": "Boston, MA"
+            }
+          ],
+          "title_match_wrong_location": [
+            "Backend Engineer — Tel Aviv",
+            "Backend Engineer — Tel Aviv",
+            "Senior DevOps / Site Reliability Engineer (SRE) — Tel Aviv"
+          ],
+          "adjacent_titles": [],
+          "source": "record",
+          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "captured_at": "2026-10-02T19:27:39.687Z"
+        },
+        "timeline_factor": {
+          "value": 1,
+          "source": "your-input",
+          "from": "persona OPT end date + hiring-lag assumption"
+        }
+      },
+      "scorer": {
+        "composite": 0.315,
+        "recommendation": "Apply",
+        "reason": "composite 0.315 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+      },
+      "next": {
+        "action": "APPLY",
+        "why": "scorer Apply — tailor an application (2 research-and-apply hours)"
+      }
+    },
+    {
+      "company": "LOOKOUT INC",
+      "role_id": "lookoutinc",
+      "evidence": {
+        "city": {
+          "value": "BOSTON",
+          "source": "record",
+          "from": "80-days CSV city"
+        },
+        "h1b_approvals": {
+          "value": 38,
+          "source": "record",
+          "from": "80-days CSV Total Approvals",
+          "caveat": "every count in this CSV is even — possible 2× join; see data_anomalies"
+        },
+        "h1b_denials": {
+          "value": 0,
+          "source": "record",
+          "from": "80-days CSV Total Denials"
+        },
+        "approval_rate_pct": {
+          "value": 100,
+          "source": "record",
+          "from": "80-days CSV Approval_Rate"
+        },
+        "sponsored_titles": {
+          "value": [
+            "Staff Software Engineer",
+            "Senior Software Engineer"
+          ],
+          "source": "record",
+          "from": "80-days CSV top_job_titles_sponsored"
+        },
+        "sponsorship_tier": {
+          "value": "Proven",
+          "p": 0.9,
+          "source": "your-input",
+          "from": "persona.sponsorship_rules applied to the record counts"
+        },
+        "latest_funding_date": {
+          "value": "2021-03-15",
+          "stage": "Series B",
+          "amount": 46771430,
+          "source": "record",
+          "from": "80-days CSV latest_funding_* (derived upstream from SEC Form D)"
+        },
+        "funding_recency": {
+          "months_since": 66,
+          "bucket": "stale",
+          "source": "your-input",
+          "from": "persona.funding_windows applied to latest_funding_date"
+        },
+        "form_d_sample": {
+          "value": "not-in-sample",
+          "source": "record",
+          "from": "4 Form D sample files (200 filings); absence in a 50-row sample is not absence of a filing"
+        },
+        "board": {
+          "status": "ok",
+          "factor": 0,
+          "job_count": 4,
+          "matching": [],
+          "title_match_wrong_location": [],
+          "adjacent_titles": [],
+          "source": "record",
+          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "captured_at": "2026-10-02T19:27:39.687Z"
+        },
+        "timeline_factor": {
+          "value": 1,
+          "source": "your-input",
+          "from": "persona OPT end date + hiring-lag assumption"
+        }
+      },
+      "scorer": {
+        "composite": 0,
+        "recommendation": "Skip",
+        "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+        "arithmetic": "(0.9·0.35) × 0 × 1 = 0.000"
+      },
+      "next": {
+        "action": "WATCH",
+        "why": "no live matching posting, Proven sponsor, but funding stale — re-check board later; low networking priority"
+      }
+    },
+    {
+      "company": "MOTIVEMETRICS INC",
+      "role_id": "motivemetricsinc",
+      "evidence": {
+        "city": {
+          "value": "STONEHAM",
+          "source": "record",
+          "from": "80-days CSV city"
+        },
+        "h1b_approvals": {
+          "value": 2,
+          "source": "record",
+          "from": "80-days CSV Total Approvals",
+          "caveat": "every count in this CSV is even — possible 2× join; see data_anomalies"
+        },
+        "h1b_denials": {
+          "value": 0,
+          "source": "record",
+          "from": "80-days CSV Total Denials"
+        },
+        "approval_rate_pct": {
+          "value": 100,
+          "source": "record",
+          "from": "80-days CSV Approval_Rate"
+        },
+        "sponsored_titles": {
+          "value": [
+            "Senior Software Engineer"
+          ],
+          "source": "record",
+          "from": "80-days CSV top_job_titles_sponsored"
+        },
+        "sponsorship_tier": {
+          "value": "Possible",
+          "p": 0.3,
+          "source": "your-input",
+          "from": "persona.sponsorship_rules applied to the record counts"
+        },
+        "latest_funding_date": {
+          "value": "2021-07-08",
+          "stage": "Series A",
+          "amount": 12845821,
+          "source": "record",
+          "from": "80-days CSV latest_funding_* (derived upstream from SEC Form D)"
+        },
+        "funding_recency": {
+          "months_since": 62,
+          "bucket": "stale",
+          "source": "your-input",
+          "from": "persona.funding_windows applied to latest_funding_date"
+        },
+        "form_d_sample": {
+          "value": "not-in-sample",
+          "source": "record",
+          "from": "4 Form D sample files (200 filings); absence in a 50-row sample is not absence of a filing"
+        },
+        "board": {
+          "status": "unmapped",
+          "factor": null,
+          "source": null,
+          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "captured_at": "2026-10-02T19:27:39.687Z"
+        },
+        "timeline_factor": {
+          "value": 1,
+          "source": "your-input",
+          "from": "persona OPT end date + hiring-lag assumption"
+        }
+      },
+      "scorer": null,
+      "next": {
+        "action": "UNVERIFIED",
+        "why": "board unmapped — liveness unknown, not sent to the scorer"
+      }
+    },
+    {
+      "company": "NETBRAIN TECHNOLOGIES INC",
+      "role_id": "netbraintechnologiesinc",
+      "evidence": {
+        "city": {
+          "value": "BURLINGTON",
+          "source": "record",
+          "from": "80-days CSV city"
+        },
+        "h1b_approvals": {
+          "value": 36,
+          "source": "record",
+          "from": "80-days CSV Total Approvals",
+          "caveat": "every count in this CSV is even — possible 2× join; see data_anomalies"
+        },
+        "h1b_denials": {
+          "value": 4,
+          "source": "record",
+          "from": "80-days CSV Total Denials"
+        },
+        "approval_rate_pct": {
+          "value": 90,
+          "source": "record",
+          "from": "80-days CSV Approval_Rate"
+        },
+        "sponsored_titles": {
+          "value": [
+            "Support and Services Engineer",
+            "Software Engineer",
+            "Presales Network Engineer",
+            "Senior DevOps Engineer/Infrastructure Engineer"
+          ],
+          "source": "record",
+          "from": "80-days CSV top_job_titles_sponsored"
+        },
+        "sponsorship_tier": {
+          "value": "Proven",
+          "p": 0.9,
+          "source": "your-input",
+          "from": "persona.sponsorship_rules applied to the record counts"
+        },
+        "latest_funding_date": {
+          "value": "2014-04-07",
+          "stage": "Series B",
+          "amount": 40000000,
+          "source": "record",
+          "from": "80-days CSV latest_funding_* (derived upstream from SEC Form D)"
+        },
+        "funding_recency": {
+          "months_since": 149,
+          "bucket": "stale",
+          "source": "your-input",
+          "from": "persona.funding_windows applied to latest_funding_date"
+        },
+        "form_d_sample": {
+          "value": "not-in-sample",
+          "source": "record",
+          "from": "4 Form D sample files (200 filings); absence in a 50-row sample is not absence of a filing"
+        },
+        "board": {
+          "status": "unmapped",
+          "factor": null,
+          "source": null,
+          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "captured_at": "2026-10-02T19:27:39.687Z"
+        },
+        "timeline_factor": {
+          "value": 1,
+          "source": "your-input",
+          "from": "persona OPT end date + hiring-lag assumption"
+        }
+      },
+      "scorer": null,
+      "next": {
+        "action": "UNVERIFIED",
+        "why": "board unmapped — liveness unknown, not sent to the scorer"
+      }
+    },
+    {
+      "company": "NEWSTORE INC",
+      "role_id": "newstoreinc",
+      "evidence": {
+        "city": {
+          "value": "BOSTON",
+          "source": "record",
+          "from": "80-days CSV city"
+        },
+        "h1b_approvals": {
+          "value": 12,
+          "source": "record",
+          "from": "80-days CSV Total Approvals",
+          "caveat": "every count in this CSV is even — possible 2× join; see data_anomalies"
+        },
+        "h1b_denials": {
+          "value": 0,
+          "source": "record",
+          "from": "80-days CSV Total Denials"
+        },
+        "approval_rate_pct": {
+          "value": 100,
+          "source": "record",
+          "from": "80-days CSV Approval_Rate"
+        },
+        "sponsored_titles": {
+          "value": [
+            "Solution Engineer Frontend/Backend - Field Services"
+          ],
+          "source": "record",
+          "from": "80-days CSV top_job_titles_sponsored"
+        },
+        "sponsorship_tier": {
+          "value": "Likely",
+          "p": 0.6,
+          "source": "your-input",
+          "from": "persona.sponsorship_rules applied to the record counts"
+        },
+        "latest_funding_date": {
+          "value": "2021-06-22",
+          "stage": "Series C",
+          "amount": 61701368,
+          "source": "record",
+          "from": "80-days CSV latest_funding_* (derived upstream from SEC Form D)"
+        },
+        "funding_recency": {
+          "months_since": 63,
+          "bucket": "stale",
+          "source": "your-input",
+          "from": "persona.funding_windows applied to latest_funding_date"
+        },
+        "form_d_sample": {
+          "value": "not-in-sample",
+          "source": "record",
+          "from": "4 Form D sample files (200 filings); absence in a 50-row sample is not absence of a filing"
+        },
+        "board": {
+          "status": "not_found",
+          "factor": null,
+          "note": "no greenhouse/lever/ashby board for slug \"newstore\" on 2026-10-02 — may use Workday or another ATS",
+          "source": null,
+          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "captured_at": "2026-10-02T19:27:39.687Z"
+        },
+        "timeline_factor": {
+          "value": 1,
+          "source": "your-input",
+          "from": "persona OPT end date + hiring-lag assumption"
+        }
+      },
+      "scorer": null,
+      "next": {
+        "action": "UNVERIFIED",
+        "why": "board not_found — liveness unknown, not sent to the scorer"
+      }
+    },
+    {
+      "company": "NEXTUPLE INC",
+      "role_id": "nextupleinc",
+      "evidence": {
+        "city": {
+          "value": "ANDOVER",
+          "source": "record",
+          "from": "80-days CSV city"
+        },
+        "h1b_approvals": {
+          "value": 18,
+          "source": "record",
+          "from": "80-days CSV Total Approvals",
+          "caveat": "every count in this CSV is even — possible 2× join; see data_anomalies"
+        },
+        "h1b_denials": {
+          "value": 0,
+          "source": "record",
+          "from": "80-days CSV Total Denials"
+        },
+        "approval_rate_pct": {
+          "value": 100,
+          "source": "record",
+          "from": "80-days CSV Approval_Rate"
+        },
+        "sponsored_titles": {
+          "value": [
+            "Software Engineer"
+          ],
+          "source": "record",
+          "from": "80-days CSV top_job_titles_sponsored"
+        },
+        "sponsorship_tier": {
+          "value": "Likely",
+          "p": 0.6,
+          "source": "your-input",
+          "from": "persona.sponsorship_rules applied to the record counts"
+        },
+        "latest_funding_date": {
+          "value": "2021-12-07",
+          "stage": "Pre-Seed",
+          "amount": 2000000,
+          "source": "record",
+          "from": "80-days CSV latest_funding_* (derived upstream from SEC Form D)"
+        },
+        "funding_recency": {
+          "months_since": 57,
+          "bucket": "stale",
+          "source": "your-input",
+          "from": "persona.funding_windows applied to latest_funding_date"
+        },
+        "form_d_sample": {
+          "value": "not-in-sample",
+          "source": "record",
+          "from": "4 Form D sample files (200 filings); absence in a 50-row sample is not absence of a filing"
+        },
+        "board": {
+          "status": "not_found",
+          "factor": null,
+          "note": "no greenhouse/lever/ashby board for slug \"nextuple\" on 2026-10-02 — may use Workday or another ATS",
+          "source": null,
+          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "captured_at": "2026-10-02T19:27:39.687Z"
+        },
+        "timeline_factor": {
+          "value": 1,
+          "source": "your-input",
+          "from": "persona OPT end date + hiring-lag assumption"
+        }
+      },
+      "scorer": null,
+      "next": {
+        "action": "UNVERIFIED",
+        "why": "board not_found — liveness unknown, not sent to the scorer"
+      }
+    },
+    {
+      "company": "NODAR INC",
+      "role_id": "nodarinc",
+      "evidence": {
+        "city": {
+          "value": "Somerville",
+          "source": "record",
+          "from": "80-days CSV city"
+        },
+        "h1b_approvals": {
+          "value": 2,
+          "source": "record",
+          "from": "80-days CSV Total Approvals",
+          "caveat": "every count in this CSV is even — possible 2× join; see data_anomalies"
+        },
+        "h1b_denials": {
+          "value": 0,
+          "source": "record",
+          "from": "80-days CSV Total Denials"
+        },
+        "approval_rate_pct": {
+          "value": 100,
+          "source": "record",
+          "from": "80-days CSV Approval_Rate"
+        },
+        "sponsored_titles": {
+          "value": [
+            "Perception Software Engineer"
+          ],
+          "source": "record",
+          "from": "80-days CSV top_job_titles_sponsored"
+        },
+        "sponsorship_tier": {
+          "value": "Possible",
+          "p": 0.3,
+          "source": "your-input",
+          "from": "persona.sponsorship_rules applied to the record counts"
+        },
+        "latest_funding_date": {
+          "value": "2022-04-05",
+          "stage": "Series A",
+          "amount": 11999921,
+          "source": "record",
+          "from": "80-days CSV latest_funding_* (derived upstream from SEC Form D)"
+        },
+        "funding_recency": {
+          "months_since": 53,
+          "bucket": "stale",
+          "source": "your-input",
+          "from": "persona.funding_windows applied to latest_funding_date"
+        },
+        "form_d_sample": {
+          "value": "not-in-sample",
+          "source": "record",
+          "from": "4 Form D sample files (200 filings); absence in a 50-row sample is not absence of a filing"
+        },
+        "board": {
+          "status": "not_found",
+          "factor": null,
+          "note": "no greenhouse/lever/ashby board for slug \"nodar\" on 2026-10-02 — may use Workday or another ATS",
+          "source": null,
+          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "captured_at": "2026-10-02T19:27:39.687Z"
+        },
+        "timeline_factor": {
+          "value": 1,
+          "source": "your-input",
+          "from": "persona OPT end date + hiring-lag assumption"
+        }
+      },
+      "scorer": null,
+      "next": {
+        "action": "UNVERIFIED",
+        "why": "board not_found — liveness unknown, not sent to the scorer"
+      }
+    },
+    {
+      "company": "NUANCE COMMUNICATIONS INC",
+      "role_id": "nuancecommunicationsinc",
+      "evidence": {
+        "city": {
+          "value": "BURLINGTON",
+          "source": "record",
+          "from": "80-days CSV city"
+        },
+        "h1b_approvals": {
+          "value": 60,
+          "source": "record",
+          "from": "80-days CSV Total Approvals",
+          "caveat": "every count in this CSV is even — possible 2× join; see data_anomalies"
+        },
+        "h1b_denials": {
+          "value": 4,
+          "source": "record",
+          "from": "80-days CSV Total Denials"
+        },
+        "approval_rate_pct": {
+          "value": 93.75,
+          "source": "record",
+          "from": "80-days CSV Approval_Rate"
+        },
+        "sponsored_titles": {
+          "value": [
+            "Senior Software Engineer",
+            "Manager II Software Engineering",
+            "Senior Cloud DevOps Engineer",
+            "Senior NLP Research Scientist"
+          ],
+          "source": "record",
+          "from": "80-days CSV top_job_titles_sponsored"
+        },
+        "sponsorship_tier": {
+          "value": "Proven",
+          "p": 0.9,
+          "source": "your-input",
+          "from": "persona.sponsorship_rules applied to the record counts"
+        },
+        "latest_funding_date": {
+          "value": "2016-08-16",
+          "stage": "Series C",
+          "amount": 84999972,
+          "source": "record",
+          "from": "80-days CSV latest_funding_* (derived upstream from SEC Form D)"
+        },
+        "funding_recency": {
+          "months_since": 121,
+          "bucket": "stale",
+          "source": "your-input",
+          "from": "persona.funding_windows applied to latest_funding_date"
+        },
+        "form_d_sample": {
+          "value": "not-in-sample",
+          "source": "record",
+          "from": "4 Form D sample files (200 filings); absence in a 50-row sample is not absence of a filing"
+        },
+        "board": {
+          "status": "unmapped",
+          "factor": null,
+          "source": null,
+          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "captured_at": "2026-10-02T19:27:39.687Z"
+        },
+        "timeline_factor": {
+          "value": 1,
+          "source": "your-input",
+          "from": "persona OPT end date + hiring-lag assumption"
+        }
+      },
+      "scorer": null,
+      "next": {
+        "action": "UNVERIFIED",
+        "why": "board unmapped — liveness unknown, not sent to the scorer"
+      }
+    },
+    {
+      "company": "ONEVISION RESOURCES INC",
+      "role_id": "onevisionresourcesinc",
+      "evidence": {
+        "city": {
+          "value": "BOSTON",
+          "source": "record",
+          "from": "80-days CSV city"
+        },
+        "h1b_approvals": {
+          "value": 14,
+          "source": "record",
+          "from": "80-days CSV Total Approvals",
+          "caveat": "every count in this CSV is even — possible 2× join; see data_anomalies"
+        },
+        "h1b_denials": {
+          "value": 0,
+          "source": "record",
+          "from": "80-days CSV Total Denials"
+        },
+        "approval_rate_pct": {
+          "value": 100,
+          "source": "record",
+          "from": "80-days CSV Approval_Rate"
+        },
+        "sponsored_titles": {
+          "value": [
+            "Software Engineer"
+          ],
+          "source": "record",
+          "from": "80-days CSV top_job_titles_sponsored"
+        },
+        "sponsorship_tier": {
+          "value": "Likely",
+          "p": 0.6,
+          "source": "your-input",
+          "from": "persona.sponsorship_rules applied to the record counts"
+        },
+        "latest_funding_date": {
+          "value": "2020-01-31",
+          "stage": "Seed",
+          "amount": 6540435,
+          "source": "record",
+          "from": "80-days CSV latest_funding_* (derived upstream from SEC Form D)"
+        },
+        "funding_recency": {
+          "months_since": 80,
+          "bucket": "stale",
+          "source": "your-input",
+          "from": "persona.funding_windows applied to latest_funding_date"
+        },
+        "form_d_sample": {
+          "value": "not-in-sample",
+          "source": "record",
+          "from": "4 Form D sample files (200 filings); absence in a 50-row sample is not absence of a filing"
+        },
+        "board": {
+          "status": "unmapped",
+          "factor": null,
+          "source": null,
+          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "captured_at": "2026-10-02T19:27:39.687Z"
+        },
+        "timeline_factor": {
+          "value": 1,
+          "source": "your-input",
+          "from": "persona OPT end date + hiring-lag assumption"
+        }
+      },
+      "scorer": null,
+      "next": {
+        "action": "UNVERIFIED",
+        "why": "board unmapped — liveness unknown, not sent to the scorer"
+      }
+    },
+    {
+      "company": "OVERJET INC",
+      "role_id": "overjetinc",
+      "evidence": {
+        "city": {
+          "value": "BOSTON",
+          "source": "record",
+          "from": "80-days CSV city"
+        },
+        "h1b_approvals": {
+          "value": 48,
+          "source": "record",
+          "from": "80-days CSV Total Approvals",
+          "caveat": "every count in this CSV is even — possible 2× join; see data_anomalies"
+        },
+        "h1b_denials": {
+          "value": 2,
+          "source": "record",
+          "from": "80-days CSV Total Denials"
+        },
+        "approval_rate_pct": {
+          "value": 96,
+          "source": "record",
+          "from": "80-days CSV Approval_Rate"
+        },
+        "sponsored_titles": {
+          "value": [
+            "Software Engineer",
+            "Principal Product Manager - Machine Learning",
+            "Machine Learning Engineer II",
+            "Principal Product Manager – Machine Learning",
+            "Engagement Manager"
+          ],
+          "source": "record",
+          "from": "80-days CSV top_job_titles_sponsored"
+        },
+        "sponsorship_tier": {
+          "value": "Proven",
+          "p": 0.9,
+          "source": "your-input",
+          "from": "persona.sponsorship_rules applied to the record counts"
+        },
+        "latest_funding_date": {
+          "value": "2024-02-16",
+          "stage": "Series C",
+          "amount": 56719860,
+          "source": "record",
+          "from": "80-days CSV latest_funding_* (derived upstream from SEC Form D)"
+        },
+        "funding_recency": {
+          "months_since": 31,
+          "bucket": "aging",
+          "source": "your-input",
+          "from": "persona.funding_windows applied to latest_funding_date"
+        },
+        "form_d_sample": {
+          "value": "not-in-sample",
+          "source": "record",
+          "from": "4 Form D sample files (200 filings); absence in a 50-row sample is not absence of a filing"
+        },
+        "board": {
+          "status": "ok",
+          "factor": 0,
+          "job_count": 22,
+          "matching": [],
+          "title_match_wrong_location": [
+            "Staff Software Engineer — Lahore, Pakistan"
+          ],
+          "adjacent_titles": [],
+          "source": "record",
+          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "captured_at": "2026-10-02T19:27:39.687Z"
+        },
+        "timeline_factor": {
+          "value": 1,
+          "source": "your-input",
+          "from": "persona OPT end date + hiring-lag assumption"
+        }
+      },
+      "scorer": {
+        "composite": 0,
+        "recommendation": "Skip",
+        "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+        "arithmetic": "(0.9·0.35) × 0 × 1 = 0.000"
+      },
+      "next": {
+        "action": "WATCH",
+        "why": "no live matching posting, Proven sponsor, but funding aging — re-check board later; low networking priority"
+      }
+    },
+    {
+      "company": "PATHAI INC",
+      "role_id": "pathaiinc",
+      "evidence": {
+        "city": {
+          "value": "CAMBRIDGE",
+          "source": "record",
+          "from": "80-days CSV city"
+        },
+        "h1b_approvals": {
+          "value": 78,
+          "source": "record",
+          "from": "80-days CSV Total Approvals",
+          "caveat": "every count in this CSV is even — possible 2× join; see data_anomalies"
+        },
+        "h1b_denials": {
+          "value": 2,
+          "source": "record",
+          "from": "80-days CSV Total Denials"
+        },
+        "approval_rate_pct": {
+          "value": 97.5,
+          "source": "record",
+          "from": "80-days CSV Approval_Rate"
+        },
+        "sponsored_titles": {
+          "value": [
+            "Software Engineer I",
+            "Director of Engineering",
+            "Machine Learning Engineer III",
+            "Senior Machine Learning Engineer",
+            "Machine Learning Engineer II"
+          ],
+          "source": "record",
+          "from": "80-days CSV top_job_titles_sponsored"
+        },
+        "sponsorship_tier": {
+          "value": "Proven",
+          "p": 0.9,
+          "source": "your-input",
+          "from": "persona.sponsorship_rules applied to the record counts"
+        },
+        "latest_funding_date": {
+          "value": "2019-04-09",
+          "stage": "Series C",
+          "amount": 60004900,
+          "source": "record",
+          "from": "80-days CSV latest_funding_* (derived upstream from SEC Form D)"
+        },
+        "funding_recency": {
+          "months_since": 89,
+          "bucket": "stale",
+          "source": "your-input",
+          "from": "persona.funding_windows applied to latest_funding_date"
+        },
+        "form_d_sample": {
+          "value": "not-in-sample",
+          "source": "record",
+          "from": "4 Form D sample files (200 filings); absence in a 50-row sample is not absence of a filing"
+        },
+        "board": {
+          "status": "ok",
+          "factor": 1,
+          "job_count": 17,
+          "matching": [
+            {
+              "title": "Senior Software Engineer, Backend",
+              "url": "https://www.pathai.com/careers/8801819002?gh_jid=8801819002",
+              "location": "Boston, MA (Hybrid)"
+            },
+            {
+              "title": "Senior Software Engineer, Fullstack",
+              "url": "https://www.pathai.com/careers/8696763002?gh_jid=8696763002",
+              "location": "Boston, MA (Hybrid)"
+            },
+            {
+              "title": "Senior Software Engineer, ML Ops",
+              "url": "https://www.pathai.com/careers/8769653002?gh_jid=8769653002",
+              "location": "Boston, MA"
+            },
+            {
+              "title": "Senior/Staff Site Reliability Engineer - Data Center",
+              "url": "https://www.pathai.com/careers/8696773002?gh_jid=8696773002",
+              "location": "Boston (preferred), NYC, or Indianapolis"
+            },
+            {
+              "title": "Software Engineer I, Fullstack",
+              "url": "https://www.pathai.com/careers/8696764002?gh_jid=8696764002",
+              "location": "Boston, MA (Hybrid)"
+            }
+          ],
+          "title_match_wrong_location": [],
+          "adjacent_titles": [
+            "Implementation Engineer, Digital Diagnostics (DDx) — Boston, MA or Remote",
+            "Machine Learning Engineer II (Applied Research & Model Development) — Boston (Onsite), New York (Onsite) Preferred, or Remote",
+            "Machine Learning Engineer III (Applied Research & Model Development) — Boston (Onsite), New York (Onsite) Preferred, or Remote",
+            "Software Development Engineer in Test (SDET) — Boston, MA"
+          ],
+          "source": "record",
+          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "captured_at": "2026-10-02T19:27:39.687Z"
+        },
+        "timeline_factor": {
+          "value": 1,
+          "source": "your-input",
+          "from": "persona OPT end date + hiring-lag assumption"
+        }
+      },
+      "scorer": {
+        "composite": 0.315,
+        "recommendation": "Apply",
+        "reason": "composite 0.315 ≥ 0.3, gates healthy",
+        "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+      },
+      "next": {
+        "action": "APPLY",
+        "why": "scorer Apply — tailor an application (2 research-and-apply hours)"
+      }
+    },
+    {
+      "company": "PEGASYSTEMS INC",
+      "role_id": "pegasystemsinc",
+      "evidence": {
+        "city": {
+          "value": "CAMBRIDGE",
+          "source": "record",
+          "from": "80-days CSV city"
+        },
+        "h1b_approvals": {
+          "value": 180,
+          "source": "record",
+          "from": "80-days CSV Total Approvals",
+          "caveat": "every count in this CSV is even — possible 2× join; see data_anomalies"
+        },
+        "h1b_denials": {
+          "value": 2,
+          "source": "record",
+          "from": "80-days CSV Total Denials"
+        },
+        "approval_rate_pct": {
+          "value": 98.9010989010989,
+          "source": "record",
+          "from": "80-days CSV Approval_Rate"
+        },
+        "sponsored_titles": {
+          "value": [
+            "Principal Technical Solutions Engineer",
+            "Senior Software Architect, Insights & Visualizations",
+            "Principal System Architect",
+            "Senior Software Engineer, Object Runtime",
+            "Software Engineer, Model Runtime"
+          ],
+          "source": "record",
+          "from": "80-days CSV top_job_titles_sponsored"
+        },
+        "sponsorship_tier": {
+          "value": "Proven",
+          "p": 0.9,
+          "source": "your-input",
+          "from": "persona.sponsorship_rules applied to the record counts"
+        },
+        "latest_funding_date": {
+          "value": "2019-05-10",
+          "stage": "Pre-Seed",
+          "amount": 1000000,
+          "source": "record",
+          "from": "80-days CSV latest_funding_* (derived upstream from SEC Form D)"
+        },
+        "funding_recency": {
+          "months_since": 88,
+          "bucket": "stale",
+          "source": "your-input",
+          "from": "persona.funding_windows applied to latest_funding_date"
+        },
+        "form_d_sample": {
+          "value": "not-in-sample",
+          "source": "record",
+          "from": "4 Form D sample files (200 filings); absence in a 50-row sample is not absence of a filing"
+        },
+        "board": {
+          "status": "not_found",
+          "factor": null,
+          "note": "no greenhouse/lever/ashby board for slug \"pegasystems\" on 2026-10-02 — may use Workday or another ATS",
+          "source": null,
+          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "captured_at": "2026-10-02T19:27:39.687Z"
+        },
+        "timeline_factor": {
+          "value": 1,
+          "source": "your-input",
+          "from": "persona OPT end date + hiring-lag assumption"
+        }
+      },
+      "scorer": null,
+      "next": {
+        "action": "UNVERIFIED",
+        "why": "board not_found — liveness unknown, not sent to the scorer"
+      }
+    },
+    {
+      "company": "PIONEAR TECHNOLOGIES INC",
+      "role_id": "pioneartechnologiesinc",
+      "evidence": {
+        "city": {
+          "value": "Allston",
+          "source": "record",
+          "from": "80-days CSV city"
+        },
+        "h1b_approvals": {
+          "value": 10,
+          "source": "record",
+          "from": "80-days CSV Total Approvals",
+          "caveat": "every count in this CSV is even — possible 2× join; see data_anomalies"
+        },
+        "h1b_denials": {
+          "value": 0,
+          "source": "record",
+          "from": "80-days CSV Total Denials"
+        },
+        "approval_rate_pct": {
+          "value": 100,
+          "source": "record",
+          "from": "80-days CSV Approval_Rate"
+        },
+        "sponsored_titles": {
+          "value": [
+            "Software Developer"
+          ],
+          "source": "record",
+          "from": "80-days CSV top_job_titles_sponsored"
+        },
+        "sponsorship_tier": {
+          "value": "Likely",
+          "p": 0.6,
+          "source": "your-input",
+          "from": "persona.sponsorship_rules applied to the record counts"
+        },
+        "latest_funding_date": {
+          "value": "2020-11-11",
+          "stage": "Pre-Seed",
+          "amount": 2100000,
+          "source": "record",
+          "from": "80-days CSV latest_funding_* (derived upstream from SEC Form D)"
+        },
+        "funding_recency": {
+          "months_since": 70,
+          "bucket": "stale",
+          "source": "your-input",
+          "from": "persona.funding_windows applied to latest_funding_date"
+        },
+        "form_d_sample": {
+          "value": "not-in-sample",
+          "source": "record",
+          "from": "4 Form D sample files (200 filings); absence in a 50-row sample is not absence of a filing"
+        },
+        "board": {
+          "status": "unmapped",
+          "factor": null,
+          "source": null,
+          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "captured_at": "2026-10-02T19:27:39.687Z"
+        },
+        "timeline_factor": {
+          "value": 1,
+          "source": "your-input",
+          "from": "persona OPT end date + hiring-lag assumption"
+        }
+      },
+      "scorer": null,
+      "next": {
+        "action": "UNVERIFIED",
+        "why": "board unmapped — liveness unknown, not sent to the scorer"
+      }
+    },
+    {
+      "company": "PRIME CONSULTING GROUP LLC",
+      "role_id": "primeconsultinggroupllc",
+      "evidence": {
+        "city": {
+          "value": "HOLDEN",
+          "source": "record",
+          "from": "80-days CSV city"
+        },
+        "h1b_approvals": {
+          "value": 46,
+          "source": "record",
+          "from": "80-days CSV Total Approvals",
+          "caveat": "every count in this CSV is even — possible 2× join; see data_anomalies"
+        },
+        "h1b_denials": {
+          "value": 2,
+          "source": "record",
+          "from": "80-days CSV Total Denials"
+        },
+        "approval_rate_pct": {
+          "value": 95.83333333333334,
+          "source": "record",
+          "from": "80-days CSV Approval_Rate"
+        },
+        "sponsored_titles": {
+          "value": [
+            "INTEGRATED IMPLEMENTATION ENGINEER",
+            "SOFTWARE ENGINEER - INTEGRATION APPLICATIONS",
+            "Software Engineer"
+          ],
+          "source": "record",
+          "from": "80-days CSV top_job_titles_sponsored"
+        },
+        "sponsorship_tier": {
+          "value": "Proven",
+          "p": 0.9,
+          "source": "your-input",
+          "from": "persona.sponsorship_rules applied to the record counts"
+        },
+        "latest_funding_date": {
+          "value": "2015-06-12",
+          "stage": "Series A",
+          "amount": 7750000,
+          "source": "record",
+          "from": "80-days CSV latest_funding_* (derived upstream from SEC Form D)"
+        },
+        "funding_recency": {
+          "months_since": 135,
+          "bucket": "stale",
+          "source": "your-input",
+          "from": "persona.funding_windows applied to latest_funding_date"
+        },
+        "form_d_sample": {
+          "value": "not-in-sample",
+          "source": "record",
+          "from": "4 Form D sample files (200 filings); absence in a 50-row sample is not absence of a filing"
+        },
+        "board": {
+          "status": "unmapped",
+          "factor": null,
+          "source": null,
+          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "captured_at": "2026-10-02T19:27:39.687Z"
+        },
+        "timeline_factor": {
+          "value": 1,
+          "source": "your-input",
+          "from": "persona OPT end date + hiring-lag assumption"
+        }
+      },
+      "scorer": null,
+      "next": {
+        "action": "UNVERIFIED",
+        "why": "board unmapped — liveness unknown, not sent to the scorer"
+      }
+    },
+    {
+      "company": "PRM SOLUTIONS INC",
+      "role_id": "prmsolutionsinc",
+      "evidence": {
+        "city": {
+          "value": "CAMBRIDGE",
+          "source": "record",
+          "from": "80-days CSV city"
+        },
+        "h1b_approvals": {
+          "value": 2,
+          "source": "record",
+          "from": "80-days CSV Total Approvals",
+          "caveat": "every count in this CSV is even — possible 2× join; see data_anomalies"
+        },
+        "h1b_denials": {
+          "value": 0,
+          "source": "record",
+          "from": "80-days CSV Total Denials"
+        },
+        "approval_rate_pct": {
+          "value": 100,
+          "source": "record",
+          "from": "80-days CSV Approval_Rate"
+        },
+        "sponsored_titles": {
+          "value": [
+            "Backend Data Engineer"
+          ],
+          "source": "record",
+          "from": "80-days CSV top_job_titles_sponsored"
+        },
+        "sponsorship_tier": {
+          "value": "Possible",
+          "p": 0.3,
+          "source": "your-input",
+          "from": "persona.sponsorship_rules applied to the record counts"
+        },
+        "latest_funding_date": {
+          "value": "2021-07-16",
+          "stage": "Series B",
+          "amount": 24041802,
+          "source": "record",
+          "from": "80-days CSV latest_funding_* (derived upstream from SEC Form D)"
+        },
+        "funding_recency": {
+          "months_since": 62,
+          "bucket": "stale",
+          "source": "your-input",
+          "from": "persona.funding_windows applied to latest_funding_date"
+        },
+        "form_d_sample": {
+          "value": "not-in-sample",
+          "source": "record",
+          "from": "4 Form D sample files (200 filings); absence in a 50-row sample is not absence of a filing"
+        },
+        "board": {
+          "status": "unmapped",
+          "factor": null,
+          "source": null,
+          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "captured_at": "2026-10-02T19:27:39.687Z"
+        },
+        "timeline_factor": {
+          "value": 1,
+          "source": "your-input",
+          "from": "persona OPT end date + hiring-lag assumption"
+        }
+      },
+      "scorer": null,
+      "next": {
+        "action": "UNVERIFIED",
+        "why": "board unmapped — liveness unknown, not sent to the scorer"
+      }
+    },
+    {
+      "company": "PUBMARK INC",
+      "role_id": "pubmarkinc",
+      "evidence": {
+        "city": {
+          "value": "CAMBRIDGE",
+          "source": "record",
+          "from": "80-days CSV city"
+        },
+        "h1b_approvals": {
+          "value": 4,
+          "source": "record",
+          "from": "80-days CSV Total Approvals",
+          "caveat": "every count in this CSV is even — possible 2× join; see data_anomalies"
+        },
+        "h1b_denials": {
+          "value": 0,
+          "source": "record",
+          "from": "80-days CSV Total Denials"
+        },
+        "approval_rate_pct": {
+          "value": 100,
+          "source": "record",
+          "from": "80-days CSV Approval_Rate"
+        },
+        "sponsored_titles": {
+          "value": [
+            "Software Engineer"
+          ],
+          "source": "record",
+          "from": "80-days CSV top_job_titles_sponsored"
+        },
+        "sponsorship_tier": {
+          "value": "Possible",
+          "p": 0.3,
+          "source": "your-input",
+          "from": "persona.sponsorship_rules applied to the record counts"
+        },
+        "latest_funding_date": {
+          "value": "2015-05-07",
+          "stage": "Seed",
+          "amount": 4000000,
+          "source": "record",
+          "from": "80-days CSV latest_funding_* (derived upstream from SEC Form D)"
+        },
+        "funding_recency": {
+          "months_since": 136,
+          "bucket": "stale",
+          "source": "your-input",
+          "from": "persona.funding_windows applied to latest_funding_date"
+        },
+        "form_d_sample": {
+          "value": "not-in-sample",
+          "source": "record",
+          "from": "4 Form D sample files (200 filings); absence in a 50-row sample is not absence of a filing"
+        },
+        "board": {
+          "status": "unmapped",
+          "factor": null,
+          "source": null,
+          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "captured_at": "2026-10-02T19:27:39.687Z"
+        },
+        "timeline_factor": {
+          "value": 1,
+          "source": "your-input",
+          "from": "persona OPT end date + hiring-lag assumption"
+        }
+      },
+      "scorer": null,
+      "next": {
+        "action": "UNVERIFIED",
+        "why": "board unmapped — liveness unknown, not sent to the scorer"
+      }
+    },
+    {
+      "company": "REGENT CRAFT INC",
+      "role_id": "regentcraftinc",
+      "evidence": {
+        "city": {
+          "value": "BURLINGTON",
+          "source": "record",
+          "from": "80-days CSV city"
+        },
+        "h1b_approvals": {
+          "value": 18,
+          "source": "record",
+          "from": "80-days CSV Total Approvals",
+          "caveat": "every count in this CSV is even — possible 2× join; see data_anomalies"
+        },
+        "h1b_denials": {
+          "value": 0,
+          "source": "record",
+          "from": "80-days CSV Total Denials"
+        },
+        "approval_rate_pct": {
+          "value": 100,
+          "source": "record",
+          "from": "80-days CSV Approval_Rate"
+        },
+        "sponsored_titles": {
+          "value": [
+            "Software Engineer, Sensor Fusion & Autonomy"
+          ],
+          "source": "record",
+          "from": "80-days CSV top_job_titles_sponsored"
+        },
+        "sponsorship_tier": {
+          "value": "Likely",
+          "p": 0.6,
+          "source": "your-input",
+          "from": "persona.sponsorship_rules applied to the record counts"
+        },
+        "latest_funding_date": {
+          "value": "2021-12-29",
+          "stage": "Series B",
+          "amount": 28805053,
+          "source": "record",
+          "from": "80-days CSV latest_funding_* (derived upstream from SEC Form D)"
+        },
+        "funding_recency": {
+          "months_since": 57,
+          "bucket": "stale",
+          "source": "your-input",
+          "from": "persona.funding_windows applied to latest_funding_date"
+        },
+        "form_d_sample": {
+          "value": "not-in-sample",
+          "source": "record",
+          "from": "4 Form D sample files (200 filings); absence in a 50-row sample is not absence of a filing"
+        },
+        "board": {
+          "status": "ambiguous",
+          "factor": null,
+          "note": "slug \"regent\" answers on BOTH greenhouse (10 jobs) and ashby (31 jobs); which board is Regent Craft is a human call",
+          "source": null,
+          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "captured_at": "2026-10-02T19:27:39.687Z"
+        },
+        "timeline_factor": {
+          "value": 1,
+          "source": "your-input",
+          "from": "persona OPT end date + hiring-lag assumption"
+        }
+      },
+      "scorer": null,
+      "next": {
+        "action": "UNVERIFIED",
+        "why": "board ambiguous — liveness unknown, not sent to the scorer"
+      }
+    },
+    {
+      "company": "RESURETY INC",
+      "role_id": "resuretyinc",
+      "evidence": {
+        "city": {
+          "value": "BOSTON",
+          "source": "record",
+          "from": "80-days CSV city"
+        },
+        "h1b_approvals": {
+          "value": 14,
+          "source": "record",
+          "from": "80-days CSV Total Approvals",
+          "caveat": "every count in this CSV is even — possible 2× join; see data_anomalies"
+        },
+        "h1b_denials": {
+          "value": 2,
+          "source": "record",
+          "from": "80-days CSV Total Denials"
+        },
+        "approval_rate_pct": {
+          "value": 87.5,
+          "source": "record",
+          "from": "80-days CSV Approval_Rate"
+        },
+        "sponsored_titles": {
+          "value": [
+            "Product Associate",
+            "Software Engineer"
+          ],
+          "source": "record",
+          "from": "80-days CSV top_job_titles_sponsored"
+        },
+        "sponsorship_tier": {
+          "value": "Likely",
+          "p": 0.6,
+          "source": "your-input",
+          "from": "persona.sponsorship_rules applied to the record counts"
+        },
+        "latest_funding_date": {
+          "value": "2021-10-14",
+          "stage": "Series B",
+          "amount": 16000006,
+          "source": "record",
+          "from": "80-days CSV latest_funding_* (derived upstream from SEC Form D)"
+        },
+        "funding_recency": {
+          "months_since": 59,
+          "bucket": "stale",
+          "source": "your-input",
+          "from": "persona.funding_windows applied to latest_funding_date"
+        },
+        "form_d_sample": {
+          "value": "not-in-sample",
+          "source": "record",
+          "from": "4 Form D sample files (200 filings); absence in a 50-row sample is not absence of a filing"
+        },
+        "board": {
+          "status": "not_found",
+          "factor": null,
+          "note": "no greenhouse/lever/ashby board for slug \"resurety\" on 2026-10-02 — may use Workday or another ATS",
+          "source": null,
+          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "captured_at": "2026-10-02T19:27:39.687Z"
+        },
+        "timeline_factor": {
+          "value": 1,
+          "source": "your-input",
+          "from": "persona OPT end date + hiring-lag assumption"
+        }
+      },
+      "scorer": null,
+      "next": {
+        "action": "UNVERIFIED",
+        "why": "board not_found — liveness unknown, not sent to the scorer"
+      }
+    },
+    {
+      "company": "SECEON INC",
+      "role_id": "seceoninc",
+      "evidence": {
+        "city": {
+          "value": "WESTFORD",
+          "source": "record",
+          "from": "80-days CSV city"
+        },
+        "h1b_approvals": {
+          "value": 12,
+          "source": "record",
+          "from": "80-days CSV Total Approvals",
+          "caveat": "every count in this CSV is even — possible 2× join; see data_anomalies"
+        },
+        "h1b_denials": {
+          "value": 0,
+          "source": "record",
+          "from": "80-days CSV Total Denials"
+        },
+        "approval_rate_pct": {
+          "value": 100,
+          "source": "record",
+          "from": "80-days CSV Approval_Rate"
+        },
+        "sponsored_titles": {
+          "value": [
+            "Software Engineer"
+          ],
+          "source": "record",
+          "from": "80-days CSV top_job_titles_sponsored"
+        },
+        "sponsorship_tier": {
+          "value": "Likely",
+          "p": 0.6,
+          "source": "your-input",
+          "from": "persona.sponsorship_rules applied to the record counts"
+        },
+        "latest_funding_date": {
+          "value": "2015-09-25",
+          "stage": "Pre-Seed",
+          "amount": 2300000,
+          "source": "record",
+          "from": "80-days CSV latest_funding_* (derived upstream from SEC Form D)"
+        },
+        "funding_recency": {
+          "months_since": 132,
+          "bucket": "stale",
+          "source": "your-input",
+          "from": "persona.funding_windows applied to latest_funding_date"
+        },
+        "form_d_sample": {
+          "value": "not-in-sample",
+          "source": "record",
+          "from": "4 Form D sample files (200 filings); absence in a 50-row sample is not absence of a filing"
+        },
+        "board": {
+          "status": "unmapped",
+          "factor": null,
+          "source": null,
+          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "captured_at": "2026-10-02T19:27:39.687Z"
+        },
+        "timeline_factor": {
+          "value": 1,
+          "source": "your-input",
+          "from": "persona OPT end date + hiring-lag assumption"
+        }
+      },
+      "scorer": null,
+      "next": {
+        "action": "UNVERIFIED",
+        "why": "board unmapped — liveness unknown, not sent to the scorer"
+      }
+    },
+    {
+      "company": "SILVERRAIL TECHNOLOGIES INC",
+      "role_id": "silverrailtechnologiesinc",
+      "evidence": {
+        "city": {
+          "value": "WOBURN",
+          "source": "record",
+          "from": "80-days CSV city"
+        },
+        "h1b_approvals": {
+          "value": 4,
+          "source": "record",
+          "from": "80-days CSV Total Approvals",
+          "caveat": "every count in this CSV is even — possible 2× join; see data_anomalies"
+        },
+        "h1b_denials": {
+          "value": 0,
+          "source": "record",
+          "from": "80-days CSV Total Denials"
+        },
+        "approval_rate_pct": {
+          "value": 100,
+          "source": "record",
+          "from": "80-days CSV Approval_Rate"
+        },
+        "sponsored_titles": {
+          "value": [
+            "Software Developer"
+          ],
+          "source": "record",
+          "from": "80-days CSV top_job_titles_sponsored"
+        },
+        "sponsorship_tier": {
+          "value": "Possible",
+          "p": 0.3,
+          "source": "your-input",
+          "from": "persona.sponsorship_rules applied to the record counts"
+        },
+        "latest_funding_date": {
+          "value": "2014-04-08",
+          "stage": "Series B",
+          "amount": 40000000,
+          "source": "record",
+          "from": "80-days CSV latest_funding_* (derived upstream from SEC Form D)"
+        },
+        "funding_recency": {
+          "months_since": 149,
+          "bucket": "stale",
+          "source": "your-input",
+          "from": "persona.funding_windows applied to latest_funding_date"
+        },
+        "form_d_sample": {
+          "value": "not-in-sample",
+          "source": "record",
+          "from": "4 Form D sample files (200 filings); absence in a 50-row sample is not absence of a filing"
+        },
+        "board": {
+          "status": "unmapped",
+          "factor": null,
+          "source": null,
+          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "captured_at": "2026-10-02T19:27:39.687Z"
+        },
+        "timeline_factor": {
+          "value": 1,
+          "source": "your-input",
+          "from": "persona OPT end date + hiring-lag assumption"
+        }
+      },
+      "scorer": null,
+      "next": {
+        "action": "UNVERIFIED",
+        "why": "board unmapped — liveness unknown, not sent to the scorer"
+      }
+    },
+    {
+      "company": "SOFAR SOUNDS LTD",
+      "role_id": "sofarsoundsltd",
+      "evidence": {
+        "city": {
+          "value": "SOMERVILLE",
+          "source": "record",
+          "from": "80-days CSV city"
+        },
+        "h1b_approvals": {
+          "value": 2,
+          "source": "record",
+          "from": "80-days CSV Total Approvals",
+          "caveat": "every count in this CSV is even — possible 2× join; see data_anomalies"
+        },
+        "h1b_denials": {
+          "value": 0,
+          "source": "record",
+          "from": "80-days CSV Total Denials"
+        },
+        "approval_rate_pct": {
+          "value": 100,
+          "source": "record",
+          "from": "80-days CSV Approval_Rate"
+        },
+        "sponsored_titles": {
+          "value": [
+            "Data Analyst",
+            "Senior Software Engineer (Operational Capabilities Team)"
+          ],
+          "source": "record",
+          "from": "80-days CSV top_job_titles_sponsored"
+        },
+        "sponsorship_tier": {
+          "value": "Possible",
+          "p": 0.3,
+          "source": "your-input",
+          "from": "persona.sponsorship_rules applied to the record counts"
+        },
+        "latest_funding_date": {
+          "value": "2021-02-09",
+          "stage": "Seed",
+          "amount": 2715206,
+          "source": "record",
+          "from": "80-days CSV latest_funding_* (derived upstream from SEC Form D)"
+        },
+        "funding_recency": {
+          "months_since": 67,
+          "bucket": "stale",
+          "source": "your-input",
+          "from": "persona.funding_windows applied to latest_funding_date"
+        },
+        "form_d_sample": {
+          "value": "not-in-sample",
+          "source": "record",
+          "from": "4 Form D sample files (200 filings); absence in a 50-row sample is not absence of a filing"
+        },
+        "board": {
+          "status": "unmapped",
+          "factor": null,
+          "source": null,
+          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "captured_at": "2026-10-02T19:27:39.687Z"
+        },
+        "timeline_factor": {
+          "value": 1,
+          "source": "your-input",
+          "from": "persona OPT end date + hiring-lag assumption"
+        }
+      },
+      "scorer": null,
+      "next": {
+        "action": "UNVERIFIED",
+        "why": "board unmapped — liveness unknown, not sent to the scorer"
+      }
+    },
+    {
+      "company": "TETRASCIENCE INC",
+      "role_id": "tetrascienceinc",
+      "evidence": {
+        "city": {
+          "value": "BOSTON",
+          "source": "record",
+          "from": "80-days CSV city"
+        },
+        "h1b_approvals": {
+          "value": 10,
+          "source": "record",
+          "from": "80-days CSV Total Approvals",
+          "caveat": "every count in this CSV is even — possible 2× join; see data_anomalies"
+        },
+        "h1b_denials": {
+          "value": 0,
+          "source": "record",
+          "from": "80-days CSV Total Denials"
+        },
+        "approval_rate_pct": {
+          "value": 100,
+          "source": "record",
+          "from": "80-days CSV Approval_Rate"
+        },
+        "sponsored_titles": {
+          "value": [
+            "Senior Software Engineering Manager"
+          ],
+          "source": "record",
+          "from": "80-days CSV top_job_titles_sponsored"
+        },
+        "sponsorship_tier": {
+          "value": "Likely",
+          "p": 0.6,
+          "source": "your-input",
+          "from": "persona.sponsorship_rules applied to the record counts"
+        },
+        "latest_funding_date": {
+          "value": "2021-03-26",
+          "stage": "Series C",
+          "amount": 50999950,
+          "source": "record",
+          "from": "80-days CSV latest_funding_* (derived upstream from SEC Form D)"
+        },
+        "funding_recency": {
+          "months_since": 66,
+          "bucket": "stale",
+          "source": "your-input",
+          "from": "persona.funding_windows applied to latest_funding_date"
+        },
+        "form_d_sample": {
+          "value": "not-in-sample",
+          "source": "record",
+          "from": "4 Form D sample files (200 filings); absence in a 50-row sample is not absence of a filing"
+        },
+        "board": {
+          "status": "not_found",
+          "factor": null,
+          "note": "no greenhouse/lever/ashby board for slug \"tetrascience\" on 2026-10-02 — may use Workday or another ATS",
+          "source": null,
+          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "captured_at": "2026-10-02T19:27:39.687Z"
+        },
+        "timeline_factor": {
+          "value": 1,
+          "source": "your-input",
+          "from": "persona OPT end date + hiring-lag assumption"
+        }
+      },
+      "scorer": null,
+      "next": {
+        "action": "UNVERIFIED",
+        "why": "board not_found — liveness unknown, not sent to the scorer"
+      }
+    },
+    {
+      "company": "TOAST INC",
+      "role_id": "toastinc",
+      "evidence": {
+        "city": {
+          "value": "BOSTON",
+          "source": "record",
+          "from": "80-days CSV city"
+        },
+        "h1b_approvals": {
+          "value": 150,
+          "source": "record",
+          "from": "80-days CSV Total Approvals",
+          "caveat": "every count in this CSV is even — possible 2× join; see data_anomalies"
+        },
+        "h1b_denials": {
+          "value": 4,
+          "source": "record",
+          "from": "80-days CSV Total Denials"
+        },
+        "approval_rate_pct": {
+          "value": 97.4025974025974,
+          "source": "record",
+          "from": "80-days CSV Approval_Rate"
+        },
+        "sponsored_titles": {
+          "value": [
+            "Senior Software Engineer",
+            "Senior Credit Risk Analyst",
+            "Staff Software Engineer/Team Lead Manager",
+            "Senior Systems Architect, Salesforce Engineering",
+            "Staff Software Engineer - Payments Extensibility, Tech Lead"
+          ],
+          "source": "record",
+          "from": "80-days CSV top_job_titles_sponsored"
+        },
+        "sponsorship_tier": {
+          "value": "Proven",
+          "p": 0.9,
+          "source": "your-input",
+          "from": "persona.sponsorship_rules applied to the record counts"
+        },
+        "latest_funding_date": {
+          "value": "2015-12-23",
+          "stage": "Series B",
+          "amount": 23200000,
+          "source": "record",
+          "from": "80-days CSV latest_funding_* (derived upstream from SEC Form D)"
+        },
+        "funding_recency": {
+          "months_since": 129,
+          "bucket": "stale",
+          "source": "your-input",
+          "from": "persona.funding_windows applied to latest_funding_date"
+        },
+        "form_d_sample": {
+          "value": "not-in-sample",
+          "source": "record",
+          "from": "4 Form D sample files (200 filings); absence in a 50-row sample is not absence of a filing"
+        },
+        "board": {
+          "status": "unmapped",
+          "factor": null,
+          "source": null,
+          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "captured_at": "2026-10-02T19:27:39.687Z"
+        },
+        "timeline_factor": {
+          "value": 1,
+          "source": "your-input",
+          "from": "persona OPT end date + hiring-lag assumption"
+        }
+      },
+      "scorer": null,
+      "next": {
+        "action": "UNVERIFIED",
+        "why": "board unmapped — liveness unknown, not sent to the scorer"
+      }
+    },
+    {
+      "company": "TRACELINK INC",
+      "role_id": "tracelinkinc",
+      "evidence": {
+        "city": {
+          "value": "WAKEFIELD",
+          "source": "record",
+          "from": "80-days CSV city"
+        },
+        "h1b_approvals": {
+          "value": 112,
+          "source": "record",
+          "from": "80-days CSV Total Approvals",
+          "caveat": "every count in this CSV is even — possible 2× join; see data_anomalies"
+        },
+        "h1b_denials": {
+          "value": 4,
+          "source": "record",
+          "from": "80-days CSV Total Denials"
+        },
+        "approval_rate_pct": {
+          "value": 96.55172413793105,
+          "source": "record",
+          "from": "80-days CSV Approval_Rate"
+        },
+        "sponsored_titles": {
+          "value": [
+            "Senior Software Engineer",
+            "Senior Technical Product Manager",
+            "Software Engineer in Test III",
+            "Software Engineer in Test II",
+            "Technical Product Manager"
+          ],
+          "source": "record",
+          "from": "80-days CSV top_job_titles_sponsored"
+        },
+        "sponsorship_tier": {
+          "value": "Proven",
+          "p": 0.9,
+          "source": "your-input",
+          "from": "persona.sponsorship_rules applied to the record counts"
+        },
+        "latest_funding_date": {
+          "value": "2018-05-25",
+          "stage": "Series C",
+          "amount": 59999912,
+          "source": "record",
+          "from": "80-days CSV latest_funding_* (derived upstream from SEC Form D)"
+        },
+        "funding_recency": {
+          "months_since": 100,
+          "bucket": "stale",
+          "source": "your-input",
+          "from": "persona.funding_windows applied to latest_funding_date"
+        },
+        "form_d_sample": {
+          "value": "not-in-sample",
+          "source": "record",
+          "from": "4 Form D sample files (200 filings); absence in a 50-row sample is not absence of a filing"
+        },
+        "board": {
+          "status": "unmapped",
+          "factor": null,
+          "source": null,
+          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "captured_at": "2026-10-02T19:27:39.687Z"
+        },
+        "timeline_factor": {
+          "value": 1,
+          "source": "your-input",
+          "from": "persona OPT end date + hiring-lag assumption"
+        }
+      },
+      "scorer": null,
+      "next": {
+        "action": "UNVERIFIED",
+        "why": "board unmapped — liveness unknown, not sent to the scorer"
+      }
+    },
+    {
+      "company": "TULIP INTERFACES INC",
+      "role_id": "tulipinterfacesinc",
+      "evidence": {
+        "city": {
+          "value": "SOMERVILLE",
+          "source": "record",
+          "from": "80-days CSV city"
+        },
+        "h1b_approvals": {
+          "value": 18,
+          "source": "record",
+          "from": "80-days CSV Total Approvals",
+          "caveat": "every count in this CSV is even — possible 2× join; see data_anomalies"
+        },
+        "h1b_denials": {
+          "value": 0,
+          "source": "record",
+          "from": "80-days CSV Total Denials"
+        },
+        "approval_rate_pct": {
+          "value": 100,
+          "source": "record",
+          "from": "80-days CSV Approval_Rate"
+        },
+        "sponsored_titles": {
+          "value": [
+            "Software Engineer"
+          ],
+          "source": "record",
+          "from": "80-days CSV top_job_titles_sponsored"
+        },
+        "sponsorship_tier": {
+          "value": "Likely",
+          "p": 0.6,
+          "source": "your-input",
+          "from": "persona.sponsorship_rules applied to the record counts"
+        },
+        "latest_funding_date": {
+          "value": "2021-07-19",
+          "stage": "Series C",
+          "amount": 99999935,
+          "source": "record",
+          "from": "80-days CSV latest_funding_* (derived upstream from SEC Form D)"
+        },
+        "funding_recency": {
+          "months_since": 62,
+          "bucket": "stale",
+          "source": "your-input",
+          "from": "persona.funding_windows applied to latest_funding_date"
+        },
+        "form_d_sample": {
+          "value": "not-in-sample",
+          "source": "record",
+          "from": "4 Form D sample files (200 filings); absence in a 50-row sample is not absence of a filing"
+        },
+        "board": {
+          "status": "ok",
+          "factor": 1,
+          "job_count": 69,
+          "matching": [
+            {
+              "title": "Full-Stack Software Engineer",
+              "url": "https://tulip.co/careers/job-posting/?gh_jid=7832890003",
+              "location": "Somerville, MA"
+            },
+            {
+              "title": "Lead DevOps Engineer",
+              "url": "https://tulip.co/careers/job-posting/?gh_jid=7813176003",
+              "location": "Somerville, MA"
+            },
+            {
+              "title": "Senior Site Reliability Engineer",
+              "url": "https://tulip.co/careers/job-posting/?gh_jid=7814583003",
+              "location": "Somerville, MA"
+            },
+            {
+              "title": "Software Engineer, Agentic AI",
+              "url": "https://tulip.co/careers/job-posting/?gh_jid=7710246003",
+              "location": "Somerville, MA"
+            },
+            {
+              "title": "Software Engineer, Frameworks",
+              "url": "https://tulip.co/careers/job-posting/?gh_jid=7832884003",
+              "location": "Somerville, MA"
+            }
+          ],
+          "title_match_wrong_location": [
+            "Backend Software Engineer_HU — Budapest, Hungary",
+            "Embedded Software Engineer - HU — Budapest, Hungary",
+            "Full Stack Software Engineer — Budapest, Hungary",
+            "Senior DevOps Engineer — Japan - Remote"
+          ],
+          "adjacent_titles": [
+            "Cloud Security Engineer — Somerville, MA",
+            "Developer Experience Engineer — Somerville, MA",
+            "DevX Engineer- AI Enablement — Somerville, MA",
+            "Ecosystem Engineer Co-op — Somerville, MA",
+            "GTM Systems Engineer — Somerville, MA",
+            "Manufacturing Solutions Engineer — Somerville, MA",
+            "Pre Sales Engineer — Somerville, MA",
+            "Revenue Operations Engineer — Somerville, MA",
+            "Senior Manufacturing Solutions Engineer — Somerville, MA",
+            "Technical Sales Engineer — Somerville, MA"
+          ],
+          "source": "record",
+          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "captured_at": "2026-10-02T19:27:39.687Z"
+        },
+        "timeline_factor": {
+          "value": 1,
+          "source": "your-input",
+          "from": "persona OPT end date + hiring-lag assumption"
+        }
+      },
+      "scorer": {
+        "composite": 0.21,
+        "recommendation": "Consider",
+        "reason": "composite 0.210 in the Consider band [0.2, 0.3)",
+        "arithmetic": "(0.6·0.35) × 1 × 1 = 0.210"
+      },
+      "next": {
+        "action": "CONSIDER",
+        "why": "scorer Consider — composite 0.210 in the Consider band [0.2, 0.3)"
+      }
+    },
+    {
+      "company": "TWINE HEALTH INC",
+      "role_id": "twinehealthinc",
+      "evidence": {
+        "city": {
+          "value": "CAMBRIDGE",
+          "source": "record",
+          "from": "80-days CSV city"
+        },
+        "h1b_approvals": {
+          "value": 40,
+          "source": "record",
+          "from": "80-days CSV Total Approvals",
+          "caveat": "every count in this CSV is even — possible 2× join; see data_anomalies"
+        },
+        "h1b_denials": {
+          "value": 0,
+          "source": "record",
+          "from": "80-days CSV Total Denials"
+        },
+        "approval_rate_pct": {
+          "value": 100,
+          "source": "record",
+          "from": "80-days CSV Approval_Rate"
+        },
+        "sponsored_titles": {
+          "value": [
+            "Salesforce Administrator",
+            "Sr. Data Integration Engineer",
+            "Senior Backend Engineer"
+          ],
+          "source": "record",
+          "from": "80-days CSV top_job_titles_sponsored"
+        },
+        "sponsorship_tier": {
+          "value": "Proven",
+          "p": 0.9,
+          "source": "your-input",
+          "from": "persona.sponsorship_rules applied to the record counts"
+        },
+        "latest_funding_date": {
+          "value": "2017-04-19",
+          "stage": "Pre-Seed",
+          "amount": 1500000,
+          "source": "record",
+          "from": "80-days CSV latest_funding_* (derived upstream from SEC Form D)"
+        },
+        "funding_recency": {
+          "months_since": 113,
+          "bucket": "stale",
+          "source": "your-input",
+          "from": "persona.funding_windows applied to latest_funding_date"
+        },
+        "form_d_sample": {
+          "value": "not-in-sample",
+          "source": "record",
+          "from": "4 Form D sample files (200 filings); absence in a 50-row sample is not absence of a filing"
+        },
+        "board": {
+          "status": "unmapped",
+          "factor": null,
+          "source": null,
+          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "captured_at": "2026-10-02T19:27:39.687Z"
+        },
+        "timeline_factor": {
+          "value": 1,
+          "source": "your-input",
+          "from": "persona OPT end date + hiring-lag assumption"
+        }
+      },
+      "scorer": null,
+      "next": {
+        "action": "UNVERIFIED",
+        "why": "board unmapped — liveness unknown, not sent to the scorer"
+      }
+    },
+    {
+      "company": "UFA INC",
+      "role_id": "ufainc",
+      "evidence": {
+        "city": {
+          "value": "BURLINGTON",
+          "source": "record",
+          "from": "80-days CSV city"
+        },
+        "h1b_approvals": {
+          "value": 2,
+          "source": "record",
+          "from": "80-days CSV Total Approvals",
+          "caveat": "every count in this CSV is even — possible 2× join; see data_anomalies"
+        },
+        "h1b_denials": {
+          "value": 0,
+          "source": "record",
+          "from": "80-days CSV Total Denials"
+        },
+        "approval_rate_pct": {
+          "value": 100,
+          "source": "record",
+          "from": "80-days CSV Approval_Rate"
+        },
+        "sponsored_titles": {
+          "value": [
+            "Junior Software Engineer"
+          ],
+          "source": "record",
+          "from": "80-days CSV top_job_titles_sponsored"
+        },
+        "sponsorship_tier": {
+          "value": "Possible",
+          "p": 0.3,
+          "source": "your-input",
+          "from": "persona.sponsorship_rules applied to the record counts"
+        },
+        "latest_funding_date": {
+          "value": "2021-04-29",
+          "stage": "Series A",
+          "amount": 5399920,
+          "source": "record",
+          "from": "80-days CSV latest_funding_* (derived upstream from SEC Form D)"
+        },
+        "funding_recency": {
+          "months_since": 65,
+          "bucket": "stale",
+          "source": "your-input",
+          "from": "persona.funding_windows applied to latest_funding_date"
+        },
+        "form_d_sample": {
+          "value": "not-in-sample",
+          "source": "record",
+          "from": "4 Form D sample files (200 filings); absence in a 50-row sample is not absence of a filing"
+        },
+        "board": {
+          "status": "unmapped",
+          "factor": null,
+          "source": null,
+          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "captured_at": "2026-10-02T19:27:39.687Z"
+        },
+        "timeline_factor": {
+          "value": 1,
+          "source": "your-input",
+          "from": "persona OPT end date + hiring-lag assumption"
+        }
+      },
+      "scorer": null,
+      "next": {
+        "action": "UNVERIFIED",
+        "why": "board unmapped — liveness unknown, not sent to the scorer"
+      }
+    },
+    {
+      "company": "VESTMARK INC",
+      "role_id": "vestmarkinc",
+      "evidence": {
+        "city": {
+          "value": "WAKEFIELD",
+          "source": "record",
+          "from": "80-days CSV city"
+        },
+        "h1b_approvals": {
+          "value": 52,
+          "source": "record",
+          "from": "80-days CSV Total Approvals",
+          "caveat": "every count in this CSV is even — possible 2× join; see data_anomalies"
+        },
+        "h1b_denials": {
+          "value": 0,
+          "source": "record",
+          "from": "80-days CSV Total Denials"
+        },
+        "approval_rate_pct": {
+          "value": 100,
+          "source": "record",
+          "from": "80-days CSV Approval_Rate"
+        },
+        "sponsored_titles": {
+          "value": [
+            "Software Engineer",
+            "Senior QA Automation Engineer"
+          ],
+          "source": "record",
+          "from": "80-days CSV top_job_titles_sponsored"
+        },
+        "sponsorship_tier": {
+          "value": "Proven",
+          "p": 0.9,
+          "source": "your-input",
+          "from": "persona.sponsorship_rules applied to the record counts"
+        },
+        "latest_funding_date": {
+          "value": "2017-09-27",
+          "stage": "Series A",
+          "amount": 11650009,
+          "source": "record",
+          "from": "80-days CSV latest_funding_* (derived upstream from SEC Form D)"
+        },
+        "funding_recency": {
+          "months_since": 108,
+          "bucket": "stale",
+          "source": "your-input",
+          "from": "persona.funding_windows applied to latest_funding_date"
+        },
+        "form_d_sample": {
+          "value": "not-in-sample",
+          "source": "record",
+          "from": "4 Form D sample files (200 filings); absence in a 50-row sample is not absence of a filing"
+        },
+        "board": {
+          "status": "unmapped",
+          "factor": null,
+          "source": null,
+          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "captured_at": "2026-10-02T19:27:39.687Z"
+        },
+        "timeline_factor": {
+          "value": 1,
+          "source": "your-input",
+          "from": "persona OPT end date + hiring-lag assumption"
+        }
+      },
+      "scorer": null,
+      "next": {
+        "action": "UNVERIFIED",
+        "why": "board unmapped — liveness unknown, not sent to the scorer"
+      }
+    },
+    {
+      "company": "VIDEAHEALTH INC",
+      "role_id": "videahealthinc",
+      "evidence": {
+        "city": {
+          "value": "Boston",
+          "source": "record",
+          "from": "80-days CSV city"
+        },
+        "h1b_approvals": {
+          "value": 14,
+          "source": "record",
+          "from": "80-days CSV Total Approvals",
+          "caveat": "every count in this CSV is even — possible 2× join; see data_anomalies"
+        },
+        "h1b_denials": {
+          "value": 2,
+          "source": "record",
+          "from": "80-days CSV Total Denials"
+        },
+        "approval_rate_pct": {
+          "value": 87.5,
+          "source": "record",
+          "from": "80-days CSV Approval_Rate"
+        },
+        "sponsored_titles": {
+          "value": [
+            "Software Engineer"
+          ],
+          "source": "record",
+          "from": "80-days CSV top_job_titles_sponsored"
+        },
+        "sponsorship_tier": {
+          "value": "Likely",
+          "p": 0.6,
+          "source": "your-input",
+          "from": "persona.sponsorship_rules applied to the record counts"
+        },
+        "latest_funding_date": {
+          "value": "2022-03-04",
+          "stage": "Series B",
+          "amount": 23000000,
+          "source": "record",
+          "from": "80-days CSV latest_funding_* (derived upstream from SEC Form D)"
+        },
+        "funding_recency": {
+          "months_since": 54,
+          "bucket": "stale",
+          "source": "your-input",
+          "from": "persona.funding_windows applied to latest_funding_date"
+        },
+        "form_d_sample": {
+          "value": "not-in-sample",
+          "source": "record",
+          "from": "4 Form D sample files (200 filings); absence in a 50-row sample is not absence of a filing"
+        },
+        "board": {
+          "status": "not_found",
+          "factor": null,
+          "note": "no greenhouse/lever/ashby board for slug \"videahealth\" on 2026-10-02 — may use Workday or another ATS",
+          "source": null,
+          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "captured_at": "2026-10-02T19:27:39.687Z"
+        },
+        "timeline_factor": {
+          "value": 1,
+          "source": "your-input",
+          "from": "persona OPT end date + hiring-lag assumption"
+        }
+      },
+      "scorer": null,
+      "next": {
+        "action": "UNVERIFIED",
+        "why": "board not_found — liveness unknown, not sent to the scorer"
+      }
+    },
+    {
+      "company": "VIRALGAINS INC",
+      "role_id": "viralgainsinc",
+      "evidence": {
+        "city": {
+          "value": "BOSTON",
+          "source": "record",
+          "from": "80-days CSV city"
+        },
+        "h1b_approvals": {
+          "value": 6,
+          "source": "record",
+          "from": "80-days CSV Total Approvals",
+          "caveat": "every count in this CSV is even — possible 2× join; see data_anomalies"
+        },
+        "h1b_denials": {
+          "value": 0,
+          "source": "record",
+          "from": "80-days CSV Total Denials"
+        },
+        "approval_rate_pct": {
+          "value": 100,
+          "source": "record",
+          "from": "80-days CSV Approval_Rate"
+        },
+        "sponsored_titles": {
+          "value": [
+            "Senior Software Engineer"
+          ],
+          "source": "record",
+          "from": "80-days CSV top_job_titles_sponsored"
+        },
+        "sponsorship_tier": {
+          "value": "Likely",
+          "p": 0.6,
+          "source": "your-input",
+          "from": "persona.sponsorship_rules applied to the record counts"
+        },
+        "latest_funding_date": {
+          "value": "2015-12-22",
+          "stage": "Series A",
+          "amount": 12278289,
+          "source": "record",
+          "from": "80-days CSV latest_funding_* (derived upstream from SEC Form D)"
+        },
+        "funding_recency": {
+          "months_since": 129,
+          "bucket": "stale",
+          "source": "your-input",
+          "from": "persona.funding_windows applied to latest_funding_date"
+        },
+        "form_d_sample": {
+          "value": "not-in-sample",
+          "source": "record",
+          "from": "4 Form D sample files (200 filings); absence in a 50-row sample is not absence of a filing"
+        },
+        "board": {
+          "status": "unmapped",
+          "factor": null,
+          "source": null,
+          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "captured_at": "2026-10-02T19:27:39.687Z"
+        },
+        "timeline_factor": {
+          "value": 1,
+          "source": "your-input",
+          "from": "persona OPT end date + hiring-lag assumption"
+        }
+      },
+      "scorer": null,
+      "next": {
+        "action": "UNVERIFIED",
+        "why": "board unmapped — liveness unknown, not sent to the scorer"
+      }
+    },
+    {
+      "company": "ZAKIPOINT HEALTH INC",
+      "role_id": "zakipointhealthinc",
+      "evidence": {
+        "city": {
+          "value": "CAMBRIDGE",
+          "source": "record",
+          "from": "80-days CSV city"
+        },
+        "h1b_approvals": {
+          "value": 14,
+          "source": "record",
+          "from": "80-days CSV Total Approvals",
+          "caveat": "every count in this CSV is even — possible 2× join; see data_anomalies"
+        },
+        "h1b_denials": {
+          "value": 2,
+          "source": "record",
+          "from": "80-days CSV Total Denials"
+        },
+        "approval_rate_pct": {
+          "value": 87.5,
+          "source": "record",
+          "from": "80-days CSV Approval_Rate"
+        },
+        "sponsored_titles": {
+          "value": [
+            "FULL STACK SOFTWARE DEVELOPER",
+            "Market Research Analyst"
+          ],
+          "source": "record",
+          "from": "80-days CSV top_job_titles_sponsored"
+        },
+        "sponsorship_tier": {
+          "value": "Likely",
+          "p": 0.6,
+          "source": "your-input",
+          "from": "persona.sponsorship_rules applied to the record counts"
+        },
+        "latest_funding_date": {
+          "value": "2023-08-29",
+          "stage": "Pre-Seed",
+          "amount": 1892417,
+          "source": "record",
+          "from": "80-days CSV latest_funding_* (derived upstream from SEC Form D)"
+        },
+        "funding_recency": {
+          "months_since": 37,
+          "bucket": "aging",
+          "source": "your-input",
+          "from": "persona.funding_windows applied to latest_funding_date"
+        },
+        "form_d_sample": {
+          "value": "not-in-sample",
+          "source": "record",
+          "from": "4 Form D sample files (200 filings); absence in a 50-row sample is not absence of a filing"
+        },
+        "board": {
+          "status": "not_found",
+          "factor": null,
+          "note": "no greenhouse/lever/ashby board for slug \"zakipoint\" on 2026-10-02 — may use Workday or another ATS",
+          "source": null,
+          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "captured_at": "2026-10-02T19:27:39.687Z"
+        },
+        "timeline_factor": {
+          "value": 1,
+          "source": "your-input",
+          "from": "persona OPT end date + hiring-lag assumption"
+        }
+      },
+      "scorer": null,
+      "next": {
+        "action": "UNVERIFIED",
+        "why": "board not_found — liveness unknown, not sent to the scorer"
+      }
+    }
+  ]
+}

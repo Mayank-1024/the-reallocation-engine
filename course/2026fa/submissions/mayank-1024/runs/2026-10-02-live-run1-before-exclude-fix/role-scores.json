@@ -1,0 +1,491 @@
+{
+  "_scorer": "bayesian-role-scorer",
+  "_chapter": 11,
+  "generated": "2026-10-02",
+  "config": {
+    "weights": {
+      "sponsorship": 0.35,
+      "fit": 0.3,
+      "role_quality": 0
+    },
+    "apply_threshold": 0.3,
+    "consider_floor": 0.2,
+    "gate_zero": 0.05,
+    "soft_sponsorship_tiers": [
+      "likely",
+      "possible",
+      "unknown"
+    ]
+  },
+  "profile_needs_sponsorship": true,
+  "roles": [
+    {
+      "role_id": "1uphealthinc",
+      "company": "1UPHEALTH INC",
+      "title": "(no live posting matching software engineer|software developer|backend|back-end|platform engineer|full.?stack|site reliability|\\bsre\\b|devops)",
+      "composite": 0,
+      "recommendation": "Skip",
+      "machine_recommendation": "Skip",
+      "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.6,
+            "weight": 0.35,
+            "contribution": 0.21,
+            "source": "record"
+          }
+        ],
+        "vote_sum": 0.21,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 0,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 0,
+        "arithmetic": "(0.6·0.35) × 0 × 1 = 0.000"
+      }
+    },
+    {
+      "role_id": "abacusinsightsinc",
+      "company": "ABACUS INSIGHTS INC",
+      "title": "Contractor:  DevOps Engineer",
+      "composite": 0.315,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "reason": "composite 0.315 ≥ 0.3, gates healthy",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.9,
+            "weight": 0.35,
+            "contribution": 0.315,
+            "source": "record"
+          }
+        ],
+        "vote_sum": 0.315,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+      }
+    },
+    {
+      "role_id": "acuitymdinc",
+      "company": "ACUITYMD INC",
+      "title": "Senior or Staff Software Engineer, Infrastructure",
+      "composite": 0.21,
+      "recommendation": "Consider",
+      "machine_recommendation": "Consider",
+      "reason": "composite 0.210 in the Consider band [0.2, 0.3)",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.6,
+            "weight": 0.35,
+            "contribution": 0.21,
+            "source": "record"
+          }
+        ],
+        "vote_sum": 0.21,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.6·0.35) × 1 × 1 = 0.210"
+      }
+    },
+    {
+      "role_id": "cloakedinc",
+      "company": "CLOAKED INC",
+      "title": "(no live posting matching software engineer|software developer|backend|back-end|platform engineer|full.?stack|site reliability|\\bsre\\b|devops)",
+      "composite": 0,
+      "recommendation": "Skip",
+      "machine_recommendation": "Skip",
+      "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.6,
+            "weight": 0.35,
+            "contribution": 0.21,
+            "source": "record"
+          }
+        ],
+        "vote_sum": 0.21,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 0,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 0,
+        "arithmetic": "(0.6·0.35) × 0 × 1 = 0.000"
+      }
+    },
+    {
+      "role_id": "coherehealthinc",
+      "company": "COHERE HEALTH INC",
+      "title": "Lead Software Engineer - Integrations",
+      "composite": 0.315,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "reason": "composite 0.315 ≥ 0.3, gates healthy",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.9,
+            "weight": 0.35,
+            "contribution": 0.315,
+            "source": "record"
+          }
+        ],
+        "vote_sum": 0.315,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+      }
+    },
+    {
+      "role_id": "fairmarkitinc",
+      "company": "FAIRMARKIT INC",
+      "title": "(no live posting matching software engineer|software developer|backend|back-end|platform engineer|full.?stack|site reliability|\\bsre\\b|devops)",
+      "composite": 0,
+      "recommendation": "Skip",
+      "machine_recommendation": "Skip",
+      "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.3,
+            "weight": 0.35,
+            "contribution": 0.105,
+            "source": "record"
+          }
+        ],
+        "vote_sum": 0.105,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 0,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 0,
+        "arithmetic": "(0.3·0.35) × 0 × 1 = 0.000"
+      }
+    },
+    {
+      "role_id": "iterativescopesinc",
+      "company": "ITERATIVE SCOPES INC",
+      "title": "(no live posting matching software engineer|software developer|backend|back-end|platform engineer|full.?stack|site reliability|\\bsre\\b|devops)",
+      "composite": 0,
+      "recommendation": "Skip",
+      "machine_recommendation": "Skip",
+      "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.6,
+            "weight": 0.35,
+            "contribution": 0.21,
+            "source": "record"
+          }
+        ],
+        "vote_sum": 0.21,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 0,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 0,
+        "arithmetic": "(0.6·0.35) × 0 × 1 = 0.000"
+      }
+    },
+    {
+      "role_id": "klaviyoinc",
+      "company": "KLAVIYO INC",
+      "title": "Full Stack Software Engineer - People Systems",
+      "composite": 0.315,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "reason": "composite 0.315 ≥ 0.3, gates healthy",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.9,
+            "weight": 0.35,
+            "contribution": 0.315,
+            "source": "record"
+          }
+        ],
+        "vote_sum": 0.315,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+      }
+    },
+    {
+      "role_id": "lendbuzzinc",
+      "company": "LENDBUZZ INC",
+      "title": "Engineering Manager (Backend)",
+      "composite": 0.315,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "reason": "composite 0.315 ≥ 0.3, gates healthy",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.9,
+            "weight": 0.35,
+            "contribution": 0.315,
+            "source": "record"
+          }
+        ],
+        "vote_sum": 0.315,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+      }
+    },
+    {
+      "role_id": "lookoutinc",
+      "company": "LOOKOUT INC",
+      "title": "(no live posting matching software engineer|software developer|backend|back-end|platform engineer|full.?stack|site reliability|\\bsre\\b|devops)",
+      "composite": 0,
+      "recommendation": "Skip",
+      "machine_recommendation": "Skip",
+      "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.9,
+            "weight": 0.35,
+            "contribution": 0.315,
+            "source": "record"
+          }
+        ],
+        "vote_sum": 0.315,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 0,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 0,
+        "arithmetic": "(0.9·0.35) × 0 × 1 = 0.000"
+      }
+    },
+    {
+      "role_id": "overjetinc",
+      "company": "OVERJET INC",
+      "title": "(no live posting matching software engineer|software developer|backend|back-end|platform engineer|full.?stack|site reliability|\\bsre\\b|devops)",
+      "composite": 0,
+      "recommendation": "Skip",
+      "machine_recommendation": "Skip",
+      "reason": "gated: liveness ≈ 0.000 (a closed gate zeroes the composite regardless of votes)",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.9,
+            "weight": 0.35,
+            "contribution": 0.315,
+            "source": "record"
+          }
+        ],
+        "vote_sum": 0.315,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 0,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 0,
+        "arithmetic": "(0.9·0.35) × 0 × 1 = 0.000"
+      }
+    },
+    {
+      "role_id": "pathaiinc",
+      "company": "PATHAI INC",
+      "title": "Senior Software Engineer, Backend",
+      "composite": 0.315,
+      "recommendation": "Apply",
+      "machine_recommendation": "Apply",
+      "reason": "composite 0.315 ≥ 0.3, gates healthy",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.9,
+            "weight": 0.35,
+            "contribution": 0.315,
+            "source": "record"
+          }
+        ],
+        "vote_sum": 0.315,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.9·0.35) × 1 × 1 = 0.315"
+      }
+    },
+    {
+      "role_id": "tulipinterfacesinc",
+      "company": "TULIP INTERFACES INC",
+      "title": "Full-Stack Software Engineer",
+      "composite": 0.21,
+      "recommendation": "Consider",
+      "machine_recommendation": "Consider",
+      "reason": "composite 0.210 in the Consider band [0.2, 0.3)",
+      "override": null,
+      "trace": {
+        "votes": [
+          {
+            "factor": "sponsorship",
+            "value": 0.6,
+            "weight": 0.35,
+            "contribution": 0.21,
+            "source": "record"
+          }
+        ],
+        "vote_sum": 0.21,
+        "gates": [
+          {
+            "factor": "liveness",
+            "multiplier": 1,
+            "source": "record"
+          },
+          {
+            "factor": "timeline",
+            "multiplier": 1,
+            "source": "your-input"
+          }
+        ],
+        "gate_product": 1,
+        "arithmetic": "(0.6·0.35) × 1 × 1 = 0.210"
+      }
+    }
+  ]
+}
