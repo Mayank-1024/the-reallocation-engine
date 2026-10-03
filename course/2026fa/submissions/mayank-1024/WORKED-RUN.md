@@ -277,3 +277,4 @@ Observed facts (recorded during the session):
 - Placeholder title contained the regex, whose `|` broke `role-scores.md` table rows → fixed title string in `network-targets.mjs`.
 - Out-dir guard refused `private/` and macOS `/tmp` → `private/` allowed (gitignored) in `network-targets.mjs`.
 - `node --test <directory>` fails on Node 24 → the documented test command names the file.
+- (2026-10-03 audit) the 44 unverified companies had `board.source: null` → now `your-input` (status from the board map) or `record` (live API error) in `network-targets.mjs`; the test asserts it. Counts unchanged.

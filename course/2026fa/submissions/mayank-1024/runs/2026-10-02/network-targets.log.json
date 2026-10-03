@@ -1,7 +1,7 @@
 {
   "recipe": "recipes/cases/2026fa/mayank-1024-swe-network-targets.md",
   "recipe_version": "0.1.0",
-  "run_at": "2026-10-03T19:36:52.149Z",
+  "run_at": "2026-10-03T20:37:41.107Z",
   "mode": "offline-snapshot",
   "model_judgment_values": 0,
   "inputs": {
@@ -372,8 +372,8 @@
         "board": {
           "status": "unmapped",
           "factor": null,
-          "source": null,
-          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "source": "your-input",
+          "from": "board-map.json status (no board checked)",
           "captured_at": "2026-10-02T19:27:39.687Z"
         },
         "timeline_factor": {
@@ -543,8 +543,8 @@
         "board": {
           "status": "unmapped",
           "factor": null,
-          "source": null,
-          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "source": "your-input",
+          "from": "board-map.json status (no board checked)",
           "captured_at": "2026-10-02T19:27:39.687Z"
         },
         "timeline_factor": {
@@ -619,8 +619,8 @@
           "status": "not_found",
           "factor": null,
           "note": "no greenhouse/lever/ashby board for slug \"apriori\" on 2026-10-02 — may use Workday or another ATS",
-          "source": null,
-          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "source": "your-input",
+          "from": "board-map.json status (no board checked)",
           "captured_at": "2026-10-02T19:27:39.687Z"
         },
         "timeline_factor": {
@@ -694,8 +694,8 @@
         "board": {
           "status": "unmapped",
           "factor": null,
-          "source": null,
-          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "source": "your-input",
+          "from": "board-map.json status (no board checked)",
           "captured_at": "2026-10-02T19:27:39.687Z"
         },
         "timeline_factor": {
@@ -771,8 +771,8 @@
         "board": {
           "status": "unmapped",
           "factor": null,
-          "source": null,
-          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "source": "your-input",
+          "from": "board-map.json status (no board checked)",
           "captured_at": "2026-10-02T19:27:39.687Z"
         },
         "timeline_factor": {
@@ -846,8 +846,8 @@
         "board": {
           "status": "unmapped",
           "factor": null,
-          "source": null,
-          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "source": "your-input",
+          "from": "board-map.json status (no board checked)",
           "captured_at": "2026-10-02T19:27:39.687Z"
         },
         "timeline_factor": {
@@ -924,8 +924,8 @@
         "board": {
           "status": "unmapped",
           "factor": null,
-          "source": null,
-          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "source": "your-input",
+          "from": "board-map.json status (no board checked)",
           "captured_at": "2026-10-02T19:27:39.687Z"
         },
         "timeline_factor": {
@@ -1004,8 +1004,8 @@
           "status": "not_found",
           "factor": null,
           "note": "no greenhouse/lever/ashby board for slug \"celerosystems\" on 2026-10-02 — may use Workday or another ATS",
-          "source": null,
-          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "source": "your-input",
+          "from": "board-map.json status (no board checked)",
           "captured_at": "2026-10-02T19:27:39.687Z"
         },
         "timeline_factor": {
@@ -1079,8 +1079,8 @@
         "board": {
           "status": "unmapped",
           "factor": null,
-          "source": null,
-          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "source": "your-input",
+          "from": "board-map.json status (no board checked)",
           "captured_at": "2026-10-02T19:27:39.687Z"
         },
         "timeline_factor": {
@@ -1361,8 +1361,8 @@
         "board": {
           "status": "unmapped",
           "factor": null,
-          "source": null,
-          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "source": "your-input",
+          "from": "board-map.json status (no board checked)",
           "captured_at": "2026-10-02T19:27:39.687Z"
         },
         "timeline_factor": {
@@ -1437,8 +1437,8 @@
         "board": {
           "status": "unmapped",
           "factor": null,
-          "source": null,
-          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "source": "your-input",
+          "from": "board-map.json status (no board checked)",
           "captured_at": "2026-10-02T19:27:39.687Z"
         },
         "timeline_factor": {
@@ -1599,8 +1599,8 @@
           "status": "not_found",
           "factor": null,
           "note": "no greenhouse/lever/ashby board for slug \"firsthelpfinancial\" on 2026-10-02 — may use Workday or another ATS",
-          "source": null,
-          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "source": "your-input",
+          "from": "board-map.json status (no board checked)",
           "captured_at": "2026-10-02T19:27:39.687Z"
         },
         "timeline_factor": {
@@ -1678,8 +1678,8 @@
         "board": {
           "status": "unmapped",
           "factor": null,
-          "source": null,
-          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "source": "your-input",
+          "from": "board-map.json status (no board checked)",
           "captured_at": "2026-10-02T19:27:39.687Z"
         },
         "timeline_factor": {
@@ -1757,8 +1757,8 @@
         "board": {
           "status": "unmapped",
           "factor": null,
-          "source": null,
-          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "source": "your-input",
+          "from": "board-map.json status (no board checked)",
           "captured_at": "2026-10-02T19:27:39.687Z"
         },
         "timeline_factor": {
@@ -1832,8 +1832,8 @@
         "board": {
           "status": "unmapped",
           "factor": null,
-          "source": null,
-          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "source": "your-input",
+          "from": "board-map.json status (no board checked)",
           "captured_at": "2026-10-02T19:27:39.687Z"
         },
         "timeline_factor": {
@@ -1907,8 +1907,8 @@
         "board": {
           "status": "unmapped",
           "factor": null,
-          "source": null,
-          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "source": "your-input",
+          "from": "board-map.json status (no board checked)",
           "captured_at": "2026-10-02T19:27:39.687Z"
         },
         "timeline_factor": {
@@ -1986,8 +1986,8 @@
         "board": {
           "status": "unmapped",
           "factor": null,
-          "source": null,
-          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "source": "your-input",
+          "from": "board-map.json status (no board checked)",
           "captured_at": "2026-10-02T19:27:39.687Z"
         },
         "timeline_factor": {
@@ -2063,8 +2063,8 @@
         "board": {
           "status": "unmapped",
           "factor": null,
-          "source": null,
-          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "source": "your-input",
+          "from": "board-map.json status (no board checked)",
           "captured_at": "2026-10-02T19:27:39.687Z"
         },
         "timeline_factor": {
@@ -2599,8 +2599,8 @@
         "board": {
           "status": "unmapped",
           "factor": null,
-          "source": null,
-          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "source": "your-input",
+          "from": "board-map.json status (no board checked)",
           "captured_at": "2026-10-02T19:27:39.687Z"
         },
         "timeline_factor": {
@@ -2677,8 +2677,8 @@
         "board": {
           "status": "unmapped",
           "factor": null,
-          "source": null,
-          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "source": "your-input",
+          "from": "board-map.json status (no board checked)",
           "captured_at": "2026-10-02T19:27:39.687Z"
         },
         "timeline_factor": {
@@ -2753,8 +2753,8 @@
           "status": "not_found",
           "factor": null,
           "note": "no greenhouse/lever/ashby board for slug \"newstore\" on 2026-10-02 — may use Workday or another ATS",
-          "source": null,
-          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "source": "your-input",
+          "from": "board-map.json status (no board checked)",
           "captured_at": "2026-10-02T19:27:39.687Z"
         },
         "timeline_factor": {
@@ -2829,8 +2829,8 @@
           "status": "not_found",
           "factor": null,
           "note": "no greenhouse/lever/ashby board for slug \"nextuple\" on 2026-10-02 — may use Workday or another ATS",
-          "source": null,
-          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "source": "your-input",
+          "from": "board-map.json status (no board checked)",
           "captured_at": "2026-10-02T19:27:39.687Z"
         },
         "timeline_factor": {
@@ -2905,8 +2905,8 @@
           "status": "not_found",
           "factor": null,
           "note": "no greenhouse/lever/ashby board for slug \"nodar\" on 2026-10-02 — may use Workday or another ATS",
-          "source": null,
-          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "source": "your-input",
+          "from": "board-map.json status (no board checked)",
           "captured_at": "2026-10-02T19:27:39.687Z"
         },
         "timeline_factor": {
@@ -2983,8 +2983,8 @@
         "board": {
           "status": "unmapped",
           "factor": null,
-          "source": null,
-          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "source": "your-input",
+          "from": "board-map.json status (no board checked)",
           "captured_at": "2026-10-02T19:27:39.687Z"
         },
         "timeline_factor": {
@@ -3058,8 +3058,8 @@
         "board": {
           "status": "unmapped",
           "factor": null,
-          "source": null,
-          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "source": "your-input",
+          "from": "board-map.json status (no board checked)",
           "captured_at": "2026-10-02T19:27:39.687Z"
         },
         "timeline_factor": {
@@ -3347,8 +3347,8 @@
           "status": "not_found",
           "factor": null,
           "note": "no greenhouse/lever/ashby board for slug \"pegasystems\" on 2026-10-02 — may use Workday or another ATS",
-          "source": null,
-          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "source": "your-input",
+          "from": "board-map.json status (no board checked)",
           "captured_at": "2026-10-02T19:27:39.687Z"
         },
         "timeline_factor": {
@@ -3422,8 +3422,8 @@
         "board": {
           "status": "unmapped",
           "factor": null,
-          "source": null,
-          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "source": "your-input",
+          "from": "board-map.json status (no board checked)",
           "captured_at": "2026-10-02T19:27:39.687Z"
         },
         "timeline_factor": {
@@ -3499,8 +3499,8 @@
         "board": {
           "status": "unmapped",
           "factor": null,
-          "source": null,
-          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "source": "your-input",
+          "from": "board-map.json status (no board checked)",
           "captured_at": "2026-10-02T19:27:39.687Z"
         },
         "timeline_factor": {
@@ -3574,8 +3574,8 @@
         "board": {
           "status": "unmapped",
           "factor": null,
-          "source": null,
-          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "source": "your-input",
+          "from": "board-map.json status (no board checked)",
           "captured_at": "2026-10-02T19:27:39.687Z"
         },
         "timeline_factor": {
@@ -3649,8 +3649,8 @@
         "board": {
           "status": "unmapped",
           "factor": null,
-          "source": null,
-          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "source": "your-input",
+          "from": "board-map.json status (no board checked)",
           "captured_at": "2026-10-02T19:27:39.687Z"
         },
         "timeline_factor": {
@@ -3725,8 +3725,8 @@
           "status": "ambiguous",
           "factor": null,
           "note": "slug \"regent\" answers on BOTH greenhouse (10 jobs) and ashby (31 jobs); which board is Regent Craft is a human call",
-          "source": null,
-          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "source": "your-input",
+          "from": "board-map.json status (no board checked)",
           "captured_at": "2026-10-02T19:27:39.687Z"
         },
         "timeline_factor": {
@@ -3802,8 +3802,8 @@
           "status": "not_found",
           "factor": null,
           "note": "no greenhouse/lever/ashby board for slug \"resurety\" on 2026-10-02 — may use Workday or another ATS",
-          "source": null,
-          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "source": "your-input",
+          "from": "board-map.json status (no board checked)",
           "captured_at": "2026-10-02T19:27:39.687Z"
         },
         "timeline_factor": {
@@ -3877,8 +3877,8 @@
         "board": {
           "status": "unmapped",
           "factor": null,
-          "source": null,
-          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "source": "your-input",
+          "from": "board-map.json status (no board checked)",
           "captured_at": "2026-10-02T19:27:39.687Z"
         },
         "timeline_factor": {
@@ -3952,8 +3952,8 @@
         "board": {
           "status": "unmapped",
           "factor": null,
-          "source": null,
-          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "source": "your-input",
+          "from": "board-map.json status (no board checked)",
           "captured_at": "2026-10-02T19:27:39.687Z"
         },
         "timeline_factor": {
@@ -4028,8 +4028,8 @@
         "board": {
           "status": "unmapped",
           "factor": null,
-          "source": null,
-          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "source": "your-input",
+          "from": "board-map.json status (no board checked)",
           "captured_at": "2026-10-02T19:27:39.687Z"
         },
         "timeline_factor": {
@@ -4104,8 +4104,8 @@
           "status": "not_found",
           "factor": null,
           "note": "no greenhouse/lever/ashby board for slug \"tetrascience\" on 2026-10-02 — may use Workday or another ATS",
-          "source": null,
-          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "source": "your-input",
+          "from": "board-map.json status (no board checked)",
           "captured_at": "2026-10-02T19:27:39.687Z"
         },
         "timeline_factor": {
@@ -4183,8 +4183,8 @@
         "board": {
           "status": "unmapped",
           "factor": null,
-          "source": null,
-          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "source": "your-input",
+          "from": "board-map.json status (no board checked)",
           "captured_at": "2026-10-02T19:27:39.687Z"
         },
         "timeline_factor": {
@@ -4262,8 +4262,8 @@
         "board": {
           "status": "unmapped",
           "factor": null,
-          "source": null,
-          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "source": "your-input",
+          "from": "board-map.json status (no board checked)",
           "captured_at": "2026-10-02T19:27:39.687Z"
         },
         "timeline_factor": {
@@ -4465,8 +4465,8 @@
         "board": {
           "status": "unmapped",
           "factor": null,
-          "source": null,
-          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "source": "your-input",
+          "from": "board-map.json status (no board checked)",
           "captured_at": "2026-10-02T19:27:39.687Z"
         },
         "timeline_factor": {
@@ -4540,8 +4540,8 @@
         "board": {
           "status": "unmapped",
           "factor": null,
-          "source": null,
-          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "source": "your-input",
+          "from": "board-map.json status (no board checked)",
           "captured_at": "2026-10-02T19:27:39.687Z"
         },
         "timeline_factor": {
@@ -4616,8 +4616,8 @@
         "board": {
           "status": "unmapped",
           "factor": null,
-          "source": null,
-          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "source": "your-input",
+          "from": "board-map.json status (no board checked)",
           "captured_at": "2026-10-02T19:27:39.687Z"
         },
         "timeline_factor": {
@@ -4692,8 +4692,8 @@
           "status": "not_found",
           "factor": null,
           "note": "no greenhouse/lever/ashby board for slug \"videahealth\" on 2026-10-02 — may use Workday or another ATS",
-          "source": null,
-          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "source": "your-input",
+          "from": "board-map.json status (no board checked)",
           "captured_at": "2026-10-02T19:27:39.687Z"
         },
         "timeline_factor": {
@@ -4767,8 +4767,8 @@
         "board": {
           "status": "unmapped",
           "factor": null,
-          "source": null,
-          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "source": "your-input",
+          "from": "board-map.json status (no board checked)",
           "captured_at": "2026-10-02T19:27:39.687Z"
         },
         "timeline_factor": {
@@ -4844,8 +4844,8 @@
           "status": "not_found",
           "factor": null,
           "note": "no greenhouse/lever/ashby board for slug \"zakipoint\" on 2026-10-02 — may use Workday or another ATS",
-          "source": null,
-          "from": "fetched live by network-targets.mjs --live via scripts/ats/providers from scripts/contrib/2026fa/mayank-1024-swe-network-targets/board-map.json; slugs in the map are your-input",
+          "source": "your-input",
+          "from": "board-map.json status (no board checked)",
           "captured_at": "2026-10-02T19:27:39.687Z"
         },
         "timeline_factor": {

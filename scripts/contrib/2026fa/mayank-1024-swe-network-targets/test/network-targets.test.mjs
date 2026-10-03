@@ -106,10 +106,10 @@ test('fixture run: every evidence value carries an allowed source label; no mode
   const log = readOut(r.out, 'network-targets.log.json');
   const allowed = new Set(['record', 'model-judgment', 'your-input']);
   for (const c of log.companies)
-    for (const [k, e] of Object.entries(c.evidence)) {
-      if (k === 'board' && e.factor == null) { assert.equal(e.source, null); continue; } // unknown stays unlabeled-unknown
+    for (const [k, e] of Object.entries(c.evidence))
       assert.ok(allowed.has(e.source), `${c.company}.${k} has source ${e.source}`);
-    }
+  const echo = log.companies.find((c) => c.company === 'ECHO NOBOARD INC');
+  assert.equal(echo.evidence.board.source, 'your-input'); // status from the board map, not an API response
   assert.equal(log.model_judgment_values, 0);
   const bravo = log.companies.find((c) => c.company === 'BRAVO NETWORK, INC');
   assert.notEqual(bravo.evidence.form_d_sample.value, 'not-in-sample');

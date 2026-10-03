@@ -129,7 +129,7 @@ Liveness and timeline are **gates** (multipliers in the scorer), not votes. Gate
 3. [TODO: DATA SOURCE] Cross-check H-1B counts for NETWORK/APPLY companies against the USCIS H-1B Employer Data Hub export (path to be named, e.g. `data/uscis/employer-data-hub/`). Reason: every CSV count is even.
 4. [TODO: DATA SOURCE] Full Form D quarters (`data/sec/form-d/processed/companies-sec-*-d.json`, gitignored, fetched with `scripts/sec/`) so funding can be corroborated past 2025-09. Reason: the shipped samples match 0 candidates.
 5. [TODO: DEV] Add the OPT unemployment-day clock (90 days, plus 60 on a STEM extension) to G1 as a second your-input term. Reason: days left on the EAD is not the binding constraint once unemployment days run out.
-6. [TODO: DEFINE] Replace the 75-day hiring-lag assumption with a value and one sentence of reasoning drawn from the person's own tracker (kept private). Reason: the timeline factor is only as good as this number.
+6. [TODO: DATA SOURCE] Derive the hiring lag from the person's own application tracker (`data/ats/applications.md`, gitignored and private; only the resulting number and one sentence of reasoning go in the persona). It replaces the 75-day assumption. Reason: the timeline factor is only as good as this number.
 
 ## Output contract
 

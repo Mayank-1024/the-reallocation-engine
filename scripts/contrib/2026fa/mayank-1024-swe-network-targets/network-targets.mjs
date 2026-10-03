@@ -201,7 +201,9 @@ async function main() {
         latest_funding_date: { value: r.latest_funding_date || null, stage: r.latest_funding_stage || null, amount: numOrNull(r.latest_funding_amount), source: SRC.record, from: '80-days CSV latest_funding_* (derived upstream from SEC Form D)' },
         funding_recency: { ...fund, source: SRC.input, from: 'persona.funding_windows applied to latest_funding_date' },
         form_d_sample: { value: fdHits.length ? fdHits : 'not-in-sample', source: SRC.record, from: `${formd.files.length} Form D sample files (${formd.total} filings); absence in a 50-row sample is not absence of a filing` },
-        board: { ...board, source: board.factor == null ? null : SRC.record, from: snapshot._how, captured_at: snapshot.captured_at ?? null },
+        // A checked board is a record. An unchecked one is labeled by where its status came from:
+        // a live fetch error (provider set) is a record; not_found/ambiguous/unmapped come from the board map (your-input).
+        board: { ...board, source: board.factor != null || snapshot.boards?.[r.company_name]?.provider ? SRC.record : SRC.input, from: board.factor != null ? snapshot._how : 'board-map.json status (no board checked)', captured_at: snapshot.captured_at ?? null },
         timeline_factor: { value: tl.factor, source: SRC.input, from: 'persona OPT end date + hiring-lag assumption' },
       },
       _sp: sp, _fund: fund, _board: board,
