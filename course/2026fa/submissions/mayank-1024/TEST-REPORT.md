@@ -49,19 +49,15 @@ EXIT 0
 
 ## Clean checkout of the branch
 
-`git worktree add <scratch>/clean HEAD` at `37033c1a84bc20bc5ee615d4c5ca949cb002b397`, then `npm ci`.
+Run by Claude Code in Mayank's session on 2026-10-03: `git worktree add <scratch>/clean HEAD` at `a87d91d043b42913524b5180dc118718fb05cd81` (the final code commit; later commits change documentation only), then `npm ci`, then the commands below with the repo `.venv` (PyYAML) active. Mayank separately re-ran the prototype, the tests, a break attempt, and a G4 liveness check in Mayank's own terminal on 2026-10-03 (WORKED-RUN.md, rows marked (MB); FRICTIONAL.md). Mayank has not done a separate clean-checkout run.
 
 ```
-
 SUMMARY
   environment: ✓ runnable
   recipes: 33/33 carry lifecycle frontmatter — all tracked
   next: continue
 [exit 0]
 
-  W1 ignore path not in .gitignore: archive/
-  W2 private path not gitignored (PII/secret risk): private/
-  W2 private path not gitignored (PII/secret risk): data/ats/
 
 ✓ manifest check passed (3 warnings)
 [exit 0]
@@ -75,19 +71,19 @@ $ node scripts/contrib/2026fa/mayank-1024-swe-network-targets/network-targets.mj
 [exit 0]
 
 $ node --test scripts/contrib/2026fa/mayank-1024-swe-network-targets/test/network-targets.test.mjs
-✔ CSV parser keeps quoted commas and blank cells (0.824292ms)
-✔ sponsorship tier: blank approvals is NoRecord, never zero (0.071333ms)
-✔ timeline gate refuses a past OPT end date instead of emitting a factor (0.173083ms)
-✔ board evidence: excluded titles, wrong location, and empty boards do not count as live (0.369083ms)
-✔ funding recency with no date is no-record, not stale (0.062917ms)
-✔ fixture run: every bucket appears and the real scorer produced the decisions (61.940625ms)
-✔ fixture run: every evidence value carries an allowed source label; no model judgments (60.207167ms)
-✔ fixture run: report opens with an executive summary; names-not-in-CSV are reported, not scored (58.745625ms)
-✔ failure: OPT end date already past → exit 3, nothing written (28.915958ms)
-✔ failure: timeline gate closed → every company SKIP, including high-scoring ones (60.360584ms)
-✔ failure: an authorization string the scorer reads as "no sponsorship needed" aborts (exit 4) (67.945208ms)
-✔ failure: missing CSV and schema drift → exit 2 with a reason (63.445209ms)
-✔ guard: refuses to write over tracked repo output (30.885ms)
+✔ CSV parser keeps quoted commas and blank cells (0.920041ms)
+✔ sponsorship tier: blank approvals is NoRecord, never zero (0.06925ms)
+✔ timeline gate refuses a past OPT end date instead of emitting a factor (0.1725ms)
+✔ board evidence: excluded titles, wrong location, and empty boards do not count as live (0.396875ms)
+✔ funding recency with no date is no-record, not stale (0.064375ms)
+✔ fixture run: every bucket appears and the real scorer produced the decisions (59.492709ms)
+✔ fixture run: every evidence value carries an allowed source label; no model judgments (60.053125ms)
+✔ fixture run: report opens with an executive summary; names-not-in-CSV are reported, not scored (60.774583ms)
+✔ failure: OPT end date already past → exit 3, nothing written (29.065709ms)
+✔ failure: timeline gate closed → every company SKIP, including high-scoring ones (59.17725ms)
+✔ failure: an authorization string the scorer reads as "no sponsorship needed" aborts (exit 4) (60.126625ms)
+✔ failure: missing CSV and schema drift → exit 2 with a reason (57.585125ms)
+✔ guard: refuses to write over tracked repo output (28.399334ms)
 ℹ tests 13
 ℹ suites 0
 ℹ pass 13
@@ -95,7 +91,7 @@ $ node --test scripts/contrib/2026fa/mayank-1024-swe-network-targets/test/networ
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 482.5305
+ℹ duration_ms 457.456084
 [exit 0]
 
 $ node scripts/conformance.mjs scripts/contrib/2026fa/mayank-1024-swe-network-targets/
@@ -142,12 +138,14 @@ It is the npm package author's address inside the upstream lockfile (present at 
 ## Scope
 
 ```
-$ git diff --stat upstream/main...HEAD
- .../2026fa/submissions/mayank-1024/CHANGE-BRIEF.md |   72 +
+$ git diff --stat upstream/main...HEAD      # at a87d91d
+ .../2026fa/submissions/mayank-1024/CHANGE-BRIEF.md |   74 +
  .../mayank-1024/DOMAIN-JUSTIFICATION.md            |   33 +
- .../2026fa/submissions/mayank-1024/FRICTIONAL.md   |   64 +
- course/2026fa/submissions/mayank-1024/SOURCES.md   |   43 +
- .../2026fa/submissions/mayank-1024/WORKED-RUN.md   |  271 ++
+ .../2026fa/submissions/mayank-1024/FRICTIONAL.md   |   98 +
+ course/2026fa/submissions/mayank-1024/README.md    |   45 +
+ course/2026fa/submissions/mayank-1024/SOURCES.md   |   44 +
+ .../2026fa/submissions/mayank-1024/TEST-REPORT.md  |  200 +
+ .../2026fa/submissions/mayank-1024/WORKED-RUN.md   |  280 ++
  .../boards-snapshot.json                           | 2589 +++++++++++
  .../network-targets.log.json                       | 4911 ++++++++++++++++++++
  .../network-targets.report.md                      |   71 +
@@ -163,8 +161,8 @@ $ git diff --stat upstream/main...HEAD
  .../runs/2026-10-02/scorer-profile.json            |    3 +
  .../runs/engine-baseline/role-scores.json          |  241 +
  .../runs/engine-baseline/role-scores.md            |   15 +
- logs/runs/2026fa-mayank-1024-1.md                  |   11 +
- .../2026fa/mayank-1024-swe-network-targets.card.md |   71 +
+ logs/runs/2026fa-mayank-1024-1.md                  |   12 +
+ .../2026fa/mayank-1024-swe-network-targets.card.md |   73 +
  .../2026fa/mayank-1024-swe-network-targets.md      |  171 +
  .../mayank-1024-swe-network-targets/README.md      |   63 +
  .../mayank-1024-swe-network-targets/board-map.json |  182 +
@@ -177,11 +175,11 @@ $ git diff --stat upstream/main...HEAD
  .../fixtures/persona.opt-past.json                 |   75 +
  .../fixtures/persona.tight-timeline.json           |   75 +
  .../2026fa/mayank-1024-swe-network-targets/lib.mjs |  138 +
- .../network-targets.mjs                            |  369 ++
+ .../network-targets.mjs                            |  371 ++
  .../persona.example.json                           |   38 +
  .../snapshots/boards-2026-10-02.json               | 2589 +++++++++++
  .../test/network-targets.test.mjs                  |  165 +
- 38 files changed, 18895 insertions(+)
+ 40 files changed, 19191 insertions(+)
 
 $ git diff --name-only upstream/main...HEAD | cut -d/ -f1-3 | sort -u
 course/2026fa/submissions
@@ -190,11 +188,11 @@ recipes/cases/2026fa
 scripts/contrib/2026fa
 ```
 
-Every path is under `scripts/contrib/2026fa/mayank-1024-swe-network-targets/`, `recipes/cases/2026fa/mayank-1024-*`, `logs/runs/2026fa-mayank-1024-1.md`, or `course/2026fa/submissions/mayank-1024/`. `logs/RUN_LOG.md`, `package.json`, and other students' folders are untouched. (This report itself is added in a later commit to the same namespace.)
+Every path is under `scripts/contrib/2026fa/mayank-1024-swe-network-targets/`, `recipes/cases/2026fa/mayank-1024-*`, `logs/runs/2026fa-mayank-1024-1.md`, or `course/2026fa/submissions/mayank-1024/`. `logs/RUN_LOG.md`, `package.json`, and other students' folders are untouched. (This report's own update is a later commit in the same namespace.)
 
 ## What a person still has to judge
 
 - **G3:** that each of the 13 careers URLs in `board-map.json` belongs to its CSV company (`identity_confirmed` is `false` for all).
-- **G4:** posting-level liveness for each APPLY/CONSIDER posting before applying (one URL checked).
-- **G5:** whether Abacus Insights' "Senior AI Engineer" / "Principal Software Architect" or Iterative Health's "Applied AI Engineer" are really target roles.
+- **G4:** posting-level liveness for each APPLY/CONSIDER posting before applying (two URLs checked: Cohere Health by Claude, PathAI by Mayank).
+- **G5:** Mayank judged Abacus Insights' "Senior AI Engineer" a target role on 2026-10-03 (override NETWORK → APPLY). Iterative Health's "Applied AI Engineer" and Abacus' "Principal Software Architect" are still open.
 - Whether the 24-month funding window, the tier thresholds, and the 75-day hiring lag are sensible. They were fixed before results were seen, but they remain one person's assumptions.
