@@ -77,3 +77,11 @@ This is the honest log of how the assignment went: what was tried, what broke, w
 - **What I understand now:** the title pattern is narrower than the roles I'd actually take. The G5 adjacent-titles list exists for exactly that reason, and it worked: it surfaced a role the regex missed.
 - **Not reviewed in depth, because of time:** the full recipe and card text, the domain justification, the test-suite internals, and board identity (G3) for the other 12 boards. I accepted Claude's drafts of those without changes.
 - **Next step:** read `lib.mjs` and the recipe gates fully before the presentation. Add an override input (`--overrides`) so a G5 decision like mine flows through the scorer's documented-override field instead of living only in the log.
+
+### 2026-10-03 — `npm run verify` failed in my own terminal
+- **I tried / expected:** I ran `npm run verify` and `npm run doctor` myself before submitting. Since the PR showed both passing, I expected them to pass for me too.
+- **What happened:** `npm run doctor` passed (`environment: ✓ runnable`). `npm run verify` passed conformance (`174 files … ✓ all conform`) but failed the manifest check: `ModuleNotFoundError: No module named 'yaml'` → `✗ manifest check FAILED (1 error)`. Claude's earlier passing runs had used a temporary Python environment in its session folder, which my shell didn't have.
+- **What I did:** with Claude, created a gitignored `.venv/` in the repo with PyYAML (`uv venv .venv` + `uv pip install pyyaml`). Then `source .venv/bin/activate` → `npm run verify` → `✓ manifest check passed (3 warnings)` → `deactivate`.
+- **What Claude contributed:** explained the cause and created the `.venv`.
+- **What I understand now:** "it passed" depends on whose machine ran it. The same check failed for me until my own environment matched. The three remaining warnings were already there before my changes (the checker expects literal `.gitignore` lines for `private/` and `data/ats/`; git ignores both through `/private/*` and `/data/ats/*`).
+- **Evidence and next step:** TEST-REPORT.md "before" baseline shows the identical PyYAML failure. Before the presentation I'll run `source .venv/bin/activate` in each new terminal before `npm run verify`.
