@@ -60,11 +60,13 @@ Discovered while building (not predicted):
 
 **Prediction about the first pass (design-time):** the prototype would cover only the companies whose board could be found on Greenhouse, Lever, or Ashby. Most candidates would end up UNVERIFIED, and the first live run would contain at least one false APPLY. **Outcome:** both happened. 44 of 57 (77%) were UNVERIFIED, and Abacus Insights was a false APPLY in run 1, matched on a contractor DevOps posting and a senior-manager posting.
 
-## 5. Pre-registered predictions for v0.2 (Mayank — fill in before changing code)
+## 5. Pre-registered predictions for v0.2 (Mayank, 2026-10-03, before any v0.2 code)
 
-- If the USCIS cross-check (proposed TODO 3) runs on the 13 board-checked companies, I expect: ____
-- If `detect-ats.py` is tried on the 44 UNVERIFIED companies, I expect ____ of them to get a usable board.
-- One thing I expect the next version to still get wrong: ____
+*(Mayank's answers, given as multiple-choice responses to Claude on 2026-10-03 and phrased by Claude.)*
+
+- If the USCIS cross-check (proposed TODO 3) runs on the 13 board-checked companies, I expect the counts to **match the CSV**. The all-even pattern would then come from some other artifact, not double-counting.
+- If `detect-ats.py` is tried on the 44 UNVERIFIED companies, I expect **10 to 20** of them to get a usable board. Many startups use Greenhouse, Lever or Ashby under slugs that differ from their website domain.
+- One thing I expect the next version to still get wrong: not answered at submission time.
 
 ## Revisions
 

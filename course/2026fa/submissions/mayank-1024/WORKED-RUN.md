@@ -235,12 +235,12 @@ Observed facts (recorded during the session):
 - **Missed:** 77% of candidates are unverified. Funding data ends 2025-09, so the "recent" window is narrow. The approval-count doubling is flagged but unresolved.
 - **Next concrete improvement:** recipe TODO 1, automatic posting-level liveness for every APPLY/CONSIDER URL, because the board listing alone does not prove a posting accepts applications.
 
-**Mayank's reflection (own words):**
-> ____
+**Mayank's reflection** *(Mayank's answers, given as multiple-choice responses to Claude on 2026-10-03 and phrased by Claude.)*
+> Going in, I didn't know what the assignment would involve, and I let Claude explore the repo first. The two things that changed my understanding: the scorer treats a board nobody checked as live, so "not checked" can quietly become "apply"; and the sponsor counts are all even, so a record that looks official can still be off by a factor of two. Honestly, I accepted the drafts without a detailed review because of the deadline. My next step is to read the code and gates myself and run it live before the presentation.
 
 ## Attestation
 - Recipe: swe-network-targets v0.1.0
-- By: ____ (name) · 2026-10-02
+- By: Mayank Bhadrasen · 2026-10-03 (tests run by Claude Code on 2026-10-02 in Mayank's session; Mayank has not yet re-run them personally)
 
 ### Tested
 | Ran | Saw | Expected |

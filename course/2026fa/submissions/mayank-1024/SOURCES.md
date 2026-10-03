@@ -30,14 +30,14 @@ This page credits everything the submission was built on: the course repository 
 |---|---|---|
 | Career situation (MS CS/SWE, F-1 OPT) and recipe angle (network-targets) | chose | offered options |
 | Permission to fork, branch, and (later) push / open the PR | granted | asked |
-| Reading the repo, finding the data facts (0 CSV∩Form D overlap; all-even counts; scorer `?? 1` default; pre-existing lockfile PII flag) | reviewed | found and reported |
+| Reading the repo, finding the data facts (0 CSV∩Form D overlap; all-even counts; scorer `?? 1` default; pre-existing lockfile PII flag) | not yet reviewed in detail | found and reported |
 | Probing ATS boards and proposing slugs (`board-map.json`) | to confirm (G3) | proposed |
-| Prototype code, fixtures, tests, mutation checks | reviewed | wrote |
-| Persona thresholds (tiers, 24-month funding window, 75-day lag, patterns) | ____ accepted / changed | proposed |
-| The run-1 bug (manager/contractor matches) and fix | ____ | spotted by reading the report; wrote the fix |
-| Status DRAFT (not RUNNABLE-SAMPLE) | ____ | recommended, from the lifecycle rule |
-| Recipe, card, brief, justification, worked run, test report | reviewed / edited: ____ | drafted |
-| FRICTIONAL entries, reflection, attestation name | **writes** | supplied factual event list only |
-| Time-saved estimate | ____ | estimated; not measured |
+| Prototype code, fixtures, tests, mutation checks | accepted; not yet reviewed in detail | wrote |
+| Persona thresholds (tiers, 24-month funding window, 75-day lag, patterns) | accepted without review | proposed |
+| The run-1 bug (manager/contractor matches) and fix | accepted | spotted by reading the report; wrote the fix |
+| Status DRAFT (not RUNNABLE-SAMPLE) | accepted | recommended, from the lifecycle rule |
+| Recipe, card, brief, justification, worked run, test report | accepted without edits; not yet reviewed in detail | drafted |
+| FRICTIONAL entries, reflection, attestation name | answered Claude's multiple-choice questions (2026-10-03) | factual event list; turned the answers into text |
+| Time-saved estimate | accepted | estimated; not measured |
 
-**What I (Mayank) rejected or changed from Claude's drafts:** ____
+**What I (Mayank) rejected or changed from Claude's drafts:** nothing. Because of the submission deadline I accepted every draft without detailed review. I'll review them before the in-class presentation and record what I'd change in FRICTIONAL.md.
