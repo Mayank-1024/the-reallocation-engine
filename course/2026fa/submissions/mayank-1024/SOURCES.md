@@ -30,14 +30,15 @@ This page credits everything the submission was built on: the course repository 
 |---|---|---|
 | Career situation (MS CS/SWE, F-1 OPT) and recipe angle (network-targets) | chose | offered options |
 | Permission to fork, branch, and (later) push / open the PR | granted | asked |
-| Reading the repo, finding the data facts (0 CSV∩Form D overlap; all-even counts; scorer `?? 1` default; pre-existing lockfile PII flag) | not yet reviewed in detail | found and reported |
-| Probing ATS boards and proposing slugs (`board-map.json`) | to confirm (G3) | proposed |
-| Prototype code, fixtures, tests, mutation checks | accepted; not yet reviewed in detail | wrote |
-| Persona thresholds (tiers, 24-month funding window, 75-day lag, patterns) | accepted without review | proposed |
+| Reading the repo, finding the data facts (0 CSV∩Form D overlap; all-even counts; scorer `?? 1` default; pre-existing lockfile PII flag) | spot-checked the Abacus CSV row myself; the rest accepted | found and reported |
+| Probing ATS boards and proposing slugs (`board-map.json`) | opened the Abacus board myself; other 11 not confirmed (G3) | proposed |
+| Prototype code, fixtures, tests, mutation checks | ran the prototype and the tests myself; skimmed `nextAction`; internals accepted | wrote |
+| Persona thresholds (tiers, 24-month funding window, 75-day lag, patterns) | accepted | proposed |
 | The run-1 bug (manager/contractor matches) and fix | accepted | spotted by reading the report; wrote the fix |
 | Status DRAFT (not RUNNABLE-SAMPLE) | accepted | recommended, from the lifecycle rule |
-| Recipe, card, brief, justification, worked run, test report | accepted without edits; not yet reviewed in detail | drafted |
+| Recipe, card, brief, justification, worked run, test report | skimmed the generated report; the documents accepted without edits (time) | drafted |
 | FRICTIONAL entries, reflection, attestation name | answered Claude's multiple-choice questions (2026-10-03) | factual event list; turned the answers into text |
 | Time-saved estimate | accepted | estimated; not measured |
+| Gate decisions | G4: checked the PathAI backend posting (active). G5: judged Abacus "Senior AI Engineer" a target role → override to APPLY | provided the commands |
 
-**What I (Mayank) rejected or changed from Claude's drafts:** nothing. Because of the submission deadline I accepted every draft without detailed review. I'll review them before the in-class presentation and record what I'd change in FRICTIONAL.md.
+**What I (Mayank) checked, changed, or overrode:** on 2026-10-03 I re-ran the prototype and the tests myself, cross-checked the Abacus Insights row against the CSV, ran a break attempt (past OPT date → exit 3), checked one APPLY posting's liveness (PathAI → active), and opened the Abacus board. On G5 I overrode the machine's NETWORK verdict for Abacus to APPLY. I did not rewrite Claude's document drafts. Reviewing them in depth wasn't possible before the deadline because of time; I'll do it before the in-class presentation (FRICTIONAL.md, 2026-10-03).

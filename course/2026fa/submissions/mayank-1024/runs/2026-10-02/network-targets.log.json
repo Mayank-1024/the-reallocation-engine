@@ -1,7 +1,7 @@
 {
   "recipe": "recipes/cases/2026fa/mayank-1024-swe-network-targets.md",
   "recipe_version": "0.1.0",
-  "run_at": "2026-10-02T19:37:40.480Z",
+  "run_at": "2026-10-03T19:36:52.149Z",
   "mode": "offline-snapshot",
   "model_judgment_values": 0,
   "inputs": {

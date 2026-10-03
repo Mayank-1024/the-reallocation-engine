@@ -236,11 +236,13 @@ Observed facts (recorded during the session):
 - **Next concrete improvement:** recipe TODO 1, automatic posting-level liveness for every APPLY/CONSIDER URL, because the board listing alone does not prove a posting accepts applications.
 
 **Mayank's reflection** *(Mayank's answers, given as multiple-choice responses to Claude on 2026-10-03 and phrased by Claude.)*
-> Going in, I didn't know what the assignment would involve, and I let Claude explore the repo first. The two things that changed my understanding: the scorer treats a board nobody checked as live, so "not checked" can quietly become "apply"; and the sponsor counts are all even, so a record that looks official can still be off by a factor of two. Honestly, I accepted the drafts without a detailed review because of the deadline. My next step is to read the code and gates myself and run it live before the presentation.
+> Going in, I didn't know what the assignment would involve, and I let Claude explore the repo first. The two things that changed my understanding: the scorer treats a board nobody checked as live, so "not checked" can quietly become "apply"; and the sponsor counts are all even, so a record that looks official can still be off by a factor of two. When I re-ran it myself and checked Abacus by hand, the numbers matched the CSV. Opening the Abacus board taught me something the tool couldn't: "Senior AI Engineer" is a role I'd apply to, but the SWE pattern missed it. I overrode the verdict to APPLY at gate G5. That's the recipe working as intended (a person at the gate), and it also shows the next fix: an override input, so my decision runs through the scorer instead of living only in the log.
+
+**Named limitation: 44 of 57 companies couldn't be checked.** No public Greenhouse, Lever, or Ashby board was found for them (or the board was ambiguous), so they stay UNVERIFIED and are never scored. The result is a partial picture of the Massachusetts SWE-sponsor market, not a ranking of it.
 
 ## Attestation
 - Recipe: swe-network-targets v0.1.0
-- By: Mayank Bhadrasen · 2026-10-03 (tests run by Claude Code on 2026-10-02 in Mayank's session; Mayank has not yet re-run them personally)
+- By: Mayank Bhadrasen · 2026-10-03 (rows marked **(MB)** were run by me on 2026-10-03; the other rows were run by Claude Code in my session on 2026-10-02)
 
 ### Tested
 | Ran | Saw | Expected |
@@ -255,12 +257,18 @@ Observed facts (recorded during the session):
 | break: missing CSV | exit 2 | refuse with path |
 | break: fabricated posting URL through `ats:liveness` | `expired` (redirect ?error=true) | not active |
 | `node --test …/network-targets.test.mjs` | 13/13 pass; 2 mutants each caught | pass; mutants fail |
+| **(MB)** `network-targets.mjs` re-run | same counts: 57 → 1 / 4 / 2 / 5 / 44 / 1 | reproducible |
+| **(MB)** `node --test …/network-targets.test.mjs` | 13 pass, 0 fail | pass |
+| **(MB)** `grep "^ABACUS INSIGHTS INC" …csv` | `Series A,2024-10-01,22.0,0.0,100.0` | equals the report row |
+| **(MB)** break: `--persona fixtures/persona.opt-past.json` | `window closed; nothing to score`, `echo $?` → 3 | refuse, exit 3 |
+| **(MB)** G4: `npm run ats:liveness -- "https://www.pathai.com/careers/8801819002?gh_jid=8801819002"` | `✅ active` | active before applying |
+| **(MB)** G5: opened the Abacus board in a browser | no US backend SWE opening; "Senior AI Engineer" judged a target role | human decides → **override NETWORK → APPLY** |
 
 ### Did not test
-- Whether any board in `board-map.json` truly belongs to its CSV company (G3 not cleared by a person).
-- Posting-level liveness for the 4 APPLY / 2 CONSIDER companies beyond the single Cohere Health URL.
+- **44 of 57 companies couldn't be checked**: no board found, ambiguous, or never mapped (UNVERIFIED).
+- Board identity (G3) for 12 of the 13 boards. Only Abacus was opened by a person.
+- Posting-level liveness beyond two URLs (Cohere Health by Claude, PathAI backend by me).
 - Any USCIS or DOL source to confirm the even-count doubling hypothesis.
-- The 44 UNVERIFIED companies on Workday, iCIMS, or company sites.
 - Real personal dates (only the fictional persona was run in committed outputs).
 - Node 20 specifically. Runs were on Node 24.8.0. CI uses Node 20.
 

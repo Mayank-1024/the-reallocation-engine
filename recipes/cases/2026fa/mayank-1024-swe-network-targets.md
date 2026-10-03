@@ -1,7 +1,7 @@
 ---
 status: DRAFT
 todos_open: 6
-last_gate: "sample-run completed 2026-10-02 (offline snapshot + live boards), logs/runs/2026fa-mayank-1024-1.md — automatable gates only; no human gate cleared yet"
+last_gate: "sample-run completed 2026-10-02; G4 (PathAI posting active) and G5 (Abacus Senior AI Engineer → override to APPLY) by Mayank Bhadrasen 2026-10-03, logs/runs/2026fa-mayank-1024-1.md; G3 not cleared"
 attestation: null
 recipe_version: 0.1.0
 ---

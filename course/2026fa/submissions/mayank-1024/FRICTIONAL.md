@@ -60,7 +60,20 @@ This is the honest log of how the assignment went: what was tried, what broke, w
 - **What I understand now / still don't:** not recorded for this step.
 
 ### 2026-10-03 — Submission under deadline
-- **What happened:** I had not reviewed the drafts in detail before the deadline, so I accepted Claude's drafts and code without changes. I answered short questions about my expectations, what I learned, and my v0.2 predictions, and Claude wrote those answers into this log, the worked-run reflection, SOURCES.md, and CHANGE-BRIEF §5.
-- **What Claude contributed:** the questions, the phrasing, the push, the PR, and the ZIP.
-- **What I understand now / still do not understand:** I can't yet explain every line of `lib.mjs` and the gates from my own reading.
-- **Evidence and next step:** this commit. Before the presentation I will read `lib.mjs`, the recipe gates, and the generated report, run the prototype live, and add a dated entry recording what I checked, agreed with, or would change.
+- **What happened:** I answered short questions about my expectations, what I learned, and my v0.2 predictions, and Claude wrote those answers into this log, the worked-run reflection, SOURCES.md, and CHANGE-BRIEF §5. I then did my own checks (next entry).
+- **What Claude contributed:** the questions, the phrasing, the check list I followed, the push, the PR, and the ZIP.
+
+### 2026-10-03 — My own checks before resubmitting
+- **I tried / expected:** I wanted to confirm for myself that the prototype runs and that its numbers are real before submitting. I expected the same counts as Claude's run.
+- **What happened (my terminal, 2026-10-03):**
+  - `node …/network-targets.mjs` → `57 candidates → NETWORK 1 · APPLY 4 · CONSIDER 2 · WATCH 5 · UNVERIFIED 44 · SKIP 1`, the same as the committed run. Only the `run_at` timestamp changed in `runs/2026-10-02/`.
+  - `node --test …/network-targets.test.mjs` → 13 pass, 0 fail.
+  - `grep "^ABACUS INSIGHTS INC" …csv` → `Series A,2024-10-01,22.0,0.0,100.0`, which matches the report row (22 approvals, 100% rate, funded 2024-10-01).
+  - Break attempt: ran the `persona.opt-past.json` fixture → `window closed; nothing to score`, and `echo $?` → `3`.
+  - Gate G4: `npm run ats:liveness -- "https://www.pathai.com/careers/8801819002?gh_jid=8801819002"` (PathAI, Senior Software Engineer, Backend) → `✅ active`.
+  - Skimmed the generated report and the `nextAction` function in `lib.mjs`.
+  - Opened https://job-boards.greenhouse.io/abacusinsights in my browser. There is no US backend SWE opening, which agrees with the report.
+- **What I did, gate G5:** I judged "Senior AI Engineer" at Abacus Insights to be a role I would apply to. That is a human override: Abacus moves from NETWORK to **APPLY** for me. The prototype has no override input yet, so the machine output still says NETWORK. My decision is recorded here, in the worked run, and in the run log.
+- **What I understand now:** the title pattern is narrower than the roles I'd actually take. The G5 adjacent-titles list exists for exactly that reason, and it worked: it surfaced a role the regex missed.
+- **Not reviewed in depth, because of time:** the full recipe and card text, the domain justification, the test-suite internals, and board identity (G3) for the other 12 boards. I accepted Claude's drafts of those without changes.
+- **Next step:** read `lib.mjs` and the recipe gates fully before the presentation. Add an override input (`--overrides`) so a G5 decision like mine flows through the scorer's documented-override field instead of living only in the log.

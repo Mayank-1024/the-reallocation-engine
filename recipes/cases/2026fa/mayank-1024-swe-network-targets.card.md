@@ -17,6 +17,8 @@ Answer one question: **which companies have sponsored software engineers in Mass
 
 ## What it cannot verify
 
+**Headline limitation: 44 of 57 companies couldn't be checked.** No public Greenhouse, Lever, or Ashby board was found for them, so they're listed as unverified and never scored. Treat the output as a partial picture.
+
 - **That they sponsor new hires now.** The record is history. Every count in the source file is even, so counts may be doubled. The approval *rate* is the safer number.
 - **That the board is theirs.** Board links were guessed from website names. You confirm them (G3).
 - **That a listed posting is still open.** Run `npm run ats:liveness -- <url>` before you tailor anything (G4).
