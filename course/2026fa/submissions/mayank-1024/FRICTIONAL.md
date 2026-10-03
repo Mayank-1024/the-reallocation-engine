@@ -96,3 +96,9 @@ This is the honest log of how the assignment went: what was tried, what broke, w
 - **What I understand now:** an unknown value still needs a label that says *where the unknown came from*. "null" hides that.
 - **Evidence:** this commit; `network-targets.test.mjs` asserts `ECHO NOBOARD INC` → `your-input`.
 
+### 2026-10-03 — Clean clone run, before uploading
+- **I tried / expected:** the assignment says to run the finished prototype myself from a clean checkout. Until now only Claude had done that, so I cloned my pushed branch into a new folder, ran `npm install`, then the one command. I expected the same counts.
+- **What happened:** `57 candidates → NETWORK 1 · APPLY 4 · CONSIDER 2 · WATCH 5 · UNVERIFIED 44 · SKIP 1`, which matches. `npm install` printed a `glob` deprecation warning and "3 high severity vulnerabilities". Those come from the repo's own dependencies, not my change.
+- **What Claude contributed:** the clone command. It also noticed that the npm warning contains the same email the privacy scan flags, and redacted it before pasting my output into TEST-REPORT.md.
+- **Evidence:** TEST-REPORT.md "Fresh clone run by Mayank"; this commit.
+

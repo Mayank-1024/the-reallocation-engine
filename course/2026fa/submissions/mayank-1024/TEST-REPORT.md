@@ -49,7 +49,7 @@ EXIT 0
 
 ## Clean checkout of the branch
 
-Run by Claude Code in Mayank's session on 2026-10-03: `git worktree add <scratch>/clean HEAD` at `a87d91d043b42913524b5180dc118718fb05cd81` (the final code commit; later commits change documentation only), then `npm ci`, then the commands below with the repo `.venv` (PyYAML) active. Mayank separately re-ran the prototype, the tests, a break attempt, and a G4 liveness check in Mayank's own terminal on 2026-10-03 (WORKED-RUN.md, rows marked (MB); FRICTIONAL.md). Mayank has not done a separate clean-checkout run.
+Run by Claude Code in Mayank's session on 2026-10-03: `git worktree add <scratch>/clean HEAD` at `a87d91d043b42913524b5180dc118718fb05cd81` (the final code commit; later commits change documentation only), then `npm ci`, then the commands below with the repo `.venv` (PyYAML) active. Mayank separately re-ran the prototype, the tests, a break attempt, and a G4 liveness check in Mayank's own terminal on 2026-10-03 (WORKED-RUN.md, rows marked (MB); FRICTIONAL.md). Mayank also ran a fresh clone of the pushed branch (below).
 
 ```
 SUMMARY
@@ -101,6 +101,25 @@ conformance: 14 files (1 md · 9 json · 4 js)
 ```
 
 The action counts from the clean checkout were compared programmatically with the committed `runs/2026-10-02/network-targets.log.json`: `identical to committed run: True {'NETWORK': 1, 'APPLY': 4, 'CONSIDER': 2, 'WATCH': 5, 'UNVERIFIED': 44, 'SKIP': 1}`.
+
+### Fresh clone run by Mayank (2026-10-03, branch at `5e8a0c8`)
+
+```
+$ cd ~/Desktop && git clone -b contrib/2026fa-mayank-1024-swe-network-targets https://github.com/Mayank-1024/the-reallocation-engine.git re-check && cd re-check && npm install && node scripts/contrib/2026fa/mayank-1024-swe-network-targets/network-targets.mjs
+Cloning into 're-check'...
+Receiving objects: 100% (1203/1203), 14.78 MiB | 19.08 MiB/s, done.
+Resolving deltas: 100% (281/281), done.
+npm warn deprecated glob@10.5.0: Old versions of glob are not supported, ... contacting <npm author address, redacted>
+added 74 packages, and audited 75 packages in 1s
+3 high severity vulnerabilities
+✓ 57 candidates → NETWORK 1 · APPLY 4 · CONSIDER 2 · WATCH 5 · UNVERIFIED 44 · SKIP 1
+  scorer: ✓ scored 13 roles → Apply 4 · Consider 2 · Skip 7 (skip 54%)
+  course/2026fa/submissions/mayank-1024/runs/2026-10-02/network-targets.log.json  +  course/2026fa/submissions/mayank-1024/runs/2026-10-02/network-targets.report.md
+  ! DATAROBOT INC: in-csv-but-not-a-candidate (state/title/approval filter)
+  ! DYNOCARDIA INC: in-csv-but-not-a-candidate (state/title/approval filter)
+```
+
+Same counts as the committed run. Some git and npm progress lines are trimmed, and the npm author address in the upstream `glob` deprecation warning is redacted. The warning and the `npm audit` count come from the repo's own `package.json` dependencies, which this branch does not change.
 
 ## Failure cases exercised
 

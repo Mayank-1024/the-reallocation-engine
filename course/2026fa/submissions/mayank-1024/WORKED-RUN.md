@@ -258,6 +258,7 @@ Observed facts (recorded during the session):
 | break: fabricated posting URL through `ats:liveness` | `expired` (redirect ?error=true) | not active |
 | `node --test …/network-targets.test.mjs` | 13/13 pass; 2 mutants each caught | pass; mutants fail |
 | **(MB)** `network-targets.mjs` re-run | same counts: 57 → 1 / 4 / 2 / 5 / 44 / 1 | reproducible |
+| **(MB)** fresh `git clone` of the pushed branch + `npm install` + `network-targets.mjs` | same counts: 57 → 1 / 4 / 2 / 5 / 44 / 1 | runs on a fresh clone |
 | **(MB)** `node --test …/network-targets.test.mjs` | 13 pass, 0 fail | pass |
 | **(MB)** `grep "^ABACUS INSIGHTS INC" …csv` | `Series A,2024-10-01,22.0,0.0,100.0` | equals the report row |
 | **(MB)** break: `--persona fixtures/persona.opt-past.json` | `window closed; nothing to score`, `echo $?` → 3 | refuse, exit 3 |
